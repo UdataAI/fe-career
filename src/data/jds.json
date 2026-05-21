@@ -1,29 +1,5 @@
 [
   {
-    "id": "Consultant_Hanoi",
-    "filename": "Udata_JD_Consultant_Hanoi.pdf",
-    "title": "Business Development & Solution Consultant",
-    "category": "Sales",
-    "location": "Hà Nội",
-    "type": "Toàn thời gian",
-    "about": "Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng các nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững. Được thành lập năm 2024, Udata đang tăng trưởng nhanh với đội ngũ trẻ, chủ động và đam mê công nghệ — môi trường lý tưởng để bạn phát triển cùng sản phẩm thực tế có tác động lớn. Phát triển bền vững — không chỉ là mục tiêu, đó là sứ mệnh chúng tôi chia sẻ cùng từng khách hàng. AI & AIoT Chuyển đổi Xanh Chuyển đổi Số",
-    "duties": [
-      "Tìm kiếm, tiếp cận và phát triển khách hàng doanh nghiệp có nhu cầu về chuyển đổi số, chuyển đổi xanh, Solar, giám sát năng lượng (EMS/BESS) và ESG & Carbon",
-      "Tư vấn và demo sản phẩm Uboard, Ugate, Ugate Mini, Uzero tới khách hàng mục tiêu: nhà máy, tòa nhà, doanh nghiệp vừa và lớn, EPC điện mặt trời",
-      "Xây dựng và trình bày proposal, pitch giải pháp AIoT/SaaS phù hợp từng nhu cầu — được đào tạo bài bản ngay khi onboard",
-      "Phối hợp với team Marketing & Product: nhận lead, chăm sóc pipeline và hỗ trợ chuyển đổi khách hàng",
-      "Duy trì quan hệ dài hạn với đối tác, nhà tư vấn và hệ sinh thái năng lượng – công nghệ",
-      "Cập nhật CRM, theo dõi kết quả kinh doanh và phản hồi thị trường để cải thiện sản phẩm & chiến lược bán hàng"
-    ],
-    "requirements": [
-      "Digital & Green Transformation with Udata Tốt nghiệp Cao đẳng / Đại học trở lên (mọi chuyên ngành) Có kinh nghiệm bán hàng B2B hoặc B2C ở bất kỳ ngành nào — sẽ được đào tạo lại về sản phẩm Hiểu biết cơ bản về Solar, IoT, chuyển đổi số hoặc chatbot AI là lợi thế Kỹ năng giao tiếp tốt, biết lắng nghe và đặt đúng câu hỏi với khách hàng Chúng tôi tìm người có tinh thần: Nhanh nhạy với thị trường Năng động, không ngại thực địa Ham học công nghệ mới Định hướng kết quả rõ ràng Muốn lớn cùng startup Ưu tiên Có thêm bất kỳ yếu tố nào dưới đây là một lợi thế lớn Từng tiếp cận hoặc bán giải pháp AI, chatbot, SaaS, ESG cho doanh nghiệp Có network khách hàng trong lĩnh vực năng lượng, sản xuất, bất động sản"
-    ],
-    "benefits": [
-      "Lương đàm phán theo kinh nghiệm + thưởng doanh số hấp dẫn BHXH, BHYT, nghỉ phép đầy đủ theo quy định Lộ trình thăng tiến rõ ràng theo năng lực và kết quả Đào tạo bài bản về sản phẩm, giải pháp và kỹ năng tư vấn từ ngày đầu Môi trường startup trẻ trung, chủ động, năng động và sáng tạo Tham gia hội thảo, triển lãm chuyên ngành năng lượng & công nghệ"
-    ],
-    "locationAndTime": "• Hà Nội: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông \n• HCM: Tòa nhà DHG, 31-33 Đường 18, P.8, Q.Gò Vấp \n• Thứ Hai – Thứ Sáu: 8:00 – 17:00 | Sáng Thứ Bảy: 8:00 – 12:00"
-  },
-  {
     "id": "Kế toánandHành chính tổng hợp_HaNoi",
     "filename": "Udata_JD_Kế toán&Hành chính tổng hợp_HaNoi.pdf",
     "title": "Kế toán & Hành chính tổng hợp",
@@ -74,7 +50,63 @@
       "Chế độ đãi ngộ và thưởng theo năng lực",
       "Tham gia các hoạt động nội bộ cùng công ty"
     ],
-    "locationAndTime": " Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
+    "locationAndTime": " Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
+  },
+  {
+    "id": "Intern Consultant_Hanoi",
+    "filename": "Udata_JD_Intern Consultant_Hanoi.pdf",
+    "title": "Business Development & Solution Consultant Intern",
+    "category": "Sales",
+    "location": "Hà Nội",
+    "type": "Thực tập",
+    "about": "Udata is a technology company specializing in Digital Transformation and Green Transformation solutions powered by AI and AIoT. We work alongside factories, buildings, and industrial parks to: • Digitize operations • Monitor real-time data • Optimize energy usage • Support sustainable development At Udata, interns are involved in real projects and practical business activities instead of only administrative tasks. Sustainable development — not just a goal, it's a mission we share with each and every customer. AI & AIoT Green Transformation Digital Transformation",
+    "duties": [
+      "Research: Find CFO/CEO leads in the Singapore & APAC market",
+      "Outreach: Message decision-makers via LinkedIn and Email",
+      "Book Meetings/Demos: Schedule 20-minute intro calls for the Sales team"
+    ],
+    "requirements": [
+      "Final-year students or fresh graduates in Business, Marketing, Information Technology, Management, International Business or related fields.",
+      "Strong English: Confident in professional writing and speaking (Mandatory).",
+      "Tech-curious: Interested in Fintech, AI, and SaaS.",
+      "Proactive: High energy, resilient, and not afraid to reach out to executives.",
+      "Chúng tôi tìm người có tinh thần: Proactive & creative, curious about new technologies, not afraid to try and improve from mistakes, eager to build a real portfolio, excited to grow together with a startup."
+    ],
+    "benefits": [
+      "Global Exposure: Work directly with the Singapore market.",
+      "Training: Learn B2B sales from experts.",
+      "Incentives: Bonus for every qualified meeting booked.",
+      "Hands-on training in B2B sales, Business development, AI & IoT solutions, and Enterprise consulting skills.",
+      "Opportunity to work directly with a fast-growing tech startup.",
+      "Exposure to real enterprise projects.",
+      "Potential opportunity for full-time employment after the internship.",
+      "Young, dynamic, and fast-learning working environment."
+    ],
+    "locationAndTime": "• Hanoi: 9th Floor – Ha Tay Millennium, No. 4 Quang Trung, Ha Dong, Ha Noi \n• Mon – Fri: 8:00 – 17:00 \n• Minimum internship duration: 3 months"
+  },
+  {
+    "id": "Consultant_Hanoi",
+    "filename": "Udata_JD_Consultant_Hanoi.pdf",
+    "title": "Business Development & Solution Consultant",
+    "category": "Sales",
+    "location": "Hà Nội",
+    "type": "Toàn thời gian",
+    "about": "Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng các nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững. Được thành lập năm 2024, Udata đang tăng trưởng nhanh với đội ngũ trẻ, chủ động và đam mê công nghệ — môi trường lý tưởng để bạn phát triển cùng sản phẩm thực tế có tác động lớn. Phát triển bền vững — không chỉ là mục tiêu, đó là sứ mệnh chúng tôi chia sẻ cùng từng khách hàng. AI & AIoT Chuyển đổi Xanh Chuyển đổi Số",
+    "duties": [
+      "Tìm kiếm, tiếp cận và phát triển khách hàng doanh nghiệp có nhu cầu về chuyển đổi số, chuyển đổi xanh, Solar, giám sát năng lượng (EMS/BESS) và ESG & Carbon",
+      "Tư vấn và demo sản phẩm Uboard, Ugate, Ugate Mini, Uzero tới khách hàng mục tiêu: nhà máy, tòa nhà, doanh nghiệp vừa và lớn, EPC điện mặt trời",
+      "Xây dựng và trình bày proposal, pitch giải pháp AIoT/SaaS phù hợp từng nhu cầu — được đào tạo bài bản ngay khi onboard",
+      "Phối hợp với team Marketing & Product: nhận lead, chăm sóc pipeline và hỗ trợ chuyển đổi khách hàng",
+      "Duy trì quan hệ dài hạn với đối tác, nhà tư vấn và hệ sinh thái năng lượng – công nghệ",
+      "Cập nhật CRM, theo dõi kết quả kinh doanh và phản hồi thị trường để cải thiện sản phẩm & chiến lược bán hàng"
+    ],
+    "requirements": [
+      "Tốt nghiệp Cao đẳng / Đại học trở lên (mọi chuyên ngành) Có kinh nghiệm bán hàng B2B hoặc B2C ở bất kỳ ngành nào — sẽ được đào tạo lại về sản phẩm Hiểu biết cơ bản về Solar, IoT, chuyển đổi số hoặc chatbot AI là lợi thế Kỹ năng giao tiếp tốt, biết lắng nghe và đặt đúng câu hỏi với khách hàng Chúng tôi tìm người có tinh thần: Nhanh nhạy với thị trường Năng động, không ngại thực địa Ham học công nghệ mới Định hướng kết quả rõ ràng Muốn lớn cùng startup Ưu tiên Có thêm bất kỳ yếu tố nào dưới đây là một lợi thế lớn Từng tiếp cận hoặc bán giải pháp AI, chatbot, SaaS, ESG cho doanh nghiệp Có network khách hàng trong lĩnh vực năng lượng, sản xuất, bất động sản"
+    ],
+    "benefits": [
+      "Lương đàm phán theo kinh nghiệm + thưởng doanh số hấp dẫn BHXH, BHYT, nghỉ phép đầy đủ theo quy định Lộ trình thăng tiến rõ ràng theo năng lực và kết quả Đào tạo bài bản về sản phẩm, giải pháp và kỹ năng tư vấn từ ngày đầu Môi trường startup trẻ trung, chủ động, năng động và sáng tạo Tham gia hội thảo, triển lãm chuyên ngành năng lượng & công nghệ"
+    ],
+    "locationAndTime": "• Hà Nội: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông \n• HCM: Tòa nhà DHG, 31-33 Đường 18, P.8, Q.Gò Vấp \n• Thứ Hai – Thứ Sáu: 8:00 – 17:00 | Sáng Thứ Bảy: 8:00 – 12:00"
   },
   {
     "id": "MKT_Intern_HaNoi",
@@ -143,11 +175,11 @@
     ],
     "benefits": [
       "Môi trường startup công nghệ trẻ, năng động",
-      "Được",
-      "& công nghệ hiện đại",
+      "Được đào tạo, hướng dẫn bài bản",
+      "Cơ hội tiếp cận AI & công nghệ hiện đại",
       "Chế độ đãi ngộ và thưởng theo năng lực",
       "Tham gia các hoạt động nội bộ cùng công ty"
     ],
-    "locationAndTime": " Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
+    "locationAndTime": " Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
   }
 ]

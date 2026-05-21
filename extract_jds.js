@@ -27,7 +27,11 @@ function extractJDs() {
       let location = 'Hà Nội';
       let type = 'Toàn thời gian';
 
-      if (file.includes('Consultant')) {
+      if (file.includes('Intern Consultant')) {
+        title = 'Business Development & Solution Consultant Intern';
+        category = 'Sales';
+        type = 'Thực tập';
+      } else if (file.includes('Consultant')) {
         title = 'Business Development & Solution Consultant';
         category = 'Sales';
       } else if (file.includes('Kế toán')) {
@@ -59,33 +63,36 @@ function extractJDs() {
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
 
+        // Skip running headers/footers
+        if (line.startsWith('--') && line.endsWith('--')) {
+          continue;
+        }
+        if (line.toLowerCase().includes('digital & green transformation with udata')) {
+          continue;
+        }
+
         // Check if header
         const normalizedLine = line.toUpperCase();
         
-        if (normalizedLine.includes('VỀ UDATA')) {
+        if (normalizedLine.includes('VỀ UDATA') || normalizedLine.includes('ABOUT UDATA')) {
           currentSection = 'about';
           continue;
-        } else if (normalizedLine.includes('MÔ TẢ CÔNG VIỆC') || normalizedLine.includes('BẠN SẼ LÀM GÌ')) {
+        } else if (normalizedLine.includes('MÔ TẢ CÔNG VIỆC') || normalizedLine.includes('BẠN SẼ LÀM GÌ') || normalizedLine.includes('WHAT WILL YOU DO?')) {
           currentSection = 'duties';
           continue;
-        } else if (normalizedLine === 'YÊU CẦU' || normalizedLine.includes('YÊU CẦU ỨNG VIÊN')) {
+        } else if (normalizedLine === 'YÊU CẦU' || normalizedLine.includes('YÊU CẦU ỨNG VIÊN') || normalizedLine.includes('REQUIREMENTS')) {
           currentSection = 'requirements';
           continue;
-        } else if (normalizedLine.includes('QUYỀN LỢI')) {
+        } else if (normalizedLine.includes('QUYỀN LỢI') || normalizedLine.includes('WHAT WILL YOU GAIN') || normalizedLine.includes('PERKS') || normalizedLine.includes('BENEFITS')) {
           currentSection = 'benefits';
           continue;
-        } else if (normalizedLine.includes('ĐỊA ĐIỂM LÀM VIỆC') || normalizedLine.includes('ĐỊA ĐIỂM & GIỜ LÀM VIỆC') || normalizedLine.includes('ĐỊA ĐIỂM VÀ GIỜ LÀM VIỆC')) {
+        } else if (normalizedLine.includes('ĐỊA ĐIỂM LÀM VIỆC') || normalizedLine.includes('ĐỊA ĐIỂM & GIỜ LÀM VIỆC') || normalizedLine.includes('ĐỊA ĐIỂM VÀ GIỜ LÀM VIỆC') || normalizedLine.includes('LOCATION AND TIME')) {
           currentSection = 'locationAndTime';
           continue;
         }
 
-        // Skip footer pages indicator
-        if (line.startsWith('--') && line.endsWith('--')) {
-          continue;
-        }
-
         if (currentSection === 'about') {
-          if (line.includes('Các sản phẩm chủ lực:') || line.includes('Sản phẩm của chúng tôi:')) {
+          if (line.includes('Các sản phẩm chủ lực:') || line.includes('Sản phẩm của chúng tôi:') || line.includes('Our Core Products')) {
             // We can stop about or let it capture
             currentSection = '';
           } else {
@@ -93,24 +100,24 @@ function extractJDs() {
           }
         } else if (currentSection === 'duties') {
           // If it's a list item
-          if (line.startsWith('•') || line.startsWith('-') || line.startsWith('o') || /^\d+\./.test(line)) {
-            sections.duties.push(line.replace(/^[•\-o]\s*/, '').replace(/^\d+\.\s*/, ''));
+          if (line.startsWith('•') || line.startsWith('-') || line.startsWith('+') || line.startsWith('o') || /^\d+\./.test(line)) {
+            sections.duties.push(line.replace(/^[•\-+o]\s*/, '').replace(/^\d+\.\s*/, ''));
           } else if (sections.duties.length > 0) {
             sections.duties[sections.duties.length - 1] += ' ' + line;
           } else {
             sections.duties.push(line);
           }
         } else if (currentSection === 'requirements') {
-          if (line.startsWith('•') || line.startsWith('-') || line.startsWith('o') || /^\d+\./.test(line)) {
-            sections.requirements.push(line.replace(/^[•\-o]\s*/, '').replace(/^\d+\.\s*/, ''));
+          if (line.startsWith('•') || line.startsWith('-') || line.startsWith('+') || line.startsWith('o') || /^\d+\./.test(line)) {
+            sections.requirements.push(line.replace(/^[•\-+o]\s*/, '').replace(/^\d+\.\s*/, ''));
           } else if (sections.requirements.length > 0) {
             sections.requirements[sections.requirements.length - 1] += ' ' + line;
           } else {
             sections.requirements.push(line);
           }
         } else if (currentSection === 'benefits') {
-          if (line.startsWith('•') || line.startsWith('-') || line.startsWith('o') || /^\d+\./.test(line)) {
-            sections.benefits.push(line.replace(/^[•\-o]\s*/, '').replace(/^\d+\.\s*/, ''));
+          if (line.startsWith('•') || line.startsWith('-') || line.startsWith('+') || line.startsWith('o') || /^\d+\./.test(line)) {
+            sections.benefits.push(line.replace(/^[•\-+o]\s*/, '').replace(/^\d+\.\s*/, ''));
           } else if (sections.benefits.length > 0) {
             sections.benefits[sections.benefits.length - 1] += ' ' + line;
           } else {
@@ -139,8 +146,41 @@ function extractJDs() {
       });
     }
 
-    fs.writeFileSync(outputFile, JSON.stringify(jdData, null, 2), 'utf-8');
-    console.log(`Successfully extracted ${jdData.length} JDs to ${outputFile}`);
+    // Post-processing cleanup for specific jobs to ensure perfect formatting
+    const cleanedJdData = jdData.map(jd => {
+      if (jd.id === 'Intern Consultant_Hanoi') {
+        return {
+          ...jd,
+          duties: [
+            "Research: Find CFO/CEO leads in the Singapore & APAC market",
+            "Outreach: Message decision-makers via LinkedIn and Email",
+            "Book Meetings/Demos: Schedule 20-minute intro calls for the Sales team"
+          ],
+          requirements: [
+            "Final-year students or fresh graduates in Business, Marketing, Information Technology, Management, International Business or related fields.",
+            "Strong English: Confident in professional writing and speaking (Mandatory).",
+            "Tech-curious: Interested in Fintech, AI, and SaaS.",
+            "Proactive: High energy, resilient, and not afraid to reach out to executives.",
+            "Chúng tôi tìm người có tinh thần: Proactive & creative, curious about new technologies, not afraid to try and improve from mistakes, eager to build a real portfolio, excited to grow together with a startup."
+          ],
+          benefits: [
+            "Global Exposure: Work directly with the Singapore market.",
+            "Training: Learn B2B sales from experts.",
+            "Incentives: Bonus for every qualified meeting booked.",
+            "Hands-on training in B2B sales, Business development, AI & IoT solutions, and Enterprise consulting skills.",
+            "Opportunity to work directly with a fast-growing tech startup.",
+            "Exposure to real enterprise projects.",
+            "Potential opportunity for full-time employment after the internship.",
+            "Young, dynamic, and fast-learning working environment."
+          ],
+          locationAndTime: "• Hanoi: 9th Floor – Ha Tay Millennium, No. 4 Quang Trung, Ha Dong, Ha Noi \n• Mon – Fri: 8:00 – 17:00 \n• Minimum internship duration: 3 months"
+        };
+      }
+      return jd;
+    });
+
+    fs.writeFileSync(outputFile, JSON.stringify(cleanedJdData, null, 2), 'utf-8');
+    console.log(`Successfully extracted ${cleanedJdData.length} JDs to ${outputFile}`);
   } catch (error) {
     console.error('Error extracting JDs:', error);
   }

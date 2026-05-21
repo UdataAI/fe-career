@@ -214,12 +214,6 @@ function App() {
                   Xem các vị trí trống
                   <span className="material-symbols-outlined text-lg">arrow_forward</span>
                 </a>
-                <a 
-                  href="#why-udata" 
-                  className="bg-slate-200/80 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-bold transition-all"
-                >
-                  Tìm hiểu văn hóa
-                </a>
               </div>
             </div>
           </div>
@@ -539,7 +533,7 @@ function App() {
                 <svg className="w-5 h-5 text-primary fill-current shrink-0" viewBox="0 0 24 24">
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-                <a className="text-slate-600 hover:text-primary transition-colors text-sm font-medium" href="mailto:support@udata.ai">support@udata.ai</a>
+                <a className="text-slate-600 hover:text-primary transition-colors text-sm font-medium" href="mailto:hr@udata.ai">hr@udata.ai</a>
               </li>
 
               {/* Sales Email */}
