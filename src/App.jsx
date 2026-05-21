@@ -71,8 +71,9 @@ function App() {
   };
 
   const handleViewDetailClick = (job) => {
-    setSelectedJob(job);
-    setIsApplyMode(false);
+    if (job.filename) {
+      window.open(`/JD/${encodeURIComponent(job.filename)}`, '_blank');
+    }
   };
 
   const handleInputChange = (e) => {
