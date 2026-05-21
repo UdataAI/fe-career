@@ -9,6 +9,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('Tất cả');
   const [selectedJob, setSelectedJob] = useState(null);
   const [isApplyMode, setIsApplyMode] = useState(false);
+  const [activePdfUrl, setActivePdfUrl] = useState(null);
   
   // Form State
   const [formData, setFormData] = useState({
@@ -72,7 +73,8 @@ function App() {
 
   const handleViewDetailClick = (job) => {
     if (job.filename) {
-      window.open(`/JD/${encodeURIComponent(job.filename)}`, '_blank');
+      setActivePdfUrl(`/JD/${encodeURIComponent(job.filename)}`);
+      setSelectedJob(job);
     }
   };
 
@@ -339,9 +341,9 @@ function App() {
                     </div>
                     
                     <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
-                      <button 
+                      <button
                         onClick={() => handleViewDetailClick(job)}
-                        className="flex-1 md:flex-initial border border-slate-200 hover:border-slate-300 text-slate-700 px-6 py-3.5 rounded-xl font-semibold hover:bg-slate-50 transition-all"
+                        className="flex-1 md:flex-initial border border-slate-200 hover:border-slate-300 text-slate-700 px-6 py-3.5 rounded-xl font-semibold hover:bg-slate-50 transition-all text-center cursor-pointer"
                       >
                         Xem chi tiết
                       </button>
@@ -880,6 +882,89 @@ function App() {
                 </button>
               </div>
             )}
+
+          </div>
+        </div>
+      )}
+
+      {/* PDF Preview Modal */}
+      {activePdfUrl && (
+        <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
+          <div className="relative bg-white rounded-3xl w-full max-w-5xl h-[92vh] overflow-hidden shadow-2xl flex flex-col border border-slate-100">
+            
+            {/* Modal Header */}
+            <div className="p-5 md:p-6 border-b border-slate-100 flex justify-between items-center bg-white shrink-0">
+              <div>
+                <span className="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded mb-1 inline-block">
+                  {selectedJob?.category === 'Sales' ? 'Kinh doanh' : selectedJob?.category === 'Backoffice' ? 'Văn phòng' : selectedJob?.category}
+                </span>
+                <h3 className="font-display-lg text-xl md:text-2xl font-bold text-slate-900">
+                  Chi tiết tuyển dụng: {selectedJob?.title}
+                </h3>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <a
+                  href={activePdfUrl}
+                  download={selectedJob?.filename}
+                  className="hidden sm:flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-slate-50 border border-slate-200 rounded-xl transition-all"
+                >
+                  <span className="material-symbols-outlined text-lg">download</span>
+                  Tải xuống
+                </a>
+                <button 
+                  onClick={() => {
+                    setActivePdfUrl(null);
+                    setSelectedJob(null);
+                  }}
+                  className="p-2 rounded-full hover:bg-slate-100 text-slate-500 cursor-pointer"
+                >
+                  <span className="material-symbols-outlined text-2xl">close</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content - PDF IFrame */}
+            <div className="flex-1 bg-slate-100 overflow-hidden relative">
+              <iframe 
+                src={activePdfUrl} 
+                className="w-full h-full border-0" 
+                title={`JD: ${selectedJob?.title}`}
+              />
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-5 md:p-6 border-t border-slate-100 bg-slate-50 flex justify-between items-center shrink-0">
+              <a
+                href={activePdfUrl}
+                download={selectedJob?.filename}
+                className="sm:hidden flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-slate-50 border border-slate-200 rounded-xl transition-all"
+              >
+                <span className="material-symbols-outlined text-lg">download</span>
+                Tải xuống
+              </a>
+              <div className="flex gap-3 ml-auto">
+                <button 
+                  onClick={() => {
+                    setActivePdfUrl(null);
+                    setSelectedJob(null);
+                  }}
+                  className="px-6 py-3 border border-slate-200 rounded-xl text-slate-600 font-semibold hover:bg-slate-100 hover:text-slate-800 transition-colors cursor-pointer text-sm"
+                >
+                  Đóng
+                </button>
+                <button 
+                  onClick={() => {
+                    const jobToApply = selectedJob;
+                    setActivePdfUrl(null);
+                    handleApplyClick(jobToApply);
+                  }}
+                  className="bg-primary hover:bg-primary/95 text-white px-8 py-3 rounded-xl font-bold active:scale-95 transition-all shadow-md shadow-primary/10 cursor-pointer text-sm"
+                >
+                  Ứng tuyển ngay
+                </button>
+              </div>
+            </div>
 
           </div>
         </div>

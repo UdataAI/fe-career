@@ -3,13 +3,39 @@ import path from 'path';
 import { execSync } from 'child_process';
 
 const jdDir = './JD';
+const publicJdDir = './public/JD';
 const outputDir = './src/data';
 const outputFile = path.join(outputDir, 'jds.json');
+
+function toSafeFilename(filename) {
+  let safe = filename.normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D');
+  
+  safe = safe.replace(/&/g, 'and')
+    .replace(/\s+/g, '_')
+    .replace(/[^a-zA-Z0-9_.-]/g, '');
+  
+  return safe;
+}
 
 function extractJDs() {
   try {
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
+    }
+    if (!fs.existsSync(jdDir)) {
+      fs.mkdirSync(jdDir, { recursive: true });
+    }
+    if (!fs.existsSync(publicJdDir)) {
+      fs.mkdirSync(publicJdDir, { recursive: true });
+    } else {
+      // Clear existing pdf files to avoid leftover files with bad encoding
+      const existingFiles = fs.readdirSync(publicJdDir).filter(file => file.endsWith('.pdf'));
+      for (const file of existingFiles) {
+        fs.unlinkSync(path.join(publicJdDir, file));
+      }
     }
 
     const files = fs.readdirSync(jdDir).filter(file => file.endsWith('.pdf'));
@@ -18,6 +44,9 @@ function extractJDs() {
     for (const file of files) {
       console.log(`Processing file via CLI: ${file}`);
       const filePath = path.join(jdDir, file);
+      
+      const safeFile = toSafeFilename(file);
+      fs.copyFileSync(filePath, path.join(publicJdDir, safeFile));
       
       // Run the CLI command to extract text
       const stdout = execSync(`npx pdf-parse text "${filePath}"`, { encoding: 'utf-8' });
@@ -132,8 +161,8 @@ function extractJDs() {
       const fallbackAbout = 'Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng các nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững.';
       
       jdData.push({
-        id: file.replace(/Udata_JD_/, '').replace(/\.pdf$/, '').replace(/&/g, 'and'),
-        filename: file,
+        id: safeFile.replace(/Udata_JD_/, '').replace(/\.pdf$/, ''),
+        filename: safeFile,
         title,
         category,
         location,
@@ -148,7 +177,7 @@ function extractJDs() {
 
     // Post-processing cleanup for specific jobs to ensure perfect formatting
     const cleanedJdData = jdData.map(jd => {
-      if (jd.id === 'Intern Consultant_Hanoi') {
+      if (jd.id === 'Intern_Consultant_Hanoi') {
         return {
           ...jd,
           duties: [
