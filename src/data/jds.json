@@ -1,7 +1,82 @@
 [
   {
-    "id": "Kế toánandHành chính tổng hợp_HaNoi",
-    "filename": "Udata_JD_Kế toán&Hành chính tổng hợp_HaNoi.pdf",
+    "id": "Consultant_Hanoi",
+    "filename": "Udata_JD_Consultant_Hanoi.pdf",
+    "title": "Business Development & Solution Consultant",
+    "category": "Sales",
+    "location": "Hà Nội",
+    "type": "Toàn thời gian",
+    "about": "Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng các nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững. Được thành lập năm 2024, Udata đang tăng trưởng nhanh với đội ngũ trẻ, chủ động và đam mê công nghệ — môi trường lý tưởng để bạn phát triển cùng sản phẩm thực tế có tác động lớn. Phát triển bền vững — không chỉ là mục tiêu, đó là sứ mệnh chúng tôi chia sẻ cùng từng khách hàng. AI & AIoT Chuyển đổi Xanh Chuyển đổi Số",
+    "duties": [
+      "Tìm kiếm, tiếp cận và phát triển khách hàng doanh nghiệp có nhu cầu về chuyển đổi số, chuyển đổi xanh, Solar, giám sát năng lượng (EMS/BESS) và ESG & Carbon",
+      "Tư vấn và demo sản phẩm Uboard, Ugate, Ugate Mini, Uzero tới khách hàng mục tiêu: nhà máy, tòa nhà, doanh nghiệp vừa và lớn, EPC điện mặt trời",
+      "Xây dựng và trình bày proposal, pitch giải pháp AIoT/SaaS phù hợp từng nhu cầu — được đào tạo bài bản ngay khi onboard",
+      "Phối hợp với team Marketing & Product: nhận lead, chăm sóc pipeline và hỗ trợ chuyển đổi khách hàng",
+      "Duy trì quan hệ dài hạn với đối tác, nhà tư vấn và hệ sinh thái năng lượng – công nghệ",
+      "Cập nhật CRM, theo dõi kết quả kinh doanh và phản hồi thị trường để cải thiện sản phẩm & chiến lược bán hàng"
+    ],
+    "requirements": [
+      "Tốt nghiệp Cao đẳng / Đại học trở lên (mọi chuyên ngành) Có kinh nghiệm bán hàng B2B hoặc B2C ở bất kỳ ngành nào — sẽ được đào tạo lại về sản phẩm Hiểu biết cơ bản về Solar, IoT, chuyển đổi số hoặc chatbot AI là lợi thế đúng câu hỏi với khách hàng Chúng tôi tìm người có tinh thần: Nhanh nhạy với thị trường Năng động, không ngại thực địa Ham học công nghệ mới Định hướng kết quả rõ ràng Muốn lớn cùng startup Ưu tiên Có thêm bất kỳ yếu tố nào dưới đây là một lợi thế lớn Từng tiếp cận hoặc bán giải pháp AI, chatbot, SaaS, ESG cho doanh nghiệp Có network khách hàng trong lĩnh vực năng lượng, sản xuất, bất động sản"
+    ],
+    "benefits": [
+      "Lương đàm phán theo kinh nghiệm + thưởng doanh số hấp dẫn BHXH, BHYT, nghỉ phép đầy đủ theo quy định Lộ trình thăng tiến rõ ràng theo năng lực và kết quả Đào tạo bài bản về sản phẩm, giải pháp và kỹ năng tư vấn từ ngày đầu Môi trường startup trẻ trung, chủ động, năng động và sáng tạo Tham gia hội thảo, triển lãm chuyên ngành năng lượng & công nghệ"
+    ],
+    "locationAndTime": "Ugate \nGiải pháp chuyển đổi số toàn diện cho doanh \nnghiệp \nUgate Mini \nChatbot AI chăm sóc khách hàng tự động, thông \nminh \nUzero \nNền tảng ESG / Carbon & tối ưu hoá năng lượng \n• Hà Nội: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông \n• HCM: Tòa nhà DHG, 31-33 Đường 18, P.8, Q.Gò Vấp \n• Thứ Hai – Thứ Sáu: 8:00 – 17:00 | Sáng Thứ Bảy: 8:00 – 12:00"
+  },
+  {
+    "id": "Fullstack_Engineer",
+    "filename": "Udata_JD_Fullstack_Engineer.pdf",
+    "title": "Fullstack Engineer",
+    "category": "Engineering",
+    "location": "Hà Nội",
+    "type": "Toàn thời gian",
+    "about": "Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững. Phát triển bền vững — không chỉ là mục tiêu, đó là sứ mệnh chúng tôi chia sẻ cùng từng khách hàng.",
+    "duties": [
+      "Frontend"
+    ],
+    "requirements": [
+      "Tốt nghiệp Đại học chuyên ngành Công nghệ thông tin, Khoa học máy tính, Kỹ thuật phần mềm hoặc tương đương Có 1–2 năm kinh nghiệm phát triển web fullstack hoặc mạnh một trong hai mảng frontend / backend Thành thạo React.js (hooks, state management) và JavaScript / TypeScript Thành thạo ít nhất một ngôn ngữ backend: Node.js hoặc Python Có kinh nghiệm thiết kế và làm việc với REST API, cơ sở dữ liệu quan hệ (PostgreSQL / MySQL) Hiểu biết cơ bản về Docker, Git, Linux; viết code sạch và có khả năng tự debug chủ động trong công việc Ưu tiên ứng viên đọc hiểu tài liệu kỹ thuật tiếng Anh Điểm cộng lớn nếu bạn có thêm: Kinh nghiệm với WebSocket, MQTT hoặc xử lý dữ liệu real-time Đã từng làm với time-series database (InfluxDB, TimescaleDB) Có hiểu biết về IoT, hệ thống nhúng hoặc giao thức công nghiệp Kinh nghiệm tích hợp AI/ML API hoặc làm sản phẩm SaaS / B2B platform Chúng tôi tìm người có tinh thần: Ham học & chủ động Thích giải quyết vấn đề phức tạp Làm việc nhóm tốt Build sản phẩm có tác động thực tế Muốn lớn cùng startup AIoT"
+    ],
+    "benefits": [
+      "Lương đàm phán theo năng lực + review 6 tháng/lần Làm việc cùng đội kỹ sư nhiều kinh nghiệm, được mentor 1-1 BHXH, BHYT, BHTN đầy đủ theo quy định pháp luật hiện hành Lộ trình thăng tiến: Junior → Middle → Senior / Tech Lead Môi trường startup công nghệ trẻ trung, chủ động, năng động và sáng tạo Trang bị đầy đủ thiết bị làm việc Thưởng Lễ/Tết theo kết quả kinh doanh của công ty Tham gia hội thảo, khóa học kỹ thuật và teambuilding cùng công ty"
+    ],
+    "locationAndTime": "Ugate \nGiải pháp chuyển đổi số toàn diện cho doanh \nnghiệp \nUgate Mini \nChatbot AI chăm sóc khách hàng tự động, thông \nminh \nUzero \nNền tảng ESG / Carbon & tối ưu hoá năng lượng \nTech stack tại Udata: \nFrontend: React.js · TypeScript · Tailwind CSS · Ant Design · ECharts \nBackend: Node.js · Python · REST API · WebSocket · MQTT \nDatabase: PostgreSQL · InfluxDB · Redis \nInfra: Docker · Git · Linux · CI/CD \ncảnh báo, báo cáo) cho sản phẩm Uboard và Uzero \n• Phát triển giao diện cấu hình, quản lý thiết bị và tích hợp luồng dữ liệu cho Ugate \n• Xây dựng UI cho Ugate Mini — giao diện quản lý chatbot AI chăm sóc khách hàng \n• Đảm bảo trải nghiệm người dùng mượt mà, responsive và tối ưu hiệu năng \n2. Backend \nlên dashboard \n• Xây dựng pipeline xử lý, lưu trữ và phân tích dữ liệu cảm biến từ gateway (MQTT, \nModbus, OPC UA) \n• Phát triển tính năng cảnh báo, báo cáo tự động và tích hợp AI/ML vào sản phẩm \n• Đảm bảo bảo mật, hiệu năng và khả năng mở rộng của hệ thống \n3. Chung \n– Phối hợp với đội IoT/Hardware để tích hợp dữ liệu thiết bị vào phần mềm \n– Tham gia triển khai sản phẩm thực tế tại khách hàng (nhà máy, tòa nhà, khu công nghiệp) \n– Review code, viết unit test và đóng góp cải thiện chất lượng kỹ thuật của team \n– Cập nhật tài liệu kỹ thuật và tham gia sprint planning theo quy trình Agile/Scrum \nThứ Hai – Thứ Sáu 8:00 – 17:00 · Sáng thứu 7: 8:00 – 12:00 (remote) \nLàm việc tại văn phòng \nĐịac chỉ Hà Nội: Tầng 9 – Tòa nhà Hà Tây Millenium, Số 4 Quang Trung, Hà Đông \nỨng tuyển ngay \nGửi CV về: hr@udata.ai \nTìm hiểu thêm: https://udata.ai"
+  },
+  {
+    "id": "Intern_Consultant_Hanoi",
+    "filename": "Udata_JD_Intern_Consultant_Hanoi.pdf",
+    "title": "Business Development & Solution Consultant Intern",
+    "category": "Sales",
+    "location": "Hà Nội",
+    "type": "Thực tập",
+    "about": "Udata is a technology company specializing in Digital Transformation and Green Transformation solutions powered by AI and AIoT. We work alongside factories, buildings, and industrial parks to: • Digitize operations • Monitor real-time data • Optimize energy usage • Support sustainable development At Udata, interns are involved in real projects and practical business activities instead of only administrative tasks. Sustainable development — not just a goal, it's a mission we share with each and every customer. AI & AIoT Green Transformation Digital Transformation",
+    "duties": [
+      "Research: Find CFO/CEO leads in the Singapore & APAC market",
+      "Outreach: Message decision-makers via LinkedIn and Email",
+      "Book Meetings/Demos: Schedule 20-minute intro calls for the Sales team"
+    ],
+    "requirements": [
+      "Final-year students or fresh graduates in Business, Marketing, Information Technology, Management, International Business or related fields.",
+      "Strong English: Confident in professional writing and speaking (Mandatory).",
+      "Tech-curious: Interested in Fintech, AI, and SaaS.",
+      "Proactive: High energy, resilient, and not afraid to reach out to executives.",
+      "Chúng tôi tìm người có tinh thần: Proactive & creative, curious about new technologies, not afraid to try and improve from mistakes, eager to build a real portfolio, excited to grow together with a startup."
+    ],
+    "benefits": [
+      "Global Exposure: Work directly with the Singapore market.",
+      "Training: Learn B2B sales from experts.",
+      "Incentives: Bonus for every qualified meeting booked.",
+      "Hands-on training in B2B sales, Business development, AI & IoT solutions, and Enterprise consulting skills.",
+      "Opportunity to work directly with a fast-growing tech startup.",
+      "Exposure to real enterprise projects.",
+      "Potential opportunity for full-time employment after the internship.",
+      "Young, dynamic, and fast-learning working environment."
+    ],
+    "locationAndTime": "• Hanoi: 9th Floor – Ha Tay Millennium, No. 4 Quang Trung, Ha Dong, Ha Noi \n• Mon – Fri: 8:00 – 17:00 \n• Minimum internship duration: 3 months"
+  },
+  {
+    "id": "Ke_toanandHanh_chinh_tong_hop_HaNoi",
+    "filename": "Udata_JD_Ke_toanandHanh_chinh_tong_hop_HaNoi.pdf",
     "title": "Kế toán & Hành chính tổng hợp",
     "category": "Backoffice",
     "location": "Hà Nội",
@@ -33,15 +108,14 @@
       "Theo dõi tài sản, văn phòng phẩm, trang thiết bị văn phòng.",
       "Hỗ trợ công tác hành chính nội bộ.",
       "Quản lý hợp đồng lao động, phụ lục hợp đồng.",
-      "Thực hiện các thủ tục hành chính với cơ quan nhà nước khi cần."
-    ],
-    "requirements": [
-      "Tốt nghiệp chuyên ngành Kế toán, Tài chính hoặc liên quan",
-      "Có từ 1–3 năm kinh nghiệm ở vị trí tương đương",
-      "Cẩn thận, trách nhiệm, chủ động trong công việc",
+      "Thực hiện các thủ tục hành chính với cơ quan nhà nước khi cần.",
       "Khả năng xử lý đa nhiệm",
       "Thành thạo Excel cơ bản",
       "Có tinh thần học hỏi và sẵn sàng được đào tạo thêm"
+    ],
+    "requirements": [
+      "Tốt nghiệp chuyên ngành Kế toán, Tài chính hoặc liên quan",
+      "Có từ 1–3 năm kinh nghiệm ở vị trí tương đương"
     ],
     "benefits": [
       "Môi trường startup công nghệ trẻ, năng động",
@@ -50,63 +124,36 @@
       "Chế độ đãi ngộ và thưởng theo năng lực",
       "Tham gia các hoạt động nội bộ cùng công ty"
     ],
-    "locationAndTime": " Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
+    "locationAndTime": "Ugate \nGiải pháp chuyển đổi số toàn diện cho doanh \nnghiệp \nUgate Mini \nChatbot AI chăm sóc khách hàng tự động, thông \nminh \nUzero \nNền tảng ESG / Carbon & tối ưu hoá năng lượng \n Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
   },
   {
-    "id": "Intern Consultant_Hanoi",
-    "filename": "Udata_JD_Intern Consultant_Hanoi.pdf",
-    "title": "Business Development & Solution Consultant Intern",
-    "category": "Sales",
-    "location": "Hà Nội",
-    "type": "Thực tập",
-    "about": "Udata is a technology company specializing in Digital Transformation and Green Transformation solutions powered by AI and AIoT. We work alongside factories, buildings, and industrial parks to: • Digitize operations • Monitor real-time data • Optimize energy usage • Support sustainable development At Udata, interns are involved in real projects and practical business activities instead of only administrative tasks. Sustainable development — not just a goal, it's a mission we share with each and every customer. AI & AIoT Green Transformation Digital Transformation",
-    "duties": [
-      "Research: Find CFO/CEO leads in the Singapore & APAC market",
-      "Outreach: Message decision-makers via LinkedIn and Email",
-      "Book Meetings/Demos: Schedule 20-minute intro calls for the Sales team"
-    ],
-    "requirements": [
-      "Final-year students or fresh graduates in Business, Marketing, Information Technology, Management, International Business or related fields.",
-      "Strong English: Confident in professional writing and speaking (Mandatory).",
-      "Tech-curious: Interested in Fintech, AI, and SaaS.",
-      "Proactive: High energy, resilient, and not afraid to reach out to executives.",
-      "Chúng tôi tìm người có tinh thần: Proactive & creative, curious about new technologies, not afraid to try and improve from mistakes, eager to build a real portfolio, excited to grow together with a startup."
-    ],
-    "benefits": [
-      "Global Exposure: Work directly with the Singapore market.",
-      "Training: Learn B2B sales from experts.",
-      "Incentives: Bonus for every qualified meeting booked.",
-      "Hands-on training in B2B sales, Business development, AI & IoT solutions, and Enterprise consulting skills.",
-      "Opportunity to work directly with a fast-growing tech startup.",
-      "Exposure to real enterprise projects.",
-      "Potential opportunity for full-time employment after the internship.",
-      "Young, dynamic, and fast-learning working environment."
-    ],
-    "locationAndTime": "• Hanoi: 9th Floor – Ha Tay Millennium, No. 4 Quang Trung, Ha Dong, Ha Noi \n• Mon – Fri: 8:00 – 17:00 \n• Minimum internship duration: 3 months"
-  },
-  {
-    "id": "Consultant_Hanoi",
-    "filename": "Udata_JD_Consultant_Hanoi.pdf",
-    "title": "Business Development & Solution Consultant",
-    "category": "Sales",
+    "id": "Ky_su_trien_khai_Hanoi",
+    "filename": "Udata_JD_Ky_su_trien_khai_Hanoi.pdf",
+    "title": "Kỹ sư Triển khai",
+    "category": "Engineering",
     "location": "Hà Nội",
     "type": "Toàn thời gian",
-    "about": "Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng các nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững. Được thành lập năm 2024, Udata đang tăng trưởng nhanh với đội ngũ trẻ, chủ động và đam mê công nghệ — môi trường lý tưởng để bạn phát triển cùng sản phẩm thực tế có tác động lớn. Phát triển bền vững — không chỉ là mục tiêu, đó là sứ mệnh chúng tôi chia sẻ cùng từng khách hàng. AI & AIoT Chuyển đổi Xanh Chuyển đổi Số",
+    "about": "Udata là công ty công nghệ chuyên cung cấp giải pháp chuyển đổi xanh và chuyển đổi số cho doanh nghiệp, dựa trên nền tảng AI và AIoT. Chúng tôi đồng hành cùng nhà máy, tòa nhà và khu công nghiệp trong hành trình số hóa vận hành, tối ưu năng lượng và hướng tới phát triển bền vững. Phát triển bền vững — không chỉ là mục tiêu, đó là sứ mệnh chúng tôi chia sẻ cùng từng khách hàng.",
     "duties": [
-      "Tìm kiếm, tiếp cận và phát triển khách hàng doanh nghiệp có nhu cầu về chuyển đổi số, chuyển đổi xanh, Solar, giám sát năng lượng (EMS/BESS) và ESG & Carbon",
-      "Tư vấn và demo sản phẩm Uboard, Ugate, Ugate Mini, Uzero tới khách hàng mục tiêu: nhà máy, tòa nhà, doanh nghiệp vừa và lớn, EPC điện mặt trời",
-      "Xây dựng và trình bày proposal, pitch giải pháp AIoT/SaaS phù hợp từng nhu cầu — được đào tạo bài bản ngay khi onboard",
-      "Phối hợp với team Marketing & Product: nhận lead, chăm sóc pipeline và hỗ trợ chuyển đổi khách hàng",
-      "Duy trì quan hệ dài hạn với đối tác, nhà tư vấn và hệ sinh thái năng lượng – công nghệ",
-      "Cập nhật CRM, theo dõi kết quả kinh doanh và phản hồi thị trường để cải thiện sản phẩm & chiến lược bán hàng"
+      "1. Triển khai dự án:",
+      "Kết nối các thiết bị công nghiệp: sensor, biến tần, bộ điều khiển PLC/HMI thông qua các chuẩn truyền thông Modbus, OPC UA,… sử dụng gateway công nghiệp/Raspberry Pi.",
+      "Chỉ huy thi công, đấu nối hệ thống điện điều khiển, debug và tích hợp hệ thống tự động hóa.",
+      "Kết nối dữ liệu từ gateway lên phần mềm Udata; cấu hình dashboard, tạo biểu đồ, cảnh báo, báo cáo theo yêu cầu khách hàng.",
+      "Đào tạo khách hàng sử dụng phần mềm sau triển khai.",
+      "Tham gia triển khai các dự án IoT trong lĩnh vực năng lượng mặt trời và các hệ thống giám sát.",
+      "Kết nối truyền thông biến tần Solar các hãng thông dụng.",
+      "Viết báo cáo tiến độ, hoàn thành dự án đúng kế hoạch.",
+      "2. Hỗ trợ bán hàng:",
+      "Giới thiệu, demo sản phẩm phần mềm của công ty cho khách hàng.",
+      "Hỗ trợ phòng Kinh doanh xây dựng báo giá phần cứng và dịch vụ thi công, lắp đặt."
     ],
     "requirements": [
-      "Tốt nghiệp Cao đẳng / Đại học trở lên (mọi chuyên ngành) Có kinh nghiệm bán hàng B2B hoặc B2C ở bất kỳ ngành nào — sẽ được đào tạo lại về sản phẩm Hiểu biết cơ bản về Solar, IoT, chuyển đổi số hoặc chatbot AI là lợi thế Kỹ năng giao tiếp tốt, biết lắng nghe và đặt đúng câu hỏi với khách hàng Chúng tôi tìm người có tinh thần: Nhanh nhạy với thị trường Năng động, không ngại thực địa Ham học công nghệ mới Định hướng kết quả rõ ràng Muốn lớn cùng startup Ưu tiên Có thêm bất kỳ yếu tố nào dưới đây là một lợi thế lớn Từng tiếp cận hoặc bán giải pháp AI, chatbot, SaaS, ESG cho doanh nghiệp Có network khách hàng trong lĩnh vực năng lượng, sản xuất, bất động sản"
+      "Tốt nghiệp Đại học chuyên ngành Điện – Điện tử, Tự động hóa (ưu tiên: Bách Khoa HN/HCM, Công Nghiệp, Công Nghệ Quốc Gia HN, Sư phạm Kỹ thuật HCM…). Có 1-2 năm kinh nghiệm triển khai hệ thống tự động hóa/solar. Thành thạo các chuẩn truyền thông công nghiệp: Modbus RTU/TCP, OPC UA… Có hiểu biết về lập trình các dòng PLC Mitsubishi, Siemens Thành thạo công cụ văn phòng (Word, Excel, đặc biệt là PowerPoint). Ưu tiên ứng viên trao đổi được bằng tiếng Anh; có khả năng đọc hiểu tài liệu kỹ thuật. Có khả năng trình bày, thuyết trình trước khách hàng. tốt Sẵn sàng đi công tác ngắn ngày (5–7 ngày) khi cần thiết. Chúng tôi tìm người có tinh thần: Ham học & chủ động Thích giải quyết vấn đề phức tạp Làm việc nhóm tốt Build sản phẩm có tác động thực tế Muốn lớn cùng startup AIoT"
     ],
     "benefits": [
-      "Lương đàm phán theo kinh nghiệm + thưởng doanh số hấp dẫn BHXH, BHYT, nghỉ phép đầy đủ theo quy định Lộ trình thăng tiến rõ ràng theo năng lực và kết quả Đào tạo bài bản về sản phẩm, giải pháp và kỹ năng tư vấn từ ngày đầu Môi trường startup trẻ trung, chủ động, năng động và sáng tạo Tham gia hội thảo, triển lãm chuyên ngành năng lượng & công nghệ"
+      "Thu nhập hấp dẫn từ 10 - 15 triệu tùy năng lực Thưởng Lễ/Tết theo chính sách từng thời điểm và kết quả kinh doanh của công ty. Được hưởng đầy đủ chế độ BHXH, BHYT, BHTN theo quy định pháp luật hiện hành. Cơ hội thăng tiến rõ ràng theo năng lực và kết quả công việc. Làm việc trong môi trường startup công nghệ trẻ trung, chủ động, năng động và sáng tạo. Tham gia các sự kiện chuyên ngành, hội thảo, đào tạo và hoạt động teambuilding cùng công ty"
     ],
-    "locationAndTime": "• Hà Nội: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông \n• HCM: Tòa nhà DHG, 31-33 Đường 18, P.8, Q.Gò Vấp \n• Thứ Hai – Thứ Sáu: 8:00 – 17:00 | Sáng Thứ Bảy: 8:00 – 12:00"
+    "locationAndTime": "Ugate \nGiải pháp chuyển đổi số toàn diện cho \ndoanh nghiệp \nUgate Mini \nChatbot AI chăm sóc khách hàng tự động, \nthông minh \nUzero \nNền tảng ESG / Carbon & tối ưu hoá năng \nlượng \nThứ Hai – Thứ Sáu 8:00 – 17:00 · Sáng thứ 7: 8:00 – 12:00 (Remote) \nLàm việc tại văn phòng \nĐịa chỉ Hà Nội: Tầng 9 – Tòa nhà Hà Tây Millenium, Số 4 Quang Trung, Hà Đông \nỨng tuyển ngay \nGửi CV về: hr@udata.ai \nTìm hiểu thêm: https://udata.ai"
   },
   {
     "id": "MKT_Intern_HaNoi",
@@ -124,19 +171,19 @@
       "Theo dõi và phân tích hiệu quả chiến dịch: lượt tiếp cận, tương tác, chuyển đổi lead",
       "Hỗ trợ thiết kế tài liệu marketing: brochure, presentation, banner, email template cho sản phẩm",
       "Phối hợp với team Sales để tạo nội dung hỗ trợ bán hàng (case study, proposal template, demo video)",
-      "Thực hiện các nhiệm vụ khác theo yêu cầu của quản lý. BẠN SẼ HỌC ĐƯỢC GÌ Marketing B2B thực chiến trong ngành công nghệ thông tin & năng lượng Hiểu sâu về AI, AIoT, Solar, ESG — xu hướng công nghệ xanh toàn cầu đang bùng nổ Kỹ năng phân tích dữ liệu marketing & tối ưu chiến dịch thực tế Làm việc trực tiếp cùng founding team, được mentor 1-1"
+      "Thực hiện các nhiệm vụ khác theo yêu cầu của quản lý. BẠN SẼ HỌC ĐƯỢC GÌ Marketing B2B thực chiến trong ngành công nghệ thông tin & năng lượng Hiểu sâu về AI, AIoT, Solar, ESG — xu hướng công nghệ xanh toàn cầu đang bùng nổ"
     ],
     "requirements": [
-      "Sinh viên năm 3–4 hoặc mới tốt nghiệp ngành Marketing, Truyền thông, Kinh tế, Công nghệ (mọi chuyên ngành) Có tư duy marketing, Kỹ năng viết và tư duy nội dung tốt, ý tưởng content sáng tạo Tiếng Anh giao tiếp cơ bản — có thể đọc hiểu tài liệu và trao đổi làm việc đơn giản bằng tiếng Anh Có kiến thức cơ bản về content trên nền tảng social media, SEO hoặc email marketing Biết ứng dụng AI vào công việc, sử dụng Canva, Figma hoặc công cụ thiết kế cơ bản là lợi thế Làm việc trực tiếp tại văn phòng Hà Nội Chúng tôi tìm người có tinh thần: Chủ động & sáng tạo Tò mò về công nghệ mới Không ngại thử – không ngại sửa Muốn build portfolio thực tế Muốn lớn cùng startup Ưu tiên Đã từng làm dự án/ có kinh nghiệm liên quan đến kỹ năng làm content, video ngắn (Reels, TikTok), chạy ads Facebook/Google Có khả năng đọc hiểu tài liệu tiếng Anh chuyên ngành công nghệ, năng lượng"
+      "chiến dịch thực tế Làm việc trực tiếp cùng founding team, được mentor 1-1 Sinh viên năm 3–4 hoặc mới tốt nghiệp ngành Marketing, Truyền thông, Kinh tế, Công nghệ (mọi chuyên ngành) nội dung tốt, ý tưởng content sáng tạo Tiếng Anh giao tiếp cơ bản — có thể đọc hiểu tài liệu và trao đổi làm việc đơn giản bằng tiếng Anh Có kiến thức cơ bản về content trên nền tảng social media, SEO hoặc email marketing Biết ứng dụng AI vào công việc, sử dụng Canva, Figma hoặc công cụ thiết kế cơ bản là lợi thế Làm việc trực tiếp tại văn phòng Hà Nội Chúng tôi tìm người có tinh thần: Chủ động & sáng tạo Tò mò về công nghệ mới Không ngại thử – không ngại sửa Muốn build portfolio thực tế Muốn lớn cùng startup Ưu tiên Đã từng làm dự án/ có kinh nghiệm liên quan TikTok), chạy ads Facebook/Google Có khả năng đọc hiểu tài liệu tiếng Anh chuyên ngành công nghệ, năng lượng"
     ],
     "benefits": [
       "Trợ cấp thực tập hấp dẫn + thưởng theo kết quả Cấp chứng nhận thực tập Mentor trực tiếp bởi đội ngũ Marketing & Product Cơ hội chuyển thành nhân viên chính thức sau thực tập Tham gia hội thảo, triển lãm quốc tế ngành năng lượng & công nghệ Môi trường startup năng động, trẻ trung, được thử nghiệm ý tưởng thật"
     ],
-    "locationAndTime": "• Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội \n• Thời gian thực tập tối thiểu 3 tháng"
+    "locationAndTime": "Ugate \nGiải pháp chuyển đổi số toàn diện cho doanh \nnghiệp \nUgate Mini \nChatbot AI chăm sóc khách hàng tự động, thông \nminh \nUzero \nNền tảng ESG / Carbon & tối ưu hoá năng lượng \n• Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
   },
   {
-    "id": "Performance Marketing Executive_HaNoi",
-    "filename": "Udata_JD_Performance Marketing Executive_HaNoi.pdf",
+    "id": "Performance_Marketing_Executive_HaNoi",
+    "filename": "Udata_JD_Performance_Marketing_Executive_HaNoi.pdf",
     "title": "Performance Marketing Executive",
     "category": "Marketing",
     "location": "Hà Nội",
@@ -161,25 +208,23 @@
       "Đóng góp ý tưởng cho bộ phận sales và cải thiện funnel chuyển đổi.",
       "Báo cáo & phân tích dữ liệu",
       "Theo dõi và lập báo cáo hiệu quả performance marketing theo tuần, tháng, campaign",
-      "Đề xuất kế hoạch cải thiện hiệu quả các chiến dịch."
+      "Đề xuất kế hoạch cải thiện hiệu quả các chiến dịch. việc.",
+      "Có mindset tối ưu liên tục và hướng đến kết quả."
     ],
     "requirements": [
       "Tốt nghiệp Đại học chuyên ngành Marketing, Digital Marketing, Truyền thông, Quản trị kinh doanh, Thương mại điện tử, hoặc các ngành kinh tế liên quan.",
       "Có từ 1–3 năm kinh nghiệm trong vị trí chạy campaign quảng cáo/Performance Marketing/Digital Marketing.",
       "Có khả năng viết/tư duy nội dung, phối hợp triển khai content quảng cáo, landing page content, remarketing content.",
       "Ưu tiên ứng viên từng triển khai B2B marketing, SaaS/Tech marketing, agency performance marketing.",
-      "Tư duy chủ động, khả năng làm việc đa nhiệm, có tinh thần trách nhiệm cao trong công việc.",
-      "Có mindset tối ưu liên tục và hướng đến kết quả.",
-      "Có kỹ năng giao tiếp và phối hợp liên phòng ban tốt.",
       "Có tinh thần học hỏi và sẵn sàng được đào tạo thêm."
     ],
     "benefits": [
       "Môi trường startup công nghệ trẻ, năng động",
-      "Được đào tạo, hướng dẫn bài bản",
-      "Cơ hội tiếp cận AI & công nghệ hiện đại",
+      "Được",
+      "& công nghệ hiện đại",
       "Chế độ đãi ngộ và thưởng theo năng lực",
       "Tham gia các hoạt động nội bộ cùng công ty"
     ],
-    "locationAndTime": " Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
+    "locationAndTime": "Ugate \nGiải pháp chuyển đổi số toàn diện cho doanh \nnghiệp \nUgate Mini \nChatbot AI chăm sóc khách hàng tự động, thông \nminh \nUzero \nNền tảng ESG / Carbon & tối ưu hoá năng lượng \n Làm việc trực tiếp tại văn phòng: Tầng 9 – Hà Tây Millenium, Số 4 Quang Trung, Hà Đông, \nHà Nội"
   }
 ]

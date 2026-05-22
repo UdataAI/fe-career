@@ -1,16 +1,76 @@
-# React + Vite
+# Tuyển dụng Udata.ai
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website tuyển dụng của Udata.ai - xây dựng bằng React + Vite + Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## Cài đặt & Chạy locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+# Cài dependencies
+npm install
 
-## React Compiler
+# Chạy dev server
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Build production
+npm run build
 
-## Expanding the ESLint configuration
+# Preview bản build
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Biến môi trường
+
+Sao chép file `.env.example` thành `.env` và điều chỉnh:
+
+```bash
+cp .env.example .env
+```
+
+| Biến | Mô tả | Mặc định |
+|------|--------|----------|
+| `VITE_HR_EMAIL` | Email HR nhận ứng tuyển | `hr@udata.ai` |
+| `VITE_USE_MAILTO_FOR_APPLY` | `true` = mở mailto, `false` = dùng form trên web | `true` |
+
+## Docker
+
+### Build image
+
+```bash
+docker build --build-arg VITE_HR_EMAIL=hr@udata.ai --build-arg VITE_USE_MAILTO_FOR_APPLY=true -t udata-careers .
+```
+
+### Chạy container
+
+```bash
+docker run -d -p 8081:80 udata-careers
+```
+
+Truy cập: `http://localhost:8081`
+
+### Docker Compose
+
+```bash
+docker compose up -d
+```
+
+## Cấu trúc dự án
+
+```
+├── public/              # Static assets (logo, social icons)
+├── src/
+│   ├── data/jds.json    # Dữ liệu vị trí tuyển dụng
+│   ├── App.jsx          # Component chính
+│   ├── index.css        # Tailwind + theme config
+│   └── main.jsx         # Entry point
+├── nginx.conf           # Nginx config cho Docker
+├── Dockerfile           # Multi-stage build (Node → Nginx)
+├── .env.example         # Mẫu biến môi trường
+├── vite.config.js       # Vite config
+└── package.json
+```
+
+## Công nghệ
+
+- **React 19** + **Vite 8**
+- **Tailwind CSS v4**
+- **Nginx** (serve production trên Docker)

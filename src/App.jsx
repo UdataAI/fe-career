@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import jdsData from './data/jds.json';
 
-// CẤU HÌNH PHƯƠNG THỨC ỨNG TUYỂN:
-// - true: Khi ấn "Ứng tuyển" sẽ tự động mở ứng dụng Email trên máy/điện thoại, tự điền email HR và mẫu tiêu đề/nội dung để ứng viên tự đính kèm CV và gửi.
-// - false: Sử dụng Popup Form điền thông tin và kéo thả CV trực tiếp trên website (Bản Backup lưu lại để dùng sau).
-const USE_MAILTO_FOR_APPLY = true;
+const USE_MAILTO_FOR_APPLY = import.meta.env.VITE_USE_MAILTO_FOR_APPLY !== 'false';
+const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@udata.ai';
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -52,7 +50,7 @@ function App() {
 
   const handleApplyClick = (job) => {
     if (USE_MAILTO_FOR_APPLY) {
-      const hrEmail = 'hr@udata.ai';
+      const hrEmail = HR_EMAIL;
       const subject = `[Udata Careers] Ứng tuyển vị trí ${job.title}`;
       const body = `Kính gửi bộ phận Tuyển dụng Udata,\n\nTôi muốn ứng tuyển vào vị trí ${job.title}.\n\nDưới đây là thông tin cá nhân của tôi:\n- Họ và tên: [Vui lòng nhập họ tên của bạn]\n- Số điện thoại: [Vui lòng nhập số điện thoại]\n- Link Portfolio/CV (nếu có): \n\n(Vui lòng đính kèm file CV của bạn vào email này trước khi gửi)\n\nTrân trọng,\n`;
       
@@ -73,8 +71,9 @@ function App() {
   };
 
   const handleViewDetailClick = (job) => {
-    setSelectedJob(job);
-    setIsApplyMode(false);
+    if (job.filename) {
+      window.open(`/JD/${encodeURIComponent(job.filename)}`, '_blank');
+    }
   };
 
   const handleInputChange = (e) => {
@@ -340,10 +339,11 @@ function App() {
                     </div>
                     
                     <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
-                      <button 
+                      <button
                         onClick={() => handleViewDetailClick(job)}
-                        className="flex-1 md:flex-initial border border-slate-200 hover:border-slate-300 text-slate-700 px-6 py-3.5 rounded-xl font-semibold hover:bg-slate-50 transition-all"
+                        className="flex-1 md:flex-initial border border-slate-200 hover:border-primary/40 text-slate-700 px-6 py-3.5 rounded-xl font-semibold hover:bg-slate-50 transition-all text-center cursor-pointer flex items-center gap-2 justify-center"
                       >
+                        <span className="material-symbols-outlined text-lg">open_in_new</span>
                         Xem chi tiết
                       </button>
                       <button 
