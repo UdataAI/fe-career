@@ -2,9 +2,6 @@ services:
   web:
     build:
       context: .
-      args:
-        VITE_HR_EMAIL: ${VITE_HR_EMAIL:-hr@udata.ai}
-        VITE_USE_MAILTO_FOR_APPLY: ${VITE_USE_MAILTO_FOR_APPLY:-true}
     ports:
-      - "8081:80"
+      - "8081:3000"
     restart: unless-stopped
