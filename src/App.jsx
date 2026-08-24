@@ -321,8 +321,14 @@ function App() {
           className="relative overflow-hidden py-16 sm:py-28 border-b border-slate-100 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/sametel_hero_bg.png')" }}
         >
-          {/* Subtle light overlay so text sits directly and clearly on the image */}
-          <div className="absolute inset-0 bg-white/50 pointer-events-none"></div>
+          {/* Lớp phủ mờ dần về phía giữa trung tâm để tôn chữ, 2 bên vẫn sắc nét */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse 70% 80% at 50% 50%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.65) 55%, rgba(255, 255, 255, 0.15) 85%, transparent 100%)'
+            }}
+          ></div>
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F8FAFC] to-transparent pointer-events-none"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center space-y-6">
