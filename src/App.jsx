@@ -748,36 +748,24 @@ function App() {
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Hanoi Office */}
-                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                      <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
-                        <span className="material-symbols-outlined text-base">location_on</span>
-                        <span>Hanoi Office:</span>
+                    {activeModalJob.officeAddresses?.map((loc, idx) => (
+                      <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
+                          <span className="material-symbols-outlined text-base">location_on</span>
+                          <span>Văn phòng {loc.city}:</span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                          {loc.address}
+                        </p>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
-                        9th Floor, Millennium Building, <br />
-                        4 Quang Trung, Ha Dong District, Hanoi.
-                      </p>
-                    </div>
-
-                    {/* HCM Office */}
-                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                      <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
-                        <span className="material-symbols-outlined text-base">location_on</span>
-                        <span>Ho Chi Minh Office:</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
-                        6th Floor, DHG Building, 31-33 <br />
-                        Street 18, Thong Tay Hoi Ward, Ho Chi Minh City.
-                      </p>
-                    </div>
+                    ))}
                   </div>
 
                   {/* Working Hours */}
                   <div className="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
                     <span className="material-symbols-outlined text-lg text-blue-600 shrink-0 mt-0.5">schedule</span>
                     <div>
-                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng (Nghỉ chiều Thứ 7 &amp; Chủ Nhật).
+                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> {activeModalJob.workType || 'Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng (Nghỉ chiều Thứ 7 & Chủ Nhật)'}.
                     </div>
                   </div>
                 </div>
@@ -1099,11 +1087,10 @@ function App() {
                           onChange={handleInputChange}
                           className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
                         >
-                          <option value="Hà Nội">Hà Nội</option>
-                          <option value="TP.HCM">TP. Hồ Chí Minh</option>
-                          <option value="Đà Nẵng">Đà Nẵng</option>
-                          <option value="Hà Đông, Hà Nội">Hà Đông, Hà Nội</option>
-                          <option value="Đồng Nai (Nhà máy Long Thành)">Đồng Nai (Nhà máy Long Thành)</option>
+                          <option value="Hà Nội — Tầng 9, Tòa Thiên Niên Kỷ, 4 Quang Trung, Hà Đông">Hà Nội (Tòa Thiên Niên Kỷ, Hà Đông)</option>
+                          <option value="TP.HCM — Tầng 6, Tòa DHG, 31-33 Đường 18, Thông Tây Hội">TP.HCM (Tòa DHG, P. Thông Tây Hội)</option>
+                          <option value="Đà Nẵng — Văn phòng Đà Nẵng">Đà Nẵng</option>
+                          <option value="Đồng Nai — Nhà máy KCN Long Thành">Đồng Nai (Nhà máy Long Thành)</option>
                         </select>
                       </div>
 
