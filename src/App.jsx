@@ -317,11 +317,16 @@ function App() {
       <main className="pt-20">
         
         {/* SECTION 1 — HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/70 via-white to-[#F8FAFC] py-16 sm:py-24 border-b border-slate-100">
+        <section 
+          className="relative overflow-hidden py-16 sm:py-24 border-b border-slate-100 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/sametel_hero_bg.png')" }}
+        >
+          {/* Gradient Overlay for high readability & brand aesthetics */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/85 to-[#F8FAFC]/95 backdrop-blur-[1px] pointer-events-none"></div>
           
-          {/* Background Decorative Tech Elements */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute top-1/2 -left-24 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none"></div>
+          {/* Background Decorative Tech Glow */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute top-1/2 -left-24 w-80 h-80 bg-cyan-400/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center space-y-6">
