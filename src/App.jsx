@@ -276,7 +276,13 @@ function App() {
           
           {/* Logo & Stock Code */}
           <div className="flex items-center gap-4">
-            <a href="#" className="flex items-center gap-2 group">
+            <a 
+              href="https://sametel.com.vn/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 group"
+              title="Truy cập Website chính thức SAMETEL"
+            >
               <img 
                 src="/logoandfavi/sametel_logo.png" 
                 alt="SAMETEL Logo" 
@@ -1259,11 +1265,19 @@ function App() {
           
           {/* Col 1: Company Logo & Info */}
           <div className="space-y-4 col-span-1 md:col-span-1">
-            <img 
-              src="/logoandfavi/sametel_logo.png" 
-              alt="SAMETEL Logo" 
-              className="h-12 w-auto object-contain rounded" 
-            />
+            <a 
+              href="https://sametel.com.vn/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block group"
+              title="Truy cập Trang chủ SAMETEL (sametel.com.vn)"
+            >
+              <img 
+                src="/logoandfavi/sametel_logo.png" 
+                alt="SAMETEL Logo" 
+                className="h-12 w-auto object-contain rounded transition-transform group-hover:scale-105" 
+              />
+            </a>
             <p className="text-xs text-slate-500 leading-relaxed">
               <strong className="text-slate-800 font-bold">CÔNG TY CỔ PHẦN SAMETEL</strong>
               <br />
