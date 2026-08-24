@@ -5,7 +5,8 @@ import { trackPageView, trackFormSubmission } from './utils/tracker';
 const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@sametel.com.vn';
 
 function App() {
-  const [selectedJobId, setSelectedJobId] = useState('sales-outdoor');
+  const [selectedJobId, setSelectedJobId] = useState('distribution-manager');
+  const [activeModalJob, setActiveModalJob] = useState(null);
   const formRef = useRef(null);
 
   // Auto track page visit on load
@@ -13,12 +14,35 @@ function App() {
     trackPageView();
   }, []);
 
+  // Prevent background scrolling when JD Modal is open
+  useEffect(() => {
+    if (activeModalJob) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [activeModalJob]);
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveModalJob(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Form State
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
     email: '',
-    position: 'Nhân viên Phát triển Đại lý — Sales Outdoor',
+    position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
     location: 'Hà Nội',
     experience: '1–2 năm',
     cvFile: null,
@@ -52,9 +76,16 @@ function App() {
       position: jobTitle,
       location: location
     }));
+    if (activeModalJob) {
+      setActiveModalJob(null);
+    }
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const handleOpenJdModal = (job) => {
+    setActiveModalJob(job);
   };
 
   const handleInputChange = (e) => {
@@ -222,7 +253,7 @@ function App() {
       fullName: '',
       phone: '',
       email: '',
-      position: 'Nhân viên Phát triển Đại lý — Sales Outdoor',
+      position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
       location: 'Hà Nội',
       experience: '1–2 năm',
       cvFile: null,
@@ -236,7 +267,7 @@ function App() {
     <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
       
       {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      <header className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         scrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3' 
           : 'bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4'
@@ -271,8 +302,8 @@ function App() {
           {/* Apply Now Button */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleSelectJobAndScroll('Nhân viên Phát triển Đại lý — Sales Outdoor', 'sales-outdoor')}
-              className="bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-blue-700/20 active:scale-95 transition-all flex items-center gap-1.5"
+              onClick={() => handleSelectJobAndScroll('Trưởng Phòng Phân Phối (Distribution Manager)', 'distribution-manager')}
+              className="bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-blue-700/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <span>Ứng tuyển ngay</span>
               <span className="material-symbols-outlined text-base">arrow_downward</span>
@@ -467,7 +498,7 @@ function App() {
           </div>
         </section>
 
-        {/* SECTION 3 — BẠN ĐANG TÌM CƠ HỘI NÀO? (5 JOB CARDS) */}
+        {/* SECTION 3 — BẠN ĐANG TÌM CƠ HỘI NÀO? (5 COMPACT CARDS + POP-UP JD) */}
         <section className="py-20 sm:py-28 bg-[#F8FAFC]" id="openings">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -480,105 +511,89 @@ function App() {
                 Bạn đang tìm kiếm cơ hội nào?
               </h2>
               <p className="text-slate-600 text-base sm:text-lg">
-                Nhấp vào vị trí phù hợp bên dưới để xem chi tiết và nộp hồ sơ trực tiếp đến SAMETEL.
+                Nhấp <strong>"Xem chi tiết JD"</strong> để xem đầy đủ bản mô tả công việc hoặc ứng tuyển trực tiếp vào SAMETEL.
               </p>
             </div>
 
-            {/* 5 Job Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* 5 Compact Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               
-              {sametelJobs.map((job) => (
+              {sametelJobs.map((job, index) => (
                 <div 
                   key={job.id}
-                  className={`bg-white rounded-3xl p-6 sm:p-8 border transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 relative ${
-                    selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/20' : 'border-slate-200/80 hover:border-blue-400'
+                  className={`bg-white rounded-2xl p-6 border transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 relative group ${
+                    index === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+                  } ${
+                    selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/15' : 'border-slate-200/90 hover:border-blue-400'
                   }`}
                 >
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     
-                    {/* Header with Code & Badges */}
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl sm:text-3xl font-extrabold text-blue-700 font-display-lg">
-                          {job.code}.
+                    {/* Top row: Code & Badges */}
+                    <div className="flex justify-between items-start gap-2">
+                      <span className="text-xs font-extrabold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                        Vị trí {job.code}
+                      </span>
+                      <div className="flex flex-wrap gap-1.5 justify-end">
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">
+                          <span className="material-symbols-outlined text-xs text-blue-600">group</span>
+                          {job.quantity}
                         </span>
-                        <div>
-                          <h3 className="font-display-lg text-lg sm:text-xl font-bold text-slate-900 leading-snug">
-                            {job.title}
-                          </h3>
-                          <div className="flex flex-wrap items-center gap-2 mt-1">
-                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
-                              <span className="material-symbols-outlined text-sm">group</span>
-                              {job.quantity}
-                            </span>
-                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full">
-                              <span className="material-symbols-outlined text-sm">location_on</span>
-                              {job.locationText}
-                            </span>
-                          </div>
-                        </div>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">
+                          <span className="material-symbols-outlined text-xs text-rose-500">location_on</span>
+                          {job.locationText}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Salary & Income Box */}
-                    <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 to-indigo-50/50 border border-blue-100 space-y-1">
-                      <div className="flex justify-between items-baseline flex-wrap gap-2">
-                        <span className="text-xs font-semibold text-slate-500">Lương cứng:</span>
-                        <span className="text-sm font-bold text-slate-800">{job.baseSalary}</span>
+                    {/* Job Title */}
+                    <div>
+                      <h3 className="font-display-lg text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug line-clamp-2 min-h-[48px]">
+                        {job.title}
+                      </h3>
+                      <div className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+                        <span className="material-symbols-outlined text-sm text-slate-400">schedule</span>
+                        <span>{job.workType}</span>
                       </div>
-                      <div className="flex justify-between items-baseline flex-wrap gap-2">
-                        <span className="text-xs font-semibold text-blue-700 uppercase tracking-wider">Tổng thu nhập:</span>
-                        <span className="text-base sm:text-lg font-extrabold text-blue-800">{job.totalIncome}</span>
+                    </div>
+
+                    {/* Salary Box */}
+                    <div className="p-3.5 rounded-xl bg-gradient-to-r from-blue-50/90 to-indigo-50/60 border border-blue-100/90 space-y-1">
+                      <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Mức thu nhập:</div>
+                      <div className="text-sm sm:text-base font-extrabold text-blue-900 leading-snug break-words">
+                        {job.salary}
                       </div>
                     </div>
 
-                    {/* Key Highlight */}
-                    <div className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-amber-800 bg-amber-50 p-3 rounded-xl border border-amber-200/70">
-                      <span className="material-symbols-outlined text-lg text-amber-600 shrink-0">verified</span>
-                      <span>{job.highlight}</span>
-                    </div>
-
-                    {/* Duties Section */}
-                    <div className="space-y-2">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Bạn sẽ tập trung vào:
-                      </h4>
-                      <ul className="space-y-1.5 text-xs sm:text-sm text-slate-600">
-                        {job.duties.map((duty, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="text-blue-600 font-bold mt-0.5">•</span>
-                            <span>{duty}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Requirements Section */}
-                    <div className="space-y-2">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Bạn phù hợp nếu:
-                      </h4>
-                      <ul className="space-y-1.5 text-xs sm:text-sm text-slate-600">
-                        {job.requirements.map((req, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="material-symbols-outlined text-sm text-emerald-600 mt-0.5 shrink-0">check_circle</span>
-                            <span>{req}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Short Highlight feature */}
+                    <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-start gap-2">
+                      <span className="material-symbols-outlined text-sm text-amber-600 shrink-0 mt-0.5">verified</span>
+                      <span className="leading-relaxed">{job.highlight}</span>
                     </div>
 
                   </div>
 
-                  {/* CTA Button */}
-                  <div className="pt-6 mt-6 border-t border-slate-100">
+                  {/* Actions buttons */}
+                  <div className="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2">
+                    
+                    {/* View JD Button -> Opens Modal */}
+                    <button
+                      onClick={() => handleOpenJdModal(job)}
+                      className="w-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 font-bold text-xs py-2.5 px-3 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200/80 hover:border-blue-300"
+                    >
+                      <span className="material-symbols-outlined text-base">visibility</span>
+                      <span>Xem JD</span>
+                    </button>
+
+                    {/* Apply Button -> Scrolls to form */}
                     <button
                       onClick={() => handleSelectJobAndScroll(job.title, job.id, job.locations[0])}
-                      className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm py-3.5 px-6 rounded-xl active:scale-95 transition-all shadow-md shadow-blue-700/15 flex items-center justify-center gap-2 group-hover:bg-blue-800"
+                      className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm shadow-blue-700/20 active:scale-95 transition-all flex items-center justify-center gap-1 cursor-pointer"
                     >
-                      <span className="uppercase">{job.ctaText}</span>
-                      <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                      <span>Ứng tuyển</span>
+                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
                     </button>
+
                   </div>
 
                 </div>
@@ -588,11 +603,155 @@ function App() {
 
             {/* Note text under cards */}
             <div className="mt-8 text-center text-xs text-slate-500">
-              * Toàn bộ điều kiện, lương và số lượng trên bám sát theo JD tuyển dụng chính thức của SAMETEL.
+              * Toàn bộ điều kiện, lương và quyền lợi bám sát theo tiêu chuẩn tuyển dụng chính thức của SAMETEL.
             </div>
 
           </div>
         </section>
+
+        {/* FULL JD POP-UP MODAL */}
+        {activeModalJob && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
+            onClick={() => setActiveModalJob(null)}
+          >
+            <div 
+              className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              
+              {/* Modal Header */}
+              <div className="p-6 sm:p-8 bg-gradient-to-r from-blue-800 to-indigo-900 text-white relative flex justify-between items-start gap-4">
+                <div className="space-y-3 pr-8">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider bg-white/20 px-2.5 py-0.5 rounded-full">
+                      MÃ VỊ TRÍ: {activeModalJob.code}
+                    </span>
+                    <span className="text-xs font-medium text-blue-200">
+                      {activeModalJob.workType}
+                    </span>
+                  </div>
+                  <h2 className="font-display-lg text-xl sm:text-2xl font-extrabold leading-snug">
+                    {activeModalJob.title}
+                  </h2>
+                  <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
+                    <span className="bg-emerald-500/20 text-emerald-300 font-bold px-3 py-1 rounded-xl border border-emerald-400/30">
+                      💰 {activeModalJob.salary}
+                    </span>
+                    <span className="bg-white/10 text-white px-3 py-1 rounded-xl">
+                      👥 {activeModalJob.quantity}
+                    </span>
+                    <span className="bg-white/10 text-white px-3 py-1 rounded-xl">
+                      📍 {activeModalJob.locationText}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setActiveModalJob(null)}
+                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
+                  title="Đóng cửa sổ"
+                >
+                  <span className="material-symbols-outlined text-2xl">close</span>
+                </button>
+              </div>
+
+              {/* Modal Scrollable Body */}
+              <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
+                
+                {/* 1. MÔ TẢ CÔNG VIỆC */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <span className="material-symbols-outlined text-blue-700 text-2xl">description</span>
+                    <h3 className="font-display-lg text-lg font-bold text-slate-900">
+                      MÔ TẢ CÔNG VIỆC (JOB DESCRIPTION)
+                    </h3>
+                  </div>
+                  <div className="space-y-3.5 pl-1">
+                    {activeModalJob.descriptionSections ? (
+                      activeModalJob.descriptionSections.map((sec, idx) => (
+                        <div key={idx} className="space-y-1">
+                          <h4 className="font-bold text-slate-800 text-sm sm:text-base flex items-start gap-2">
+                            <span className="text-blue-600 mt-0.5 font-bold">•</span>
+                            <span>{sec.title}:</span>
+                          </h4>
+                          <p className="text-slate-600 text-xs sm:text-sm pl-4 whitespace-pre-line leading-relaxed">
+                            {sec.content}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      activeModalJob.duties?.map((duty, idx) => (
+                        <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600">
+                          <span className="text-blue-600 font-bold mt-0.5">•</span>
+                          <span>{duty}</span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+
+                {/* 2. YÊU CẦU ỨNG VIÊN */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <span className="material-symbols-outlined text-blue-700 text-2xl">task_alt</span>
+                    <h3 className="font-display-lg text-lg font-bold text-slate-900">
+                      YÊU CẦU ỨNG VIÊN (JOB REQUIREMENTS)
+                    </h3>
+                  </div>
+                  <ul className="space-y-2.5 pl-1">
+                    {activeModalJob.requirements.map((req, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600">
+                        <span className="material-symbols-outlined text-base text-emerald-600 mt-0.5 shrink-0">check_circle</span>
+                        <span>{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 3. QUYỀN LỢI ĐƯỢC HƯỞNG */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <span className="material-symbols-outlined text-blue-700 text-2xl">card_giftcard</span>
+                    <h3 className="font-display-lg text-lg font-bold text-slate-900">
+                      QUYỀN LỢI ĐƯỢC HƯỞNG (BENEFITS)
+                    </h3>
+                  </div>
+                  <ul className="space-y-2.5 pl-1">
+                    {activeModalJob.benefits.map((ben, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600">
+                        <span className="material-symbols-outlined text-base text-amber-600 mt-0.5 shrink-0">military_tech</span>
+                        <span>{ben}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              </div>
+
+              {/* Modal Footer CTA */}
+              <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setActiveModalJob(null)}
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-100 transition-colors cursor-pointer text-center"
+                >
+                  Đóng lại
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSelectJobAndScroll(activeModalJob.title, activeModalJob.id, activeModalJob.locations[0])}
+                  className="w-full sm:w-auto bg-blue-700 hover:bg-blue-800 text-white font-extrabold text-sm sm:text-base py-3.5 px-8 rounded-xl shadow-lg shadow-blue-700/20 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>Ứng tuyển vị trí này ngay</span>
+                  <span className="material-symbols-outlined text-lg">arrow_downward</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
 
         {/* SECTION 4 — ĐIỀU GÌ ĐANG CHỜ BẠN TẠI SAMETEL? */}
         <section className="py-20 bg-white border-b border-slate-100" id="benefits">
@@ -763,7 +922,7 @@ function App() {
                     <button
                       type="button"
                       onClick={handleResetForm}
-                      className="bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm px-8 py-3 rounded-xl transition-all shadow-md"
+                      className="bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm px-8 py-3 rounded-xl transition-all shadow-md cursor-pointer"
                     >
                       Ứng tuyển vị trí khác
                     </button>
@@ -889,6 +1048,7 @@ function App() {
                           <option value="Hà Nội">Hà Nội</option>
                           <option value="TP.HCM">TP. Hồ Chí Minh</option>
                           <option value="Đà Nẵng">Đà Nẵng</option>
+                          <option value="Hà Đông, Hà Nội">Hà Đông, Hà Nội</option>
                           <option value="Đồng Nai (Nhà máy Long Thành)">Đồng Nai (Nhà máy Long Thành)</option>
                         </select>
                       </div>
@@ -1051,8 +1211,8 @@ function App() {
 
             <div className="pt-2">
               <button
-                onClick={() => handleSelectJobAndScroll('Nhân viên Phát triển Đại lý — Sales Outdoor', 'sales-outdoor')}
-                className="bg-white text-blue-800 hover:bg-slate-50 font-extrabold text-base px-10 py-4 rounded-xl shadow-xl active:scale-95 transition-all inline-flex items-center gap-2"
+                onClick={() => handleSelectJobAndScroll('Trưởng Phòng Phân Phối (Distribution Manager)', 'distribution-manager')}
+                className="bg-white text-blue-800 hover:bg-slate-50 font-extrabold text-base px-10 py-4 rounded-xl shadow-xl active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer"
               >
                 <span>ỨNG TUYỂN NGAY</span>
                 <span className="material-symbols-outlined text-xl text-blue-700">arrow_upward</span>
