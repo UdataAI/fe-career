@@ -321,15 +321,11 @@ function App() {
           className="relative overflow-hidden py-16 sm:py-24 border-b border-slate-100 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/sametel_hero_bg.png')" }}
         >
-          {/* Gradient Overlay for high readability & brand aesthetics */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/85 to-[#F8FAFC]/95 backdrop-blur-[1px] pointer-events-none"></div>
+          {/* Crystal Clear Light Overlay — No blur, vivid & sharp */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/65 to-[#F8FAFC]/85 pointer-events-none"></div>
           
-          {/* Background Decorative Tech Glow */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute top-1/2 -left-24 w-80 h-80 bg-cyan-400/15 rounded-full blur-3xl pointer-events-none"></div>
-
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
+            <div className="max-w-3xl mx-auto text-center space-y-6 bg-white/75 backdrop-blur-[2px] p-6 sm:p-10 rounded-3xl border border-white/80 shadow-lg shadow-blue-900/5">
               
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 border border-blue-200/80 text-blue-800 font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-sm">
