@@ -109,7 +109,11 @@ pipeline {
             imageName = "${clusterEnvs.container_registry}/${clusterEnvs.container_registry_repository}:${imageTag}".toLowerCase()
           }
           sh """
+          cp source/Dockerfile.prod source/Dockerfile.prod.bak 2>/dev/null || true
+          cp source/nginx.conf source/nginx.conf.bak 2>/dev/null || true
           rsync -rtv deployment/udata/career/overwrite/ source/
+          cp -f source/Dockerfile.prod.bak source/Dockerfile.prod 2>/dev/null || true
+          cp -f source/nginx.conf.bak source/nginx.conf 2>/dev/null || true
           echo "🔐 Fetching ECR login token..."
           aws ecr get-login-password --region \${AWS_REGION} > \${TOKEN_FILE}
           echo "✅ Token saved to \${TOKEN_FILE}"
