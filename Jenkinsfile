@@ -157,11 +157,14 @@ pipeline {
             dir("${env.WORKSPACE}/deployment") {
                 container(name: 'tools', shell: '/bin/sh') {
                   sh """
-                  # Auto recover if previous Helm upgrade was interrupted in pending state
+                  # Auto recover if previous Helm installation/upgrade was interrupted in pending state
                   STATUS=\$(helm status ${clusterEnvs.helm_release} -n ${clusterEnvs.namespace} -o json 2>/dev/null | grep '"status":' || true)
-                  if echo "\$STATUS" | grep -Eq 'pending-upgrade|pending-install|pending-rollback'; then
-                    echo "⚠️ Helm release is stuck in pending status. Rolling back to clear lock..."
-                    helm rollback ${clusterEnvs.helm_release} -n ${clusterEnvs.namespace} || true
+                  if echo "\$STATUS" | grep -q 'pending-install'; then
+                    echo "⚠️ Helm release is stuck in pending-install. Uninstalling to reset clean state..."
+                    helm uninstall ${clusterEnvs.helm_release} -n ${clusterEnvs.namespace} || true
+                  elif echo "\$STATUS" | grep -Eq 'pending-upgrade|pending-rollback'; then
+                    echo "⚠️ Helm release is stuck in pending-upgrade/rollback. Rolling back or uninstalling to clear lock..."
+                    helm rollback ${clusterEnvs.helm_release} -n ${clusterEnvs.namespace} || helm uninstall ${clusterEnvs.helm_release} -n ${clusterEnvs.namespace} || true
                   fi
 
                   helm upgrade -i ${clusterEnvs.helm_release}  ${clusterEnvs.helm_context} \
