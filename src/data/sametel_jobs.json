@@ -1,0 +1,151 @@
+[
+  {
+    "id": "sales-outdoor",
+    "code": "01",
+    "title": "Nhân viên Phát triển Đại lý — Sales Outdoor",
+    "shortTitle": "Sales Outdoor",
+    "quantity": "10 vị trí",
+    "locations": ["Hà Nội", "TP.HCM", "Đà Nẵng"],
+    "locationText": "Hà Nội – TP.HCM – Đà Nẵng",
+    "baseSalary": "15–18 triệu",
+    "totalIncome": "25–40+ triệu/tháng",
+    "badge": "Lương cứng 15-18M",
+    "highlight": "Hoa hồng cao + công tác phí + xăng xe + điện thoại + đào tạo Solar/BESS/Inverter",
+    "duties": [
+      "Phát triển hệ thống Đại lý, Nhà thầu EPC",
+      "Chăm sóc và mở rộng kênh phân phối",
+      "Theo sát thị trường, đối thủ và nhu cầu khách hàng",
+      "Hoàn thành KPI doanh số và đại lý mở mới"
+    ],
+    "requirements": [
+      "Có tối thiểu 1–2 năm Sales thị trường/B2B/kênh phân phối, sẵn sàng đi thị trường",
+      "Ưu tiên ứng viên từng làm Điện, Solar hoặc Vật tư công trình"
+    ],
+    "benefits": [
+      "Hoa hồng cao không giới hạn theo doanh số",
+      "Đầy đủ công tác phí, xăng xe, phụ cấp điện thoại",
+      "Được đào tạo chuyên sâu kiến thức Solar / BESS / Inverter"
+    ],
+    "ctaText": "Ứng tuyển Sales Outdoor"
+  },
+  {
+    "id": "sales-indoor",
+    "code": "02",
+    "title": "Nhân viên Bán hàng Trực tiếp — Sales Indoor",
+    "shortTitle": "Sales Indoor",
+    "quantity": "10 vị trí",
+    "locations": ["Hà Nội", "TP.HCM"],
+    "locationText": "Hà Nội – TP.HCM",
+    "baseSalary": "10–12 triệu",
+    "totalIncome": "15–25 triệu/tháng",
+    "badge": "Data Marketing cung cấp",
+    "highlight": "Data khách hàng nóng do Marketing cung cấp đều đặn",
+    "duties": [
+      "Tiếp nhận lead từ Hotline, Fanpage, Website",
+      "Tư vấn giải pháp Solar – BESS – Inverter",
+      "Báo giá, follow khách và đơn hàng",
+      "Chăm sóc khách hàng qua điện thoại/Zalo",
+      "Cập nhật dữ liệu lên CRM/Excel"
+    ],
+    "requirements": [
+      "Có từ 6 tháng–1 năm kinh nghiệm Telesales, Sales Online hoặc CSKH",
+      "Giao tiếp tốt, nhanh nhạy và kiên trì"
+    ],
+    "benefits": [
+      "Data khách hàng được Marketing cung cấp sẵn",
+      "Lộ trình phát triển rõ ràng lên Trưởng nhóm Sales (Sales Leader)"
+    ],
+    "ctaText": "Ứng tuyển Sales Indoor"
+  },
+  {
+    "id": "sales-admin",
+    "code": "03",
+    "title": "Nhân viên Hỗ trợ Kinh doanh — Sales Admin",
+    "shortTitle": "Sales Admin",
+    "quantity": "02 vị trí",
+    "locations": ["Hà Nội", "TP.HCM"],
+    "locationText": "Hà Nội – TP.HCM",
+    "baseSalary": "10–11 triệu",
+    "totalIncome": "10–11 triệu + KPI",
+    "badge": "Nghỉ Chủ Nhật",
+    "highlight": "Công việc văn phòng, nghỉ Chủ Nhật, BHXH/BHYT, thưởng tháng 13",
+    "duties": [
+      "Soạn thảo hợp đồng, báo giá và xử lý đơn hàng",
+      "Theo dõi, đối soát công nợ",
+      "Quản lý dữ liệu doanh số kinh doanh",
+      "Phối hợp bộ phận Kho / Vận chuyển",
+      "Hỗ trợ nghiệp vụ cho Sales Outdoor & Indoor"
+    ],
+    "requirements": [
+      "Có tối thiểu 1 năm Sales Admin/Kế toán bán hàng",
+      "Sử dụng tốt Word/Excel; biết MISA/ERP là lợi thế"
+    ],
+    "benefits": [
+      "Công việc văn phòng ổn định, nghỉ Chủ Nhật",
+      "Đầy đủ chế độ BHXH/BHYT, thưởng lương tháng 13",
+      "Phúc lợi và thưởng lễ tết theo chính sách công ty"
+    ],
+    "ctaText": "Ứng tuyển Sales Admin"
+  },
+  {
+    "id": "distribution-manager",
+    "code": "04",
+    "title": "Trưởng phòng Phân phối — Distribution Manager",
+    "shortTitle": "Distribution Manager",
+    "quantity": "03 vị trí",
+    "locations": ["Hà Nội", "TP.HCM"],
+    "locationText": "Hà Nội – TP.HCM",
+    "baseSalary": "35–40 triệu/tháng",
+    "totalIncome": "35–40 triệu/tháng + % doanh số + thưởng Quý/Năm",
+    "badge": "Lộ trình CCO",
+    "highlight": "Quản lý đội ngũ 20 nhân sự (10 Outdoor + 10 Indoor) | Lộ trình CCO",
+    "duties": [
+      "Xây dựng chiến lược Đại lý/Sub-dealer/EPC",
+      "Quản lý đội ngũ 10 Sales Outdoor + 10 Sales Indoor",
+      "Trực tiếp phát triển và đàm phán với đại lý lớn",
+      "Phân tích thị trường, đối thủ và doanh số",
+      "Báo cáo trực tiếp với Ban Giám đốc"
+    ],
+    "requirements": [
+      "Tối thiểu 3–5 năm kinh nghiệm tương đương trong Solar, thiết bị điện, VLXD hoặc công nghiệp",
+      "Hiểu sâu về Solar – BESS – Inverter và có năng lực quản lý/đàm phán B2B"
+    ],
+    "benefits": [
+      "Lương cứng 35-40tr + % doanh số phòng + thưởng Quý/Năm",
+      "Cơ hội phát triển lên Giám đốc Kinh doanh – CCO"
+    ],
+    "ctaText": "Ứng tuyển Distribution Manager"
+  },
+  {
+    "id": "lead-engineer",
+    "code": "05",
+    "title": "Kỹ sư Trưởng Solar – BESS",
+    "shortTitle": "Kỹ sư Trưởng Solar – BESS",
+    "quantity": "01 vị trí",
+    "locations": ["Hà Đông – Hà Nội"],
+    "locationText": "Hà Đông – Hà Nội",
+    "baseSalary": "25–35 triệu/tháng",
+    "totalIncome": "25–35 triệu/tháng + KPI + thưởng Quý/Năm",
+    "badge": "Lộ trình Tech Director",
+    "highlight": "Quản lý team kỹ thuật 3–5 người | Lộ trình Technical Director",
+    "duties": [
+      "Quản lý và đào tạo team kỹ thuật",
+      "Xây dựng SOP/checklist quy chuẩn kỹ thuật",
+      "Đào tạo kỹ thuật cho hệ thống đại lý",
+      "Khảo sát, thiết kế và giám sát dự án Solar – BESS",
+      "Troubleshooting Inverter/BESS/BMS",
+      "Test sản phẩm và quản lý bảo hành"
+    ],
+    "requirements": [
+      "3–5 năm kinh nghiệm Solar (bắt buộc có kinh nghiệm thực chiến BESS/Hybrid)",
+      "1–2 năm quản lý nhóm kỹ thuật",
+      "Sử dụng AutoCAD, PVsyst/PV*SOL hoặc công cụ tương đương",
+      "Có khả năng đào tạo, thuyết trình và đi công tác"
+    ],
+    "benefits": [
+      "Thu nhập: 25-35tr/tháng + KPI + thưởng Quý/Năm",
+      "Lộ trình phát triển lên Giám đốc Kỹ thuật – Technical Director"
+    ],
+    "ctaText": "Ứng tuyển Kỹ sư Trưởng"
+  }
+]
