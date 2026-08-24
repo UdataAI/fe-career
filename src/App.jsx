@@ -522,95 +522,81 @@ function App() {
               </p>
             </div>
 
-            {/* 5 Compact Balanced Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-              
-              {sametelJobs.map((job, index) => {
-                // Responsive column span: 3 cards on row 1 (2 cols each), 2 cards on row 2 (3 cols each) on lg screens
-                const colSpanClass = index < 3 
-                  ? 'md:col-span-3 lg:col-span-2' 
-                  : (index === 3 ? 'md:col-span-3 lg:col-span-3' : 'md:col-span-6 lg:col-span-3');
+            {/* 5 Horizontal Job Rows Layout */}
+            <div className="space-y-4 max-w-6xl mx-auto">
+              {sametelJobs.map((job) => (
+                <div 
+                  key={job.id}
+                  className={`bg-white hover:bg-blue-50/30 rounded-2xl p-5 sm:p-6 border transition-all duration-300 shadow-sm hover:shadow-md hover:border-blue-400 flex flex-col lg:flex-row lg:items-center justify-between gap-5 group ${
+                    selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/15' : 'border-slate-200/90'
+                  }`}
+                >
+                  
+                  {/* Left Column: Code, Title & Badges */}
+                  <div className="flex items-start sm:items-center gap-4 flex-1">
+                    <span className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 font-extrabold flex items-center justify-center text-sm border border-blue-200/80 shrink-0 font-display-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      {job.code}
+                    </span>
 
-                return (
-                  <div 
-                    key={job.id}
-                    className={`bg-white rounded-2xl p-6 border transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 relative group h-full ${colSpanClass} ${
-                      selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/15' : 'border-slate-200/90 hover:border-blue-400'
-                    }`}
-                  >
-                    <div className="space-y-4">
-                      
-                      {/* Top row: Code & Badges */}
-                      <div className="flex justify-between items-start gap-2">
-                        <span className="text-xs font-extrabold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
-                          Vị trí {job.code}
-                        </span>
-                      <div className="flex flex-wrap gap-1.5 justify-end">
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">
-                          <span className="material-symbols-outlined text-xs text-blue-600">group</span>
+                    <div className="space-y-1.5 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="font-display-lg text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                          {job.title}
+                        </h3>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                        <span className="inline-flex items-center gap-1 font-semibold bg-slate-100 px-2.5 py-0.5 rounded-md text-slate-700">
+                          <span className="material-symbols-outlined text-sm text-blue-600">group</span>
                           {job.quantity}
                         </span>
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">
-                          <span className="material-symbols-outlined text-xs text-rose-500">location_on</span>
+                        <span className="inline-flex items-center gap-1 font-semibold bg-slate-100 px-2.5 py-0.5 rounded-md text-slate-700">
+                          <span className="material-symbols-outlined text-sm text-rose-500">location_on</span>
                           {job.locationText}
+                        </span>
+                        <span className="inline-flex items-center gap-1 font-medium text-slate-500">
+                          <span className="material-symbols-outlined text-sm text-slate-400">schedule</span>
+                          {job.workType}
                         </span>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Job Title */}
-                    <div>
-                      <h3 className="font-display-lg text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug line-clamp-2 min-h-[48px]">
-                        {job.title}
-                      </h3>
-                      <div className="text-xs text-slate-500 mt-1 flex items-center gap-1">
-                        <span className="material-symbols-outlined text-sm text-slate-400">schedule</span>
-                        <span>{job.workType}</span>
-                      </div>
-                    </div>
-
-                    {/* Salary Box — Guaranteed 1 Single Line */}
-                    <div className="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-blue-50/90 to-indigo-50/70 border border-blue-100/90 flex items-center justify-between gap-2 overflow-hidden">
-                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Thu nhập:</span>
-                      <span className="text-xs sm:text-[13px] font-extrabold text-blue-900 whitespace-nowrap text-right">
+                  {/* Middle Column: Salary & Highlight */}
+                  <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-center gap-1.5 shrink-0 lg:w-72">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-100">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Thu nhập:</span>
+                      <span className="text-xs sm:text-sm font-extrabold text-blue-900 whitespace-nowrap">
                         {job.cardSalary || job.salary}
                       </span>
                     </div>
-
-                    {/* Short Highlight feature */}
-                    <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-start gap-2">
-                      <span className="material-symbols-outlined text-sm text-amber-600 shrink-0 mt-0.5">verified</span>
-                      <span className="leading-relaxed">{job.highlight}</span>
+                    <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                      <span className="material-symbols-outlined text-xs text-amber-500">verified</span>
+                      <span className="truncate max-w-[260px]">{job.highlight}</span>
                     </div>
-
                   </div>
 
-                  {/* Actions buttons */}
-                  <div className="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2">
-                    
-                    {/* View JD Button -> Opens Modal */}
+                  {/* Right Column: CTA Buttons */}
+                  <div className="flex items-center gap-2.5 w-full sm:w-auto shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                     <button
                       onClick={() => handleOpenJdModal(job)}
-                      className="w-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 font-bold text-xs py-2.5 px-3 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200/80 hover:border-blue-300"
+                      className="flex-1 sm:flex-initial bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-slate-200/80 hover:border-blue-300"
                     >
                       <span className="material-symbols-outlined text-base">visibility</span>
                       <span>Xem JD</span>
                     </button>
 
-                    {/* Apply Button -> Scrolls to form */}
                     <button
                       onClick={() => handleSelectJobAndScroll(job.title, job.id, job.locations[0])}
-                      className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm shadow-blue-700/20 active:scale-95 transition-all flex items-center justify-center gap-1 cursor-pointer"
+                      className="flex-1 sm:flex-initial bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-sm shadow-blue-700/20 active:scale-95 transition-all flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
                     >
                       <span>Ứng tuyển</span>
-                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                      <span className="material-symbols-outlined text-base">arrow_forward</span>
                     </button>
-
                   </div>
 
                 </div>
-                );
-              })}
-
+              ))}
             </div>
 
             {/* Note text under cards */}
