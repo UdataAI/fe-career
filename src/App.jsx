@@ -318,14 +318,14 @@ function App() {
         
         {/* SECTION 1 — HERO */}
         <section 
-          className="relative overflow-hidden py-16 sm:py-24 border-b border-slate-100 bg-cover bg-center bg-no-repeat"
+          className="relative overflow-hidden py-16 sm:py-28 border-b border-slate-100 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/sametel_hero_bg.png')" }}
         >
-          {/* Crystal Clear Light Overlay — No blur, vivid & sharp */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/65 to-[#F8FAFC]/85 pointer-events-none"></div>
+          {/* Subtle light overlay so text sits directly and clearly on the image */}
+          <div className="absolute inset-0 bg-white/50 pointer-events-none"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center space-y-6 bg-white/75 backdrop-blur-[2px] p-6 sm:p-10 rounded-3xl border border-white/80 shadow-lg shadow-blue-900/5">
+            <div className="max-w-3xl mx-auto text-center space-y-6">
               
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 border border-blue-200/80 text-blue-800 font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-sm">
