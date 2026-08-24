@@ -753,7 +753,7 @@ function App() {
                   <div className="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
                     <span className="material-symbols-outlined text-lg text-blue-600 shrink-0 mt-0.5">schedule</span>
                     <div>
-                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> {activeModalJob.workType || 'Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng (Nghỉ chiều Thứ 7 & Chủ Nhật)'}.
+                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> 8:00 – 17:00 (Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng. Nghỉ chiều Thứ 7 &amp; Chủ Nhật).
                     </div>
                   </div>
                 </div>
