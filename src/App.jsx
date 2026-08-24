@@ -515,25 +515,29 @@ function App() {
               </p>
             </div>
 
-            {/* 5 Compact Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* 5 Compact Balanced Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
               
-              {sametelJobs.map((job, index) => (
-                <div 
-                  key={job.id}
-                  className={`bg-white rounded-2xl p-6 border transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 relative group ${
-                    index === 4 ? 'md:col-span-2 lg:col-span-1' : ''
-                  } ${
-                    selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/15' : 'border-slate-200/90 hover:border-blue-400'
-                  }`}
-                >
-                  <div className="space-y-4">
-                    
-                    {/* Top row: Code & Badges */}
-                    <div className="flex justify-between items-start gap-2">
-                      <span className="text-xs font-extrabold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
-                        Vị trí {job.code}
-                      </span>
+              {sametelJobs.map((job, index) => {
+                // Responsive column span: 3 cards on row 1 (2 cols each), 2 cards on row 2 (3 cols each) on lg screens
+                const colSpanClass = index < 3 
+                  ? 'md:col-span-3 lg:col-span-2' 
+                  : (index === 3 ? 'md:col-span-3 lg:col-span-3' : 'md:col-span-6 lg:col-span-3');
+
+                return (
+                  <div 
+                    key={job.id}
+                    className={`bg-white rounded-2xl p-6 border transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 relative group h-full ${colSpanClass} ${
+                      selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/15' : 'border-slate-200/90 hover:border-blue-400'
+                    }`}
+                  >
+                    <div className="space-y-4">
+                      
+                      {/* Top row: Code & Badges */}
+                      <div className="flex justify-between items-start gap-2">
+                        <span className="text-xs font-extrabold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                          Vị trí {job.code}
+                        </span>
                       <div className="flex flex-wrap gap-1.5 justify-end">
                         <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">
                           <span className="material-symbols-outlined text-xs text-blue-600">group</span>
@@ -557,12 +561,12 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Salary Box */}
-                    <div className="p-3.5 rounded-xl bg-gradient-to-r from-blue-50/90 to-indigo-50/60 border border-blue-100/90 space-y-1">
-                      <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Mức thu nhập:</div>
-                      <div className="text-sm sm:text-base font-extrabold text-blue-900 leading-snug break-words">
-                        {job.salary}
-                      </div>
+                    {/* Salary Box — Guaranteed 1 Single Line */}
+                    <div className="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-blue-50/90 to-indigo-50/70 border border-blue-100/90 flex items-center justify-between gap-2 overflow-hidden">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0">Thu nhập:</span>
+                      <span className="text-xs sm:text-[13px] font-extrabold text-blue-900 whitespace-nowrap text-right">
+                        {job.cardSalary || job.salary}
+                      </span>
                     </div>
 
                     {/* Short Highlight feature */}
@@ -597,7 +601,8 @@ function App() {
                   </div>
 
                 </div>
-              ))}
+                );
+              })}
 
             </div>
 
@@ -726,6 +731,50 @@ function App() {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* 4. ĐỊA ĐIỂM & THỜI GIAN LÀM VIỆC */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <span className="material-symbols-outlined text-blue-700 text-2xl">apartment</span>
+                    <h3 className="font-display-lg text-lg font-bold text-slate-900">
+                      ĐỊA ĐIỂM &amp; THỜI GIAN LÀM VIỆC
+                    </h3>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Hanoi Office */}
+                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                      <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
+                        <span className="material-symbols-outlined text-base">location_on</span>
+                        <span>Hanoi Office:</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        9th Floor, Millennium Building, <br />
+                        4 Quang Trung, Ha Dong District, Hanoi.
+                      </p>
+                    </div>
+
+                    {/* HCM Office */}
+                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                      <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
+                        <span className="material-symbols-outlined text-base">location_on</span>
+                        <span>Ho Chi Minh Office:</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        6th Floor, DHG Building, 31-33 <br />
+                        Street 18, Thong Tay Hoi Ward, Ho Chi Minh City.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Working Hours */}
+                  <div className="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                    <span className="material-symbols-outlined text-lg text-blue-600 shrink-0 mt-0.5">schedule</span>
+                    <div>
+                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng (Nghỉ chiều Thứ 7 &amp; Chủ Nhật).
+                    </div>
+                  </div>
                 </div>
 
               </div>
