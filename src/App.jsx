@@ -558,17 +558,17 @@ function App() {
                     </div>
 
                     {/* Salary Box */}
-                    <div className="p-3 rounded-xl bg-blue-50/70 border border-blue-100">
-                      <div className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">Mức thu nhập:</div>
-                      <div className="text-sm sm:text-base font-extrabold text-blue-800 truncate">
+                    <div className="p-3.5 rounded-xl bg-gradient-to-r from-blue-50/90 to-indigo-50/60 border border-blue-100/90 space-y-1">
+                      <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Mức thu nhập:</div>
+                      <div className="text-sm sm:text-base font-extrabold text-blue-900 leading-snug break-words">
                         {job.salary}
                       </div>
                     </div>
 
                     {/* Short Highlight feature */}
-                    <div className="text-xs text-slate-600 line-clamp-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-start gap-2">
+                    <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-start gap-2">
                       <span className="material-symbols-outlined text-sm text-amber-600 shrink-0 mt-0.5">verified</span>
-                      <span>{job.highlight}</span>
+                      <span className="leading-relaxed">{job.highlight}</span>
                     </div>
 
                   </div>
