@@ -86,6 +86,13 @@ function App() {
 
   const handleOpenJdModal = (job) => {
     setActiveModalJob(job);
+    if (typeof window.fbq === 'function') {
+      window.fbq('trackCustom', 'ViewJobDetails', {
+        job_title: job.title,
+        job_code: job.code,
+        content_name: job.title
+      });
+    }
   };
 
   const handleInputChange = (e) => {
@@ -235,8 +242,18 @@ function App() {
 
       if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
         setSubmitSuccess(true);
-        // Record form submission to Google Sheets
+        // 1. Record form submission to Google Sheets
         trackFormSubmission(formData, cvDownloadUrl);
+        // 2. Track Meta Pixel Lead event
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', {
+            content_name: formData.position,
+            content_category: 'Recruitment Application',
+            location: formData.location,
+            value: 1,
+            currency: 'VND'
+          });
+        }
       } else {
         throw new Error(result.message || 'Không thể gửi biểu mẫu. Vui lòng thử lại sau.');
       }
