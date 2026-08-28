@@ -315,8 +315,8 @@ function App() {
           <nav className="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
             <a href="#about" className="hover:text-blue-700 transition-colors">Về SAMETEL</a>
             <a href="#openings" className="hover:text-blue-700 transition-colors">Vị trí tuyển dụng</a>
-            <a href="#benefits" className="hover:text-blue-700 transition-colors">Quyền Lợi</a>
-            <a href="#apply" className="hover:text-blue-700 transition-colors">Nộp Hồ Sơ</a>
+            <a href="#benefits" className="hover:text-blue-700 transition-colors">Quyền lợi</a>
+            <a href="#apply" className="hover:text-blue-700 transition-colors">Nộp hồ sơ</a>
           </nav>
 
           {/* Apply Now Button */}
