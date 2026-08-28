@@ -44,7 +44,6 @@ function App() {
     email: '',
     position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
     location: 'Hà Nội',
-    experience: '1–2 năm',
     cvFile: null,
     coverLetter: '',
   });
@@ -212,7 +211,6 @@ function App() {
       payload.append('Email', formData.email || 'Không cung cấp');
       payload.append('Vị trí ứng tuyển', formData.position);
       payload.append('Khu vực làm việc', formData.location);
-      payload.append('Số năm kinh nghiệm', formData.experience);
       if (formData.cvFile) {
         payload.append('Tên file CV', formData.cvFile.name);
       }
@@ -272,7 +270,6 @@ function App() {
       email: '',
       position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
       location: 'Hà Nội',
-      experience: '1–2 năm',
       cvFile: null,
       coverLetter: '',
     });
@@ -1063,31 +1060,7 @@ function App() {
                         )}
                       </div>
 
-                      {/* Field 4: Vị trí muốn ứng tuyển */}
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">
-                          Vị trí muốn ứng tuyển <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          name="position"
-                          value={formData.position}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
-                        >
-                          {sametelJobs.map(job => (
-                            <option key={job.id} value={job.title}>
-                              {job.code}. {job.title}
-                            </option>
-                          ))}
-                          <option value="Ứng tuyển vị trí khác">Khác (Ứng tuyển tự do)</option>
-                        </select>
-                      </div>
-
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      
-                      {/* Field 5: Khu vực muốn làm việc */}
+                      {/* Field 4: Khu vực muốn làm việc */}
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-700">
                           Khu vực muốn làm việc <span className="text-red-500">*</span>
@@ -1105,24 +1078,26 @@ function App() {
                         </select>
                       </div>
 
-                      {/* Field 6: Số năm kinh nghiệm */}
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">
-                          Số năm kinh nghiệm
-                        </label>
-                        <select
-                          name="experience"
-                          value={formData.experience}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
-                        >
-                          <option value="Dưới 1 năm / Mới tốt nghiệp">Dưới 1 năm / Mới tốt nghiệp</option>
-                          <option value="1–2 năm">1–2 năm</option>
-                          <option value="3–5 năm">3–5 năm</option>
-                          <option value="Trên 5 năm">Trên 5 năm</option>
-                        </select>
-                      </div>
+                    </div>
 
+                    {/* Field 5: Vị trí muốn ứng tuyển */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-slate-700">
+                        Vị trí muốn ứng tuyển <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="position"
+                        value={formData.position}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
+                      >
+                        {sametelJobs.map(job => (
+                          <option key={job.id} value={job.title}>
+                            {job.code}. {job.title}
+                          </option>
+                        ))}
+                        <option value="Ứng tuyển vị trí khác">Khác (Ứng tuyển tự do)</option>
+                      </select>
                     </div>
 
                     {/* Field 7: Upload CV */}
