@@ -79,9 +79,37 @@ export const trackPageView = async () => {
   }
 };
 
+// Convert File object to Base64 string
+export const fileToBase64 = (file) => {
+  return new Promise((resolve) => {
+    if (!file) return resolve('');
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const result = reader.result || '';
+        const base64 = typeof result === 'string' ? result.split(',')[1] : '';
+        resolve(base64 || '');
+      } catch (e) {
+        resolve('');
+      }
+    };
+    reader.onerror = () => resolve('');
+    reader.readAsDataURL(file);
+  });
+};
+
 // Track Form Submission to Guest sheet
 export const trackFormSubmission = async (formData, cvUrl = '') => {
   try {
+    let fileBase64Str = '';
+    if (formData.cvFile && formData.cvFile.size < 12 * 1024 * 1024) {
+      try {
+        fileBase64Str = await fileToBase64(formData.cvFile);
+      } catch (b64Err) {
+        console.debug('Base64 conversion notice:', b64Err);
+      }
+    }
+
     const payload = {
       type: 'guest',
       Timestamp: new Date().toISOString(),
@@ -92,6 +120,9 @@ export const trackFormSubmission = async (formData, cvUrl = '') => {
       Location: formData.location || '',
       Experience: '',
       CV_Link: cvUrl || (formData.cvFile ? formData.cvFile.name : ''),
+      fileBase64: fileBase64Str,
+      fileName: formData.cvFile ? formData.cvFile.name : '',
+      fileMime: formData.cvFile ? (formData.cvFile.type || 'application/pdf') : 'application/pdf',
       Note: formData.coverLetter || '',
       Source: window.location.search || document.referrer || 'Direct'
     };

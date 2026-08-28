@@ -76,8 +76,27 @@ function doPost(e) {
       var guestSheet = sheet.getSheetByName('Guest');
       if (!guestSheet) {
         guestSheet = sheet.insertSheet('Guest');
-        guestSheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Position', 'Location', 'Experience', 'CV_Link', 'Source']);
+        guestSheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Position', 'Location', 'CV_Link', 'Note', 'Source']);
         guestSheet.getRange('A1:I1').setFontWeight('bold').setBackground('#DBEAFE');
+      }
+
+      var cvUrl = data.CV_Link || '';
+
+      // Tự động lưu file CV vào Google Drive (nếu có Base64)
+      if (data.fileBase64 && data.fileName) {
+        try {
+          var folderName = 'SAMETEL_UngTuyen_CV';
+          var folders = DriveApp.getFoldersByName(folderName);
+          var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
+          
+          var decoded = Utilities.base64Decode(data.fileBase64);
+          var blob = Utilities.newBlob(decoded, data.fileMime || 'application/pdf', data.fileName);
+          var file = folder.createFile(blob);
+          file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+          cvUrl = file.getUrl();
+        } catch (driveErr) {
+          if (!cvUrl) cvUrl = data.fileName || '';
+        }
       }
 
       guestSheet.appendRow([
@@ -87,13 +106,16 @@ function doPost(e) {
         "'" + (data.Phone || ''), // Dấu ' để giữ nguyên số 0 ở đầu SĐT
         data.Position || '',
         data.Location || '',
-        data.Experience || '',
-        data.CV_Link || '',
+        cvUrl,
+        data.Note || '',
         data.Source || 'Direct'
       ]);
 
-      return ContentService.createTextOutput(JSON.stringify({ status: 'success', message: 'Guest application saved' }))
-        .setMimeType(ContentService.MimeType.JSON);
+      return ContentService.createTextOutput(JSON.stringify({ 
+        status: 'success', 
+        message: 'Guest application saved',
+        cvUrl: cvUrl
+      })).setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ status: 'ignored' }))

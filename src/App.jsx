@@ -162,49 +162,7 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to cloud to get direct viewing/downloading link
-      let cvDownloadUrl = '';
-      if (formData.cvFile) {
-        try {
-          const uploadData = new FormData();
-          uploadData.append('reqtype', 'fileupload');
-          uploadData.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const upRes = await fetch('https://catbox.moe/user/api.php', {
-            method: 'POST',
-            body: uploadData
-          });
-          if (upRes.ok) {
-            const urlText = await upRes.text();
-            if (urlText && urlText.startsWith('http')) {
-              cvDownloadUrl = urlText.trim();
-            }
-          }
-        } catch (upErr) {
-          console.warn('Catbox upload notice, trying fallback:', upErr);
-        }
-
-        // Fallback file hosting
-        if (!cvDownloadUrl) {
-          try {
-            const fbData = new FormData();
-            fbData.append('file', formData.cvFile, formData.cvFile.name);
-            const fbRes = await fetch('https://tmpfiles.org/api/v1/upload', {
-              method: 'POST',
-              body: fbData
-            });
-            if (fbRes.ok) {
-              const json = await fbRes.json();
-              if (json?.data?.url) {
-                cvDownloadUrl = json.data.url;
-              }
-            }
-          } catch (fbErr) {
-            console.warn('Fallback upload notice:', fbErr);
-          }
-        }
-      }
-
-      // 2. Prepare multipart form data for FormSubmit.co / Email API
+      // 1. Prepare multipart form data for FormSubmit.co / Email API
       const payload = new FormData();
       payload.append('Họ và tên', formData.fullName);
       payload.append('Số điện thoại', formData.phone);
@@ -212,10 +170,9 @@ function App() {
       payload.append('Vị trí ứng tuyển', formData.position);
       payload.append('Khu vực làm việc', formData.location);
       if (formData.cvFile) {
-        payload.append('Tên file CV', formData.cvFile.name);
-      }
-      if (cvDownloadUrl) {
-        payload.append('Link xem & tải file CV', cvDownloadUrl);
+        payload.append('Tên file CV đính kèm', formData.cvFile.name);
+        payload.append('Hồ sơ đính kèm', `${formData.cvFile.name} (Được đính kèm trực tiếp trong email này và lưu tại Google Sheet)`);
+        payload.append('attachment', formData.cvFile, formData.cvFile.name);
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
       payload.append('UTM Source', window.location.search || 'Direct');
@@ -223,11 +180,7 @@ function App() {
       payload.append('_template', 'table');
       payload.append('_captcha', 'false');
 
-      if (formData.cvFile) {
-        payload.append('attachment', formData.cvFile, formData.cvFile.name);
-      }
-
-      // 3. Send to endpoint
+      // 2. Send email to HR via FormSubmit endpoint
       const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
         method: 'POST',
         headers: {
@@ -240,8 +193,8 @@ function App() {
 
       if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
         setSubmitSuccess(true);
-        // 1. Record form submission to Google Sheets
-        trackFormSubmission(formData, cvDownloadUrl);
+        // 1. Record form submission to Google Sheets & Google Drive
+        trackFormSubmission(formData);
         // 2. Track Meta Pixel Lead event
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Lead', {
