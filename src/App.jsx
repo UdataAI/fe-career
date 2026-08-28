@@ -315,8 +315,8 @@ function App() {
           <nav className="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
             <a href="#about" className="hover:text-blue-700 transition-colors">Về SAMETEL</a>
             <a href="#openings" className="hover:text-blue-700 transition-colors">Vị trí tuyển dụng</a>
-            <a href="#benefits" className="hover:text-blue-700 transition-colors">Quyền Lợi</a>
-            <a href="#apply" className="hover:text-blue-700 transition-colors">Nộp Hồ Sơ</a>
+            <a href="#benefits" className="hover:text-blue-700 transition-colors">Quyền lợi</a>
+            <a href="#apply" className="hover:text-blue-700 transition-colors">Nộp hồ sơ</a>
           </nav>
 
           {/* Apply Now Button */}
@@ -1075,6 +1075,7 @@ function App() {
                         >
                           <option value="Hà Nội">Hà Nội</option>
                           <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                          <option value="Đà Nẵng">Đà Nẵng</option>
                         </select>
                       </div>
 
@@ -1096,7 +1097,6 @@ function App() {
                             {job.code}. {job.title}
                           </option>
                         ))}
-                        <option value="Ứng tuyển vị trí khác">Khác (Ứng tuyển tự do)</option>
                       </select>
                     </div>
 
@@ -1318,10 +1318,6 @@ function App() {
               Liên Hệ Tuyển Dụng
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-600">
-              <li className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-base text-blue-700">call</span>
-                <a href="tel:02513514888" className="hover:text-blue-700 font-bold text-slate-800">0251 3514 888</a>
-              </li>
               <li className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-blue-700">mail</span>
                 <a href={`mailto:${HR_EMAIL}`} className="hover:text-blue-700 font-medium">{HR_EMAIL}</a>
