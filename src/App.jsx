@@ -217,7 +217,8 @@ function App() {
       if (formData.cvFile) {
         payload.append('Tên file CV', formData.cvFile.name);
         if (cvDirectUrl) {
-          payload.append('Hồ sơ đính kèm (Bấm vào để mở CV)', cvDirectUrl);
+          payload.append('Link_xem_CV', cvDirectUrl);
+          payload.append('CV_URL', cvDirectUrl);
         }
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
