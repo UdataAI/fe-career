@@ -43,11 +43,14 @@ function doPost(e) {
       }
 
       if (foundRow > 0) {
-        // Cập nhật lại LastSeen và VisitCount
+        // Cập nhật lại LastSeen, VisitCount, Page và Referrer
         visitorSheet.getRange(foundRow, 2).setValue(data.LastSeen);
         var currentCount = visitorSheet.getRange(foundRow, 4).getValue();
         visitorSheet.getRange(foundRow, 4).setValue((currentCount || 1) + 1);
-        if (data.Referrer && data.Referrer !== 'Direct') {
+        if (data.Page) {
+          visitorSheet.getRange(foundRow, 5).setValue(data.Page);
+        }
+        if (data.Referrer) {
           visitorSheet.getRange(foundRow, 6).setValue(data.Referrer);
         }
       } else {
