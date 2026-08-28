@@ -756,24 +756,26 @@ function App() {
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {activeModalJob.officeAddresses?.map((loc, idx) => (
-                      <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                        <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
-                          <span className="material-symbols-outlined text-base">location_on</span>
-                          <span>Văn phòng {loc.city}:</span>
-                        </div>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
-                          {loc.address}
-                        </p>
+                    {/* Location */}
+                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                      <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
+                        <span className="material-symbols-outlined text-base">location_on</span>
+                        <span>Địa điểm làm việc:</span>
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-700 pl-6">
+                        {activeModalJob.locationText || 'Hà Nội – TP. Hồ Chí Minh'}
+                      </p>
+                    </div>
 
-                  {/* Working Hours */}
-                  <div className="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                    <span className="material-symbols-outlined text-lg text-blue-600 shrink-0 mt-0.5">schedule</span>
-                    <div>
-                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> 8:00 – 17:00 (Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng. Nghỉ chiều Thứ 7 &amp; Chủ Nhật).
+                    {/* Working Hours */}
+                    <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-100 space-y-1.5">
+                      <div className="flex items-center gap-2 text-blue-800 font-bold text-sm">
+                        <span className="material-symbols-outlined text-base">schedule</span>
+                        <span>Thời gian làm việc:</span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-medium text-slate-700 pl-6">
+                        8:00 – 17:00 (Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng. Nghỉ chiều Thứ 7 &amp; Chủ Nhật)
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -1073,8 +1075,6 @@ function App() {
                         >
                           <option value="Hà Nội">Hà Nội</option>
                           <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                          <option value="Đà Nẵng">Đà Nẵng</option>
-                          <option value="Đồng Nai">Đồng Nai</option>
                         </select>
                       </div>
 
