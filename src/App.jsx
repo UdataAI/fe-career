@@ -44,7 +44,6 @@ function App() {
     email: '',
     position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
     location: 'Hà Nội',
-    experience: '1–2 năm',
     cvFile: null,
     coverLetter: '',
   });
@@ -212,7 +211,6 @@ function App() {
       payload.append('Email', formData.email || 'Không cung cấp');
       payload.append('Vị trí ứng tuyển', formData.position);
       payload.append('Khu vực làm việc', formData.location);
-      payload.append('Số năm kinh nghiệm', formData.experience);
       if (formData.cvFile) {
         payload.append('Tên file CV', formData.cvFile.name);
       }
@@ -272,7 +270,6 @@ function App() {
       email: '',
       position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
       location: 'Hà Nội',
-      experience: '1–2 năm',
       cvFile: null,
       coverLetter: '',
     });
@@ -759,24 +756,26 @@ function App() {
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {activeModalJob.officeAddresses?.map((loc, idx) => (
-                      <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-                        <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
-                          <span className="material-symbols-outlined text-base">location_on</span>
-                          <span>Văn phòng {loc.city}:</span>
-                        </div>
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
-                          {loc.address}
-                        </p>
+                    {/* Location */}
+                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                      <div className="flex items-center gap-2 text-blue-700 font-bold text-sm">
+                        <span className="material-symbols-outlined text-base">location_on</span>
+                        <span>Địa điểm làm việc:</span>
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-700 pl-6">
+                        {activeModalJob.locationText || 'Hà Nội – TP. Hồ Chí Minh'}
+                      </p>
+                    </div>
 
-                  {/* Working Hours */}
-                  <div className="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                    <span className="material-symbols-outlined text-lg text-blue-600 shrink-0 mt-0.5">schedule</span>
-                    <div>
-                      <strong className="text-blue-900 font-bold">Thời gian làm việc:</strong> 8:00 – 17:00 (Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng. Nghỉ chiều Thứ 7 &amp; Chủ Nhật).
+                    {/* Working Hours */}
+                    <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-100 space-y-1.5">
+                      <div className="flex items-center gap-2 text-blue-800 font-bold text-sm">
+                        <span className="material-symbols-outlined text-base">schedule</span>
+                        <span>Thời gian làm việc:</span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-medium text-slate-700 pl-6">
+                        8:00 – 17:00 (Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng. Nghỉ chiều Thứ 7 &amp; Chủ Nhật)
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -1063,31 +1062,7 @@ function App() {
                         )}
                       </div>
 
-                      {/* Field 4: Vị trí muốn ứng tuyển */}
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">
-                          Vị trí muốn ứng tuyển <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          name="position"
-                          value={formData.position}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
-                        >
-                          {sametelJobs.map(job => (
-                            <option key={job.id} value={job.title}>
-                              {job.code}. {job.title}
-                            </option>
-                          ))}
-                          <option value="Ứng tuyển vị trí khác">Khác (Ứng tuyển tự do)</option>
-                        </select>
-                      </div>
-
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      
-                      {/* Field 5: Khu vực muốn làm việc */}
+                      {/* Field 4: Khu vực muốn làm việc */}
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-700">
                           Khu vực muốn làm việc <span className="text-red-500">*</span>
@@ -1098,31 +1073,31 @@ function App() {
                           onChange={handleInputChange}
                           className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
                         >
-                          <option value="Hà Nội — Tầng 9, Tòa Thiên Niên Kỷ, 4 Quang Trung, Hà Đông">Hà Nội (Tòa Thiên Niên Kỷ, Hà Đông)</option>
-                          <option value="TP.HCM — Tầng 6, Tòa DHG, 31-33 Đường 18, Thông Tây Hội">TP.HCM (Tòa DHG, P. Thông Tây Hội)</option>
-                          <option value="Đà Nẵng — Văn phòng Đà Nẵng">Đà Nẵng</option>
-                          <option value="Đồng Nai — Nhà máy KCN Long Thành">Đồng Nai (Nhà máy Long Thành)</option>
+                          <option value="Hà Nội">Hà Nội</option>
+                          <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
                         </select>
                       </div>
 
-                      {/* Field 6: Số năm kinh nghiệm */}
-                      <div className="space-y-2">
-                        <label className="text-sm font-bold text-slate-700">
-                          Số năm kinh nghiệm
-                        </label>
-                        <select
-                          name="experience"
-                          value={formData.experience}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
-                        >
-                          <option value="Dưới 1 năm / Mới tốt nghiệp">Dưới 1 năm / Mới tốt nghiệp</option>
-                          <option value="1–2 năm">1–2 năm</option>
-                          <option value="3–5 năm">3–5 năm</option>
-                          <option value="Trên 5 năm">Trên 5 năm</option>
-                        </select>
-                      </div>
+                    </div>
 
+                    {/* Field 5: Vị trí muốn ứng tuyển */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-slate-700">
+                        Vị trí muốn ứng tuyển <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="position"
+                        value={formData.position}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
+                      >
+                        {sametelJobs.map(job => (
+                          <option key={job.id} value={job.title}>
+                            {job.code}. {job.title}
+                          </option>
+                        ))}
+                        <option value="Ứng tuyển vị trí khác">Khác (Ứng tuyển tự do)</option>
+                      </select>
                     </div>
 
                     {/* Field 7: Upload CV */}

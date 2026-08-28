@@ -9,18 +9,8 @@
     "baseSalary": "35 – 40 triệu",
     "totalIncome": "35 – 40 triệu + % Doanh số phòng + Thưởng Quý/Năm",
     "quantity": "03 vị trí",
-    "locations": ["Hà Nội", "TP.HCM"],
+    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
     "locationText": "Hà Nội – TP.HCM",
-    "officeAddresses": [
-      {
-        "city": "Hà Nội",
-        "address": "Tầng 9, Tòa nhà Thiên Niên Kỷ, Số 4 Quang Trung, Quận Hà Đông, Hà Nội"
-      },
-      {
-        "city": "TP. Hồ Chí Minh",
-        "address": "Tầng 6, Tòa nhà DHG, Số 31–33 Đường 18, Phường Thông Tây Hội, TP. Hồ Chí Minh"
-      }
-    ],
     "workType": "Toàn thời gian",
     "badge": "Lương 35-40M • Lộ trình CCO",
     "highlight": "Quản lý 20 Sales (10 Outdoor + 10 Indoor) | % Doanh số phòng",
@@ -65,22 +55,8 @@
     "baseSalary": "15 – 18 triệu",
     "totalIncome": "25 – 40+ triệu/tháng",
     "quantity": "10 vị trí",
-    "locations": ["Hà Nội", "TP.HCM", "Đà Nẵng"],
-    "locationText": "Hà Nội – TP.HCM – Đà Nẵng",
-    "officeAddresses": [
-      {
-        "city": "Hà Nội",
-        "address": "Tầng 9, Tòa nhà Thiên Niên Kỷ, Số 4 Quang Trung, Quận Hà Đông, Hà Nội"
-      },
-      {
-        "city": "TP. Hồ Chí Minh",
-        "address": "Tầng 6, Tòa nhà DHG, Số 31–33 Đường 18, Phường Thông Tây Hội, TP. Hồ Chí Minh"
-      },
-      {
-        "city": "Đà Nẵng",
-        "address": "Văn phòng kinh doanh khu vực Đà Nẵng"
-      }
-    ],
+    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
+    "locationText": "Hà Nội – TP.HCM",
     "workType": "Toàn thời gian",
     "badge": "Lương cứng 15-18M • Thu nhập 25-40M+",
     "highlight": "Hoa hồng cao + Phụ cấp công tác phí, xăng xe, điện thoại + Đào tạo Solar/BESS/Inverter",
@@ -125,18 +101,8 @@
     "baseSalary": "10 – 12 triệu",
     "totalIncome": "15 – 25 triệu/tháng",
     "quantity": "10 vị trí",
-    "locations": ["Hà Nội", "TP.HCM"],
+    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
     "locationText": "Hà Nội – TP.HCM",
-    "officeAddresses": [
-      {
-        "city": "Hà Nội",
-        "address": "Tầng 9, Tòa nhà Thiên Niên Kỷ, Số 4 Quang Trung, Quận Hà Đông, Hà Nội"
-      },
-      {
-        "city": "TP. Hồ Chí Minh",
-        "address": "Tầng 6, Tòa nhà DHG, Số 31–33 Đường 18, Phường Thông Tây Hội, TP. Hồ Chí Minh"
-      }
-    ],
     "workType": "Toàn thời gian",
     "badge": "Data Marketing cấp • Lương cứng 10-12M",
     "highlight": "Data khách hàng tiềm năng sẵn có do Marketing cung cấp đều đặn",
@@ -181,18 +147,8 @@
     "baseSalary": "10 – 11 triệu",
     "totalIncome": "10 – 11 triệu + KPI",
     "quantity": "02 vị trí",
-    "locations": ["Hà Nội", "TP.HCM"],
+    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
     "locationText": "Hà Nội – TP.HCM",
-    "officeAddresses": [
-      {
-        "city": "Hà Nội",
-        "address": "Tầng 9, Tòa nhà Thiên Niên Kỷ, Số 4 Quang Trung, Quận Hà Đông, Hà Nội"
-      },
-      {
-        "city": "TP. Hồ Chí Minh",
-        "address": "Tầng 6, Tòa nhà DHG, Số 31–33 Đường 18, Phường Thông Tây Hội, TP. Hồ Chí Minh"
-      }
-    ],
     "workType": "Toàn thời gian (Nghỉ Chủ Nhật)",
     "badge": "Văn phòng • Nghỉ Chủ Nhật",
     "highlight": "Giờ hành chính ổn định, BHXH/BHYT, Thưởng tháng 13 & Phúc lợi",
@@ -237,14 +193,8 @@
     "baseSalary": "25 – 35 triệu",
     "totalIncome": "25 – 35 triệu + KPI + Thưởng Quý/Năm",
     "quantity": "01 vị trí",
-    "locations": ["Hà Đông, Hà Nội"],
-    "locationText": "Hà Đông, Hà Nội",
-    "officeAddresses": [
-      {
-        "city": "Hà Nội",
-        "address": "Tầng 9, Tòa nhà Thiên Niên Kỷ, Số 4 Quang Trung, Quận Hà Đông, Hà Nội"
-      }
-    ],
+    "locations": ["Hà Nội"],
+    "locationText": "Hà Nội",
     "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
     "badge": "Lương đến 35M • Lộ trình Tech Director",
     "highlight": "Quản lý team kỹ thuật 3–5 người & Đào tạo kỹ thuật toàn hệ thống Đại lý",
