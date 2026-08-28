@@ -162,7 +162,30 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Prepare multipart form data for FormSubmit.co / Email API
+      // 1. Upload CV file to generate a direct clickable link
+      let cvDirectUrl = '';
+      if (formData.cvFile) {
+        try {
+          const upForm = new FormData();
+          upForm.append('reqtype', 'fileupload');
+          upForm.append('time', '72h');
+          upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+          const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+            method: 'POST',
+            body: upForm
+          });
+          if (upRes.ok) {
+            const resText = await upRes.text();
+            if (resText && resText.startsWith('http')) {
+              cvDirectUrl = resText.trim();
+            }
+          }
+        } catch (upErr) {
+          console.debug('Direct upload notice:', upErr);
+        }
+      }
+
+      // 2. Prepare multipart form data for FormSubmit.co
       const payload = new FormData();
       payload.append('Họ và tên', formData.fullName);
       payload.append('Số điện thoại', formData.phone);
@@ -170,9 +193,10 @@ function App() {
       payload.append('Vị trí ứng tuyển', formData.position);
       payload.append('Khu vực làm việc', formData.location);
       if (formData.cvFile) {
-        payload.append('Tên file CV đính kèm', formData.cvFile.name);
-        payload.append('Hồ sơ đính kèm', `${formData.cvFile.name} (Được đính kèm trực tiếp trong email này và lưu tại Google Sheet)`);
-        payload.append('attachment', formData.cvFile, formData.cvFile.name);
+        payload.append('Tên file CV', formData.cvFile.name);
+        if (cvDirectUrl) {
+          payload.append('Hồ sơ đính kèm (Bấm vào để mở CV)', cvDirectUrl);
+        }
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
       payload.append('UTM Source', window.location.search || 'Direct');
@@ -194,7 +218,7 @@ function App() {
       if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
         setSubmitSuccess(true);
         // 1. Record form submission to Google Sheets & Google Drive
-        trackFormSubmission(formData);
+        trackFormSubmission(formData, cvDirectUrl);
         // 2. Track Meta Pixel Lead event
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Lead', {
