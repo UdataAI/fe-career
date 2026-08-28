@@ -1071,10 +1071,10 @@ function App() {
                           onChange={handleInputChange}
                           className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
                         >
-                          <option value="Hà Nội — Tầng 9, Tòa Thiên Niên Kỷ, 4 Quang Trung, Hà Đông">Hà Nội (Tòa Thiên Niên Kỷ, Hà Đông)</option>
-                          <option value="TP.HCM — Tầng 6, Tòa DHG, 31-33 Đường 18, Thông Tây Hội">TP.HCM (Tòa DHG, P. Thông Tây Hội)</option>
-                          <option value="Đà Nẵng — Văn phòng Đà Nẵng">Đà Nẵng</option>
-                          <option value="Đồng Nai — Nhà máy KCN Long Thành">Đồng Nai (Nhà máy Long Thành)</option>
+                          <option value="Hà Nội">Hà Nội</option>
+                          <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                          <option value="Đà Nẵng">Đà Nẵng</option>
+                          <option value="Đồng Nai">Đồng Nai</option>
                         </select>
                       </div>
 
