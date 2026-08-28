@@ -69,8 +69,8 @@ export const trackPageView = async () => {
       LastSeen: lastSeen,
       VisitorId: visitorId,
       VisitCount: currentCount,
-      Page: window.location.pathname || '/',
-      Referrer: document.referrer || 'Direct'
+      Page: window.location.href || '/',
+      Referrer: document.referrer || 'Direct / Refresh'
     };
 
     await postToGoogleSheet(payload);
