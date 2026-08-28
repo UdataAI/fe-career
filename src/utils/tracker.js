@@ -1,6 +1,7 @@
 // Client-side visitor tracker and Google Sheet logger
 
-const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL || '';
+const DEFAULT_GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwdDV-NG1_G_lwtS9wSWn_7XJ8ZS4JCNvbmNuwgptgygBAaM0z2mGbYJzwSIMwNLittkw/exec';
+const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL || DEFAULT_GOOGLE_SHEET_URL;
 
 // Generate or retrieve persistent visitor ID
 export const getVisitorId = () => {
@@ -14,6 +15,36 @@ export const getVisitorId = () => {
     localStorage.setItem(STORAGE_KEY, visitorId);
   }
   return visitorId;
+};
+
+// Helper to send data to Google Apps Script Webhook
+const postToGoogleSheet = async (payload) => {
+  if (!GOOGLE_SHEET_URL) return;
+
+  const dataString = JSON.stringify(payload);
+
+  try {
+    // Primary: fetch with keepalive and text/plain (avoids CORS preflight blocking in all browsers)
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true,
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: dataString
+    });
+  } catch (err) {
+    // Fallback: navigator.sendBeacon
+    try {
+      if (navigator && typeof navigator.sendBeacon === 'function') {
+        const blob = new Blob([dataString], { type: 'text/plain;charset=utf-8' });
+        navigator.sendBeacon(GOOGLE_SHEET_URL, blob);
+      }
+    } catch (beaconErr) {
+      console.debug('Tracking send notice:', beaconErr);
+    }
+  }
 };
 
 // Track Page Visit
@@ -42,27 +73,15 @@ export const trackPageView = async () => {
       Referrer: document.referrer || 'Direct'
     };
 
-    if (GOOGLE_SHEET_URL) {
-      // Send beacon / post to Google Apps Script
-      fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      }).catch(() => {});
-    }
+    await postToGoogleSheet(payload);
   } catch (err) {
-    console.debug('Tracking notice:', err);
+    console.debug('Tracking page view notice:', err);
   }
 };
 
 // Track Form Submission to Guest sheet
 export const trackFormSubmission = async (formData, cvUrl = '') => {
   try {
-    if (!GOOGLE_SHEET_URL) return;
-
     const payload = {
       type: 'guest',
       Timestamp: new Date().toISOString(),
@@ -71,20 +90,13 @@ export const trackFormSubmission = async (formData, cvUrl = '') => {
       Phone: formData.phone || '',
       Position: formData.position || '',
       Location: formData.location || '',
-      Experience: formData.experience || '',
+      Experience: '',
       CV_Link: cvUrl || (formData.cvFile ? formData.cvFile.name : ''),
       Note: formData.coverLetter || '',
       Source: window.location.search || document.referrer || 'Direct'
     };
 
-    await fetch(GOOGLE_SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
+    await postToGoogleSheet(payload);
   } catch (err) {
     console.debug('Form tracking notice:', err);
   }
