@@ -69,9 +69,6 @@ pipeline {
     ansiColor('xterm')
     skipDefaultCheckout() // Use custom Checkout SCM
   }
-    triggers {
-        pollSCM('H/5 * * * *')
-    }
   environment {
     TEST_ENV = 'test'
      // ECR_REGISTRY and AWS_REGION should ideally come from the environment file, but for simplicity, we define them here`
