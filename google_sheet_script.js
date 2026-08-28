@@ -1,16 +1,12 @@
 /**
  * =========================================================================
- * GOOGLE APPS SCRIPT - TỰ ĐỘNG LƯU LƯỢT TRUY CẬP (VISITORS) & HỒ SƠ ỨNG TUYỂN (GUEST)
+ * GOOGLE APPS SCRIPT - TỰ ĐỘNG TẠO LINK MỞ CV TRỰC TIẾP VÀ LƯU GOOGLE SHEET
  * =========================================================================
- * Hướng dẫn cài đặt 1 phút:
- * 1. Mở Google Sheet của bạn (hoặc tạo Google Sheet mới).
- * 2. Trên thanh menu, chọn: Tiện ích mở rộng (Extensions) -> Apps Script.
- * 3. Xóa hết code cũ trong đó, dán toàn bộ đoạn code này vào.
- * 4. Bấm nút "Triển khai" (Deploy) ở góc trên bên phải -> "Tùy chọn triển khai mới" (New deployment).
- * 5. Chọn loại: "Ứng dụng web" (Web app).
- * 6. Mục "Người có quyền truy cập" (Who has access): Chọn "Bất kỳ ai" (Anyone).
- * 7. Bấm "Triển khai" (Deploy) và COPY đường link Web App URL.
- * 8. Dán link đó vào file .env trong dự án: VITE_GOOGLE_SHEET_URL=https://script.google.com/macros/s/.../exec
+ * Hướng dẫn:
+ * 1. Mở Google Sheet -> Tiện ích mở rộng (Extensions) -> Apps Script.
+ * 2. Dán toàn bộ code này vào thay thế code cũ.
+ * 3. Bấm "Triển khai" (Deploy) -> "Quản lý bản triển khai" (Manage deployments)
+ *    -> Bấm biểu tượng cây bút (Chỉnh sửa) -> Chọn "Phiên bản mới" (New version) -> Bấm "Triển khai" (Deploy).
  * =========================================================================
  */
 
@@ -34,7 +30,6 @@ function doPost(e) {
       var values = visitorSheet.getDataRange().getValues();
       var foundRow = -1;
 
-      // Tìm kiếm xem VisitorId đã tồn tại chưa
       for (var i = 1; i < values.length; i++) {
         if (values[i][2] == visitorId) {
           foundRow = i + 1;
@@ -43,7 +38,6 @@ function doPost(e) {
       }
 
       if (foundRow > 0) {
-        // Cập nhật lại LastSeen, VisitCount, Page và Referrer
         visitorSheet.getRange(foundRow, 2).setValue(data.LastSeen);
         var currentCount = visitorSheet.getRange(foundRow, 4).getValue();
         visitorSheet.getRange(foundRow, 4).setValue((currentCount || 1) + 1);
@@ -54,7 +48,6 @@ function doPost(e) {
           visitorSheet.getRange(foundRow, 6).setValue(data.Referrer);
         }
       } else {
-        // Thêm người truy cập mới
         visitorSheet.appendRow([
           data.FirstSeen,
           data.LastSeen,
@@ -76,10 +69,49 @@ function doPost(e) {
       var guestSheet = sheet.getSheetByName('Guest');
       if (!guestSheet) {
         guestSheet = sheet.insertSheet('Guest');
-        guestSheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Position', 'Location', 'Experience', 'CV_Link', 'Source']);
+        guestSheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Position', 'Location', 'CV_Link', 'Note', 'Source']);
         guestSheet.getRange('A1:I1').setFontWeight('bold').setBackground('#DBEAFE');
       }
 
+      var cvUrl = data.CV_Link || '';
+
+      // Tự động tạo link xem CV trực tiếp vĩnh viễn (Không cần đăng nhập hay hỏi quyền)
+      if (data.fileBase64 && data.fileName) {
+        try {
+          var decoded = Utilities.base64Decode(data.fileBase64);
+          var blob = Utilities.newBlob(decoded, data.fileMime || 'application/pdf', data.fileName);
+          
+          var uploadPayload = {
+            reqtype: 'fileupload',
+            fileToUpload: blob
+          };
+          
+          var response = UrlFetchApp.fetch('https://catbox.moe/user/api.php', {
+            method: 'post',
+            payload: uploadPayload,
+            muteHttpExceptions: true
+          });
+          
+          var returnedUrl = response.getContentText();
+          if (returnedUrl && returnedUrl.indexOf('http') === 0) {
+            cvUrl = returnedUrl.trim();
+          }
+        } catch (catErr) {
+          // Dự phòng nếu không gọi được catbox: dùng Drive
+          try {
+            var folderName = 'SAMETEL_UngTuyen_CV';
+            var folders = DriveApp.getFoldersByName(folderName);
+            var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
+            var driveFile = folder.createFile(blob);
+            driveFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+            cvUrl = driveFile.getUrl();
+          } catch (driveErr) {
+            if (!cvUrl) cvUrl = data.fileName || '';
+          }
+        }
+      }
+
+      // Ghi thông tin vào Google Sheet (Cột CV_Link chứa link mở trực tiếp file)
       guestSheet.appendRow([
         data.Timestamp || new Date().toISOString(),
         data.Name || '',
@@ -87,13 +119,16 @@ function doPost(e) {
         "'" + (data.Phone || ''), // Dấu ' để giữ nguyên số 0 ở đầu SĐT
         data.Position || '',
         data.Location || '',
-        data.Experience || '',
-        data.CV_Link || '',
+        cvUrl,
+        data.Note || '',
         data.Source || 'Direct'
       ]);
 
-      return ContentService.createTextOutput(JSON.stringify({ status: 'success', message: 'Guest application saved' }))
-        .setMimeType(ContentService.MimeType.JSON);
+      return ContentService.createTextOutput(JSON.stringify({ 
+        status: 'success', 
+        message: 'Guest application saved',
+        cvUrl: cvUrl
+      })).setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ status: 'ignored' }))

@@ -162,49 +162,52 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to cloud to get direct viewing/downloading link
-      let cvDownloadUrl = '';
+      // 1. Upload CV file to generate a permanent direct clickable link
+      let cvDirectUrl = '';
       if (formData.cvFile) {
+        // Priority 1: Catbox (Lưu trữ vĩnh viễn, không bao giờ xóa)
         try {
-          const uploadData = new FormData();
-          uploadData.append('reqtype', 'fileupload');
-          uploadData.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const upRes = await fetch('https://catbox.moe/user/api.php', {
+          const permForm = new FormData();
+          permForm.append('reqtype', 'fileupload');
+          permForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+          const permRes = await fetch('https://catbox.moe/user/api.php', {
             method: 'POST',
-            body: uploadData
+            body: permForm
           });
-          if (upRes.ok) {
-            const urlText = await upRes.text();
-            if (urlText && urlText.startsWith('http')) {
-              cvDownloadUrl = urlText.trim();
+          if (permRes.ok) {
+            const resText = await permRes.text();
+            if (resText && resText.startsWith('http')) {
+              cvDirectUrl = resText.trim();
             }
           }
-        } catch (upErr) {
-          console.warn('Catbox upload notice, trying fallback:', upErr);
+        } catch (catErr) {
+          console.debug('Permanent Catbox upload notice:', catErr);
         }
 
-        // Fallback file hosting
-        if (!cvDownloadUrl) {
+        // Priority 2: Fallback Litterbox nếu kết nối Catbox bị gián đoạn
+        if (!cvDirectUrl) {
           try {
-            const fbData = new FormData();
-            fbData.append('file', formData.cvFile, formData.cvFile.name);
-            const fbRes = await fetch('https://tmpfiles.org/api/v1/upload', {
+            const upForm = new FormData();
+            upForm.append('reqtype', 'fileupload');
+            upForm.append('time', '72h');
+            upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+            const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
               method: 'POST',
-              body: fbData
+              body: upForm
             });
-            if (fbRes.ok) {
-              const json = await fbRes.json();
-              if (json?.data?.url) {
-                cvDownloadUrl = json.data.url;
+            if (upRes.ok) {
+              const resText = await upRes.text();
+              if (resText && resText.startsWith('http')) {
+                cvDirectUrl = resText.trim();
               }
             }
-          } catch (fbErr) {
-            console.warn('Fallback upload notice:', fbErr);
+          } catch (upErr) {
+            console.debug('Fallback upload notice:', upErr);
           }
         }
       }
 
-      // 2. Prepare multipart form data for FormSubmit.co / Email API
+      // 2. Prepare multipart form data for FormSubmit.co
       const payload = new FormData();
       payload.append('Họ và tên', formData.fullName);
       payload.append('Số điện thoại', formData.phone);
@@ -213,9 +216,9 @@ function App() {
       payload.append('Khu vực làm việc', formData.location);
       if (formData.cvFile) {
         payload.append('Tên file CV', formData.cvFile.name);
-      }
-      if (cvDownloadUrl) {
-        payload.append('Link xem & tải file CV', cvDownloadUrl);
+        if (cvDirectUrl) {
+          payload.append('Hồ sơ đính kèm (Bấm vào để mở CV)', cvDirectUrl);
+        }
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
       payload.append('UTM Source', window.location.search || 'Direct');
@@ -223,11 +226,7 @@ function App() {
       payload.append('_template', 'table');
       payload.append('_captcha', 'false');
 
-      if (formData.cvFile) {
-        payload.append('attachment', formData.cvFile, formData.cvFile.name);
-      }
-
-      // 3. Send to endpoint
+      // 2. Send email to HR via FormSubmit endpoint
       const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
         method: 'POST',
         headers: {
@@ -240,8 +239,8 @@ function App() {
 
       if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
         setSubmitSuccess(true);
-        // 1. Record form submission to Google Sheets
-        trackFormSubmission(formData, cvDownloadUrl);
+        // 1. Record form submission to Google Sheets & Google Drive
+        trackFormSubmission(formData, cvDirectUrl);
         // 2. Track Meta Pixel Lead event
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Lead', {
