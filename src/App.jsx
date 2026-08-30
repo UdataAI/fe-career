@@ -162,47 +162,46 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a permanent direct clickable link
+      // 1. Upload CV file to generate a direct Catbox clickable link
       let cvDirectUrl = '';
       if (formData.cvFile) {
-        // Kênh 1: Catbox Permanent (Lưu trữ VĨNH VIỄN, không có thời hạn, không bao giờ xóa)
         try {
-          const permForm = new FormData();
-          permForm.append('reqtype', 'fileupload');
-          permForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const permRes = await fetch('https://catbox.moe/user/api.php', {
+          const upForm = new FormData();
+          upForm.append('reqtype', 'fileupload');
+          upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+          const upRes = await fetch('https://catbox.moe/user/api.php', {
             method: 'POST',
-            body: permForm
+            body: upForm
           });
-          if (permRes.ok) {
-            const resText = await permRes.text();
+          if (upRes.ok) {
+            const resText = await upRes.text();
             if (resText && resText.startsWith('http')) {
               cvDirectUrl = resText.trim();
             }
           }
         } catch (catErr) {
-          console.debug('Catbox permanent notice:', catErr);
+          console.debug('Catbox upload notice:', catErr);
         }
 
-        // Kênh 2: Dự phòng Litterbox nếu Kênh 1 gián đoạn
+        // Kênh dự phòng Catbox nếu Kênh chính bị gián đoạn
         if (!cvDirectUrl) {
           try {
-            const upForm = new FormData();
-            upForm.append('reqtype', 'fileupload');
-            upForm.append('time', '72h');
-            upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-            const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+            const fbForm = new FormData();
+            fbForm.append('reqtype', 'fileupload');
+            fbForm.append('time', '72h');
+            fbForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+            const fbRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
               method: 'POST',
-              body: upForm
+              body: fbForm
             });
-            if (upRes.ok) {
-              const resText = await upRes.text();
-              if (resText && resText.startsWith('http')) {
-                cvDirectUrl = resText.trim();
+            if (fbRes.ok) {
+              const fbText = await fbRes.text();
+              if (fbText && fbText.startsWith('http')) {
+                cvDirectUrl = fbText.trim();
               }
             }
           } catch (fbErr) {
-            console.debug('Fallback notice:', fbErr);
+            console.debug('Fallback upload notice:', fbErr);
           }
         }
       }
