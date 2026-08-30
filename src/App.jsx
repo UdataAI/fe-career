@@ -165,7 +165,7 @@ function App() {
       // 1. Upload CV file to generate a permanent direct clickable link
       let cvDirectUrl = '';
       if (formData.cvFile) {
-        // Priority 1: Catbox (Lưu trữ vĩnh viễn, không bao giờ xóa)
+        // Kênh 1: Catbox Permanent (Lưu trữ VĨNH VIỄN, không có thời hạn, không bao giờ xóa)
         try {
           const permForm = new FormData();
           permForm.append('reqtype', 'fileupload');
@@ -181,10 +181,10 @@ function App() {
             }
           }
         } catch (catErr) {
-          console.debug('Permanent Catbox upload notice:', catErr);
+          console.debug('Catbox permanent notice:', catErr);
         }
 
-        // Priority 2: Fallback Litterbox nếu kết nối Catbox bị gián đoạn
+        // Kênh 2: Dự phòng Litterbox nếu Kênh 1 gián đoạn
         if (!cvDirectUrl) {
           try {
             const upForm = new FormData();
@@ -201,8 +201,8 @@ function App() {
                 cvDirectUrl = resText.trim();
               }
             }
-          } catch (upErr) {
-            console.debug('Fallback upload notice:', upErr);
+          } catch (fbErr) {
+            console.debug('Fallback notice:', fbErr);
           }
         }
       }
@@ -217,7 +217,8 @@ function App() {
       if (formData.cvFile) {
         payload.append('Tên file CV', formData.cvFile.name);
         if (cvDirectUrl) {
-          payload.append('Hồ sơ đính kèm (Bấm vào để mở CV)', cvDirectUrl);
+          payload.append('Link_xem_CV', cvDirectUrl);
+          payload.append('Hồ_sơ_đính_kèm', cvDirectUrl);
         }
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
