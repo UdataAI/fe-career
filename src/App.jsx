@@ -167,14 +167,15 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a permanent direct clickable link (Catbox Permanent)
+      // 1. Upload CV file to generate a direct clickable link (Catbox API with Full Browser CORS)
       let cvDirectUrl = '';
       if (formData.cvFile) {
         try {
           const upForm = new FormData();
           upForm.append('reqtype', 'fileupload');
+          upForm.append('time', '72h');
           upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const upRes = await fetch('https://catbox.moe/user/api.php', {
+          const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
             method: 'POST',
             body: upForm
           });
