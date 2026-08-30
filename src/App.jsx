@@ -105,6 +105,11 @@ function App() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+      if (!isPdf) {
+        setFormErrors(prev => ({ ...prev, cvFile: 'Vui lòng chỉ tải lên file CV định dạng PDF (.pdf)' }));
+        return;
+      }
       if (file.size > 10 * 1024 * 1024) {
         setFormErrors(prev => ({ ...prev, cvFile: 'Dung lượng file tối đa là 10MB' }));
         return;
@@ -144,7 +149,7 @@ function App() {
     }
 
     if (!formData.cvFile) {
-      errors.cvFile = 'Vui lòng tải lên file CV (PDF/DOCX)';
+      errors.cvFile = 'Vui lòng tải lên file CV định dạng PDF';
     }
 
     return errors;
@@ -162,69 +167,25 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a direct clickable link (Hỗ trợ cả PDF và Word .DOCX/.DOC)
+      // 1. Upload CV file to generate a permanent direct clickable link (Catbox Permanent)
       let cvDirectUrl = '';
       if (formData.cvFile) {
-        const fileName = formData.cvFile.name || 'CV';
-        const isDocx = fileName.toLowerCase().endsWith('.docx') || fileName.toLowerCase().endsWith('.doc');
-
-        if (isDocx) {
-          // Kênh xử lý riêng cho file DOCX/DOC (Cho phép tải và mở trực tiếp)
-          try {
-            const docForm = new FormData();
-            docForm.append('file', formData.cvFile, fileName);
-            const docRes = await fetch('https://tmpfiles.org/api/v1/upload', {
-              method: 'POST',
-              body: docForm
-            });
-            if (docRes.ok) {
-              const docJson = await docRes.json();
-              if (docJson?.data?.url) {
-                cvDirectUrl = docJson.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
-              }
-            }
-          } catch (docErr) {
-            console.debug('DOCX upload notice:', docErr);
-          }
-        } else {
-          // Kênh xử lý cho file PDF (Catbox Permanent)
-          try {
-            const upForm = new FormData();
-            upForm.append('reqtype', 'fileupload');
-            upForm.append('fileToUpload', formData.cvFile, fileName);
-            const upRes = await fetch('https://catbox.moe/user/api.php', {
-              method: 'POST',
-              body: upForm
-            });
-            if (upRes.ok) {
-              const resText = await upRes.text();
-              if (resText && resText.startsWith('http')) {
-                cvDirectUrl = resText.trim();
-              }
-            }
-          } catch (catErr) {
-            console.debug('Catbox upload notice:', catErr);
-          }
-
-          // Dự phòng nếu Catbox gián đoạn
-          if (!cvDirectUrl) {
-            try {
-              const fbForm = new FormData();
-              fbForm.append('file', formData.cvFile, fileName);
-              const fbRes = await fetch('https://tmpfiles.org/api/v1/upload', {
-                method: 'POST',
-                body: fbForm
-              });
-              if (fbRes.ok) {
-                const fbJson = await fbRes.json();
-                if (fbJson?.data?.url) {
-                  cvDirectUrl = fbJson.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
-                }
-              }
-            } catch (fbErr) {
-              console.debug('Fallback upload notice:', fbErr);
+        try {
+          const upForm = new FormData();
+          upForm.append('reqtype', 'fileupload');
+          upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+          const upRes = await fetch('https://catbox.moe/user/api.php', {
+            method: 'POST',
+            body: upForm
+          });
+          if (upRes.ok) {
+            const resText = await upRes.text();
+            if (resText && resText.startsWith('http')) {
+              cvDirectUrl = resText.trim();
             }
           }
+        } catch (catErr) {
+          console.debug('Catbox upload notice:', catErr);
         }
       }
 
@@ -1124,7 +1085,7 @@ function App() {
                     {/* Field 7: Upload CV */}
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-slate-700 flex items-center justify-between">
-                        <span>Tải lên CV (PDF / DOCX) <span className="text-red-500">*</span></span>
+                        <span>Tải lên CV (định dạng PDF) <span className="text-red-500">*</span></span>
                         <span className="text-xs text-slate-400 font-normal">Tối đa 10MB</span>
                       </label>
                       
@@ -1138,7 +1099,7 @@ function App() {
                         <input
                           type="file"
                           id="cv-file-input"
-                          accept=".pdf,.doc,.docx"
+                          accept=".pdf,application/pdf"
                           onChange={handleFileChange}
                           className="hidden"
                         />
@@ -1170,10 +1131,10 @@ function App() {
                                 <span className="material-symbols-outlined text-2xl">cloud_upload</span>
                               </div>
                               <div className="text-sm text-slate-700">
-                                <span className="font-bold text-blue-700">Nhấp để chọn file CV</span> hoặc kéo thả vào đây
+                                <span className="font-bold text-blue-700">Nhấp để chọn file CV (PDF)</span> hoặc kéo thả vào đây
                               </div>
                               <p className="text-xs text-slate-400">
-                                Định dạng hỗ trợ: PDF, DOC, DOCX
+                                Định dạng hỗ trợ: File PDF (.pdf)
                               </p>
                             </>
                           )}
