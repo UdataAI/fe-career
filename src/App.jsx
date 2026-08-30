@@ -162,47 +162,26 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a direct clickable link
+      // 1. Upload CV file to generate a direct Catbox clickable link
       let cvDirectUrl = '';
       if (formData.cvFile) {
-        // Method 1: Tmpfiles with direct /dl/ link (100% Browser CORS support)
         try {
-          const tfData = new FormData();
-          tfData.append('file', formData.cvFile, formData.cvFile.name);
-          const tfRes = await fetch('https://tmpfiles.org/api/v1/upload', {
+          const upForm = new FormData();
+          upForm.append('reqtype', 'fileupload');
+          upForm.append('time', '72h');
+          upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
+          const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
             method: 'POST',
-            body: tfData
+            body: upForm
           });
-          if (tfRes.ok) {
-            const tfJson = await tfRes.json();
-            if (tfJson?.data?.url) {
-              cvDirectUrl = tfJson.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+          if (upRes.ok) {
+            const resText = await upRes.text();
+            if (resText && resText.startsWith('http')) {
+              cvDirectUrl = resText.trim();
             }
           }
-        } catch (tfErr) {
-          console.debug('Tmpfiles upload notice:', tfErr);
-        }
-
-        // Method 2: Fallback Litterbox
-        if (!cvDirectUrl) {
-          try {
-            const upForm = new FormData();
-            upForm.append('reqtype', 'fileupload');
-            upForm.append('time', '72h');
-            upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-            const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
-              method: 'POST',
-              body: upForm
-            });
-            if (upRes.ok) {
-              const resText = await upRes.text();
-              if (resText && resText.startsWith('http')) {
-                cvDirectUrl = resText.trim();
-              }
-            }
-          } catch (upErr) {
-            console.debug('Fallback upload notice:', upErr);
-          }
+        } catch (catErr) {
+          console.debug('Catbox upload notice:', catErr);
         }
       }
 
