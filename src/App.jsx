@@ -162,46 +162,68 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a direct Catbox clickable link
+      // 1. Upload CV file to generate a direct clickable link (Hỗ trợ cả PDF và Word .DOCX/.DOC)
       let cvDirectUrl = '';
       if (formData.cvFile) {
-        try {
-          const upForm = new FormData();
-          upForm.append('reqtype', 'fileupload');
-          upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const upRes = await fetch('https://catbox.moe/user/api.php', {
-            method: 'POST',
-            body: upForm
-          });
-          if (upRes.ok) {
-            const resText = await upRes.text();
-            if (resText && resText.startsWith('http')) {
-              cvDirectUrl = resText.trim();
-            }
-          }
-        } catch (catErr) {
-          console.debug('Catbox upload notice:', catErr);
-        }
+        const fileName = formData.cvFile.name || 'CV';
+        const isDocx = fileName.toLowerCase().endsWith('.docx') || fileName.toLowerCase().endsWith('.doc');
 
-        // Kênh dự phòng Catbox nếu Kênh chính bị gián đoạn
-        if (!cvDirectUrl) {
+        if (isDocx) {
+          // Kênh xử lý riêng cho file DOCX/DOC (Cho phép tải và mở trực tiếp)
           try {
-            const fbForm = new FormData();
-            fbForm.append('reqtype', 'fileupload');
-            fbForm.append('time', '72h');
-            fbForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-            const fbRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+            const docForm = new FormData();
+            docForm.append('file', formData.cvFile, fileName);
+            const docRes = await fetch('https://tmpfiles.org/api/v1/upload', {
               method: 'POST',
-              body: fbForm
+              body: docForm
             });
-            if (fbRes.ok) {
-              const fbText = await fbRes.text();
-              if (fbText && fbText.startsWith('http')) {
-                cvDirectUrl = fbText.trim();
+            if (docRes.ok) {
+              const docJson = await docRes.json();
+              if (docJson?.data?.url) {
+                cvDirectUrl = docJson.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
               }
             }
-          } catch (fbErr) {
-            console.debug('Fallback upload notice:', fbErr);
+          } catch (docErr) {
+            console.debug('DOCX upload notice:', docErr);
+          }
+        } else {
+          // Kênh xử lý cho file PDF (Catbox Permanent)
+          try {
+            const upForm = new FormData();
+            upForm.append('reqtype', 'fileupload');
+            upForm.append('fileToUpload', formData.cvFile, fileName);
+            const upRes = await fetch('https://catbox.moe/user/api.php', {
+              method: 'POST',
+              body: upForm
+            });
+            if (upRes.ok) {
+              const resText = await upRes.text();
+              if (resText && resText.startsWith('http')) {
+                cvDirectUrl = resText.trim();
+              }
+            }
+          } catch (catErr) {
+            console.debug('Catbox upload notice:', catErr);
+          }
+
+          // Dự phòng nếu Catbox gián đoạn
+          if (!cvDirectUrl) {
+            try {
+              const fbForm = new FormData();
+              fbForm.append('file', formData.cvFile, fileName);
+              const fbRes = await fetch('https://tmpfiles.org/api/v1/upload', {
+                method: 'POST',
+                body: fbForm
+              });
+              if (fbRes.ok) {
+                const fbJson = await fbRes.json();
+                if (fbJson?.data?.url) {
+                  cvDirectUrl = fbJson.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+                }
+              }
+            } catch (fbErr) {
+              console.debug('Fallback upload notice:', fbErr);
+            }
           }
         }
       }
