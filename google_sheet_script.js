@@ -1,12 +1,12 @@
 /**
  * =========================================================================
- * GOOGLE APPS SCRIPT - TỰ ĐỘNG TẠO LINK MỞ CV TRỰC TIẾP VÀ LƯU GOOGLE SHEET
+ * GOOGLE APPS SCRIPT - TỰ ĐỘNG TẠO LINK MỞ CV VĨNH VIỄN VÀ LƯU GOOGLE SHEET
  * =========================================================================
- * Hướng dẫn:
+ * Hướng dẫn cập nhật:
  * 1. Mở Google Sheet -> Tiện ích mở rộng (Extensions) -> Apps Script.
- * 2. Dán toàn bộ code này vào thay thế code cũ.
- * 3. Bấm "Triển khai" (Deploy) -> "Quản lý bản triển khai" (Manage deployments)
- *    -> Bấm biểu tượng cây bút (Chỉnh sửa) -> Chọn "Phiên bản mới" (New version) -> Bấm "Triển khai" (Deploy).
+ * 2. Xóa hết code cũ, dán toàn bộ code này vào.
+ * 3. Bấm "Triển khai" (Deploy) -> "Quản lý bản triển khai" (Manage deployments).
+ * 4. Bấm biểu tượng cây bút (Chỉnh sửa) -> Chọn "Phiên bản mới" (New version) -> Bấm "Triển khai" (Deploy).
  * =========================================================================
  */
 
@@ -41,12 +41,8 @@ function doPost(e) {
         visitorSheet.getRange(foundRow, 2).setValue(data.LastSeen);
         var currentCount = visitorSheet.getRange(foundRow, 4).getValue();
         visitorSheet.getRange(foundRow, 4).setValue((currentCount || 1) + 1);
-        if (data.Page) {
-          visitorSheet.getRange(foundRow, 5).setValue(data.Page);
-        }
-        if (data.Referrer) {
-          visitorSheet.getRange(foundRow, 6).setValue(data.Referrer);
-        }
+        if (data.Page) visitorSheet.getRange(foundRow, 5).setValue(data.Page);
+        if (data.Referrer) visitorSheet.getRange(foundRow, 6).setValue(data.Referrer);
       } else {
         visitorSheet.appendRow([
           data.FirstSeen,
@@ -58,7 +54,7 @@ function doPost(e) {
         ]);
       }
 
-      return ContentService.createTextOutput(JSON.stringify({ status: 'success', message: 'Visitor tracked' }))
+      return ContentService.createTextOutput(JSON.stringify({ status: 'success' }))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
@@ -75,7 +71,7 @@ function doPost(e) {
 
       var cvUrl = data.CV_Link || '';
 
-      // Tự động tạo link xem CV trực tiếp vĩnh viễn (Không cần đăng nhập hay hỏi quyền)
+      // Tự động tạo link xem CV trực tiếp VĨNH VIỄN (Catbox Permanent)
       if (data.fileBase64 && data.fileName) {
         try {
           var decoded = Utilities.base64Decode(data.fileBase64);
@@ -97,22 +93,15 @@ function doPost(e) {
             cvUrl = returnedUrl.trim();
           }
         } catch (catErr) {
-          // Dự phòng nếu không gọi được catbox: dùng Drive
-          try {
-            var folderName = 'SAMETEL_UngTuyen_CV';
-            var folders = DriveApp.getFoldersByName(folderName);
-            var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
-            var driveFile = folder.createFile(blob);
-            driveFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-            cvUrl = driveFile.getUrl();
-          } catch (driveErr) {
-            if (!cvUrl) cvUrl = data.fileName || '';
-          }
+          // Dự phòng nếu Catbox gián đoạn: Dùng link trực tiếp do client gửi
+          if (!cvUrl) cvUrl = data.fileName || '';
         }
       }
 
-      // Ghi thông tin vào Google Sheet (Cột CV_Link chứa link mở trực tiếp file)
+      // Format giờ Việt Nam GMT+7
       var nowVn = Utilities.formatDate(new Date(), "Asia/Ho_Chi_Minh", "dd/MM/yyyy HH:mm:ss");
+
+      // Ghi đúng thứ tự cột: Timestamp, Name, Email, Phone, Position, Location, CV_Link (Vĩnh viễn), Note, Source
       guestSheet.appendRow([
         data.Timestamp || nowVn,
         data.Name || '',
