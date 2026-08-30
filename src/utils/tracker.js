@@ -24,26 +24,17 @@ const postToGoogleSheet = async (payload) => {
   const dataString = JSON.stringify(payload);
 
   try {
-    // Primary: fetch with keepalive and text/plain (avoids CORS preflight blocking in all browsers)
+    // Primary: Standard fetch with text/plain (avoids CORS preflight and 64KB keepalive limit)
     await fetch(GOOGLE_SHEET_URL, {
       method: 'POST',
       mode: 'no-cors',
-      keepalive: true,
       headers: {
         'Content-Type': 'text/plain;charset=utf-8'
       },
       body: dataString
     });
   } catch (err) {
-    // Fallback: navigator.sendBeacon
-    try {
-      if (navigator && typeof navigator.sendBeacon === 'function') {
-        const blob = new Blob([dataString], { type: 'text/plain;charset=utf-8' });
-        navigator.sendBeacon(GOOGLE_SHEET_URL, blob);
-      }
-    } catch (beaconErr) {
-      console.debug('Tracking send notice:', beaconErr);
-    }
+    console.debug('Tracking send notice:', err);
   }
 };
 
