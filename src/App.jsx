@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import sametelJobs from './data/sametel_jobs.json';
-import { trackPageView, trackFormSubmission, fileToBase64 } from './utils/tracker';
-
-const DEFAULT_GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwdDV-NG1_G_lwtS9wSWn_7XJ8ZS4JCNvbmNuwgptgygBAaM0z2mGbYJzwSIMwNLittkw/exec';
-const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL || DEFAULT_GOOGLE_SHEET_URL;
+import { trackPageView, trackFormSubmission } from './utils/tracker';
 
 const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@sametel.com.vn';
 
@@ -170,43 +167,7 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV lên Google Apps Script để sinh link Catbox Permanent (files.catbox.moe)
-      //    Apps Script chạy server-side nên KHÔNG bị CORS, upload trực tiếp lên catbox.moe/user/api.php
-      let cvDirectUrl = '';
-      if (formData.cvFile) {
-        try {
-          const fileBase64 = await fileToBase64(formData.cvFile);
-          if (fileBase64) {
-            const uploadPayload = {
-              type: 'upload_cv',
-              fileBase64: fileBase64,
-              fileName: formData.cvFile.name,
-              fileMime: formData.cvFile.type || 'application/pdf'
-            };
-
-            const gasRes = await fetch(GOOGLE_SHEET_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-              body: JSON.stringify(uploadPayload),
-              redirect: 'follow'
-            });
-
-            // Apps Script redirect trả về JSON chứa link vĩnh viễn
-            try {
-              const gasJson = await gasRes.json();
-              if (gasJson && gasJson.cvUrl && gasJson.cvUrl.startsWith('http')) {
-                cvDirectUrl = gasJson.cvUrl;
-              }
-            } catch (parseErr) {
-              console.debug('GAS response parse notice:', parseErr);
-            }
-          }
-        } catch (uploadErr) {
-          console.debug('CV upload via Apps Script notice:', uploadErr);
-        }
-      }
-
-      // 2. Prepare multipart form data for FormSubmit.co (kèm link CV vĩnh viễn)
+      // 1. Gửi email cho HR TRƯỚC (đảm bảo HR luôn nhận được thông báo ngay lập tức)
       const payload = new FormData();
       payload.append('Họ và tên', formData.fullName);
       payload.append('Số điện thoại', formData.phone);
@@ -215,23 +176,17 @@ function App() {
       payload.append('Khu vực làm việc', formData.location);
       if (formData.cvFile) {
         payload.append('Tên file CV', formData.cvFile.name);
-        if (cvDirectUrl) {
-          payload.append('Link_xem_CV', cvDirectUrl);
-          payload.append('Hồ_sơ_đính_kèm', cvDirectUrl);
-        }
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
+      payload.append('Ghi chú', 'Link xem CV vĩnh viễn đã lưu trên Google Sheet (tab Guest, cột CV_Link)');
       payload.append('UTM Source', window.location.search || 'Direct');
       payload.append('_subject', `[SAMETEL Tuyển dụng] Ứng tuyển: ${formData.position} - ${formData.fullName}`);
       payload.append('_template', 'table');
       payload.append('_captcha', 'false');
 
-      // 3. Send email to HR via FormSubmit endpoint
       const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
+        headers: { 'Accept': 'application/json' },
         body: payload
       });
 
@@ -239,9 +194,13 @@ function App() {
 
       if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
         setSubmitSuccess(true);
-        // 4. Record form submission to Google Sheet (kèm link CV vĩnh viễn)
-        trackFormSubmission(formData, cvDirectUrl);
-        // 5. Track Meta Pixel Lead event
+
+        // 2. SAU KHI email gửi thành công, ghi dữ liệu + upload CV lên Google Sheet
+        //    Apps Script sẽ upload file lên Catbox Permanent (server-side, không CORS)
+        //    và ghi link vĩnh viễn files.catbox.moe vào cột CV_Link
+        trackFormSubmission(formData);
+
+        // 3. Track Meta Pixel Lead event
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Lead', {
             content_name: formData.position,
