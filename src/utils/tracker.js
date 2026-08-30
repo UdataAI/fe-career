@@ -3,6 +3,49 @@
 const DEFAULT_GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwdDV-NG1_G_lwtS9wSWn_7XJ8ZS4JCNvbmNuwgptgygBAaM0z2mGbYJzwSIMwNLittkw/exec';
 const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL || DEFAULT_GOOGLE_SHEET_URL;
 
+const delay = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
+
+// Apps Script Web Apps không trả CORS header ổn định cho POST. JSONP chỉ trả
+// trạng thái theo ApplicationId (không trả PII/CV URL) để frontend xác minh.
+const fetchApplicationStatus = (applicationId) => new Promise((resolve, reject) => {
+  const callbackName = `__sametelStatus_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  const script = document.createElement('script');
+  const timeoutId = window.setTimeout(() => cleanup(new Error('Quá thời gian kiểm tra hồ sơ.')), 10000);
+
+  const cleanup = (error, result) => {
+    window.clearTimeout(timeoutId);
+    delete window[callbackName];
+    script.remove();
+    if (error) reject(error);
+    else resolve(result);
+  };
+
+  window[callbackName] = (result) => cleanup(null, result);
+  script.onerror = () => cleanup(new Error('Không thể kiểm tra trạng thái hồ sơ.'));
+
+  const statusUrl = new URL(GOOGLE_SHEET_URL);
+  statusUrl.searchParams.set('type', 'status');
+  statusUrl.searchParams.set('applicationId', applicationId);
+  statusUrl.searchParams.set('callback', callbackName);
+  script.src = statusUrl.toString();
+  document.head.appendChild(script);
+});
+
+const verifyApplicationSubmission = async (applicationId) => {
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const result = await fetchApplicationStatus(applicationId);
+    if (result?.status === 'success' && result.cvUrl) {
+      return { applicationId, cvUrl: result.cvUrl };
+    }
+    if (result?.status === 'failed') {
+      throw new Error(result.message || 'Hệ thống chưa thể xử lý hồ sơ. Vui lòng liên hệ bộ phận tuyển dụng.');
+    }
+    if (attempt < 3) await delay(750);
+  }
+
+  throw new Error('Không thể xác nhận hồ sơ đã được lưu. Vui lòng thử lại.');
+};
+
 // Generate or retrieve persistent visitor ID
 export const getVisitorId = () => {
   const STORAGE_KEY = 'sametel_visitor_id';
@@ -18,8 +61,12 @@ export const getVisitorId = () => {
 };
 
 // Helper to send data to Google Apps Script Webhook
-const postToGoogleSheet = async (payload) => {
-  if (!GOOGLE_SHEET_URL) return;
+const postToGoogleSheet = async (payload, options = {}) => {
+  const { ignoreErrors = false } = options;
+  if (!GOOGLE_SHEET_URL) {
+    if (ignoreErrors) return;
+    throw new Error('Chưa cấu hình Google Apps Script Web App URL.');
+  }
 
   const dataString = JSON.stringify(payload);
 
@@ -34,7 +81,11 @@ const postToGoogleSheet = async (payload) => {
       body: dataString
     });
   } catch (err) {
-    console.debug('Tracking send notice:', err);
+    if (ignoreErrors) {
+      console.debug('Tracking send notice:', err);
+      return;
+    }
+    throw new Error('Không thể tải hồ sơ lên hệ thống. Vui lòng thử lại.', { cause: err });
   }
 };
 
@@ -53,7 +104,7 @@ export const getVietnamTimestamp = () => {
       hour12: false
     };
     return new Intl.DateTimeFormat('en-GB', options).format(d).replace(',', '');
-  } catch (e) {
+  } catch {
     return new Date().toISOString();
   }
 };
@@ -84,7 +135,7 @@ export const trackPageView = async () => {
       Referrer: document.referrer || 'Direct / Refresh'
     };
 
-    await postToGoogleSheet(payload);
+    await postToGoogleSheet(payload, { ignoreErrors: true });
   } catch (err) {
     console.debug('Tracking page view notice:', err);
   }
@@ -100,7 +151,7 @@ export const fileToBase64 = (file) => {
         const result = reader.result || '';
         const base64 = typeof result === 'string' ? result.split(',')[1] : '';
         resolve(base64 || '');
-      } catch (e) {
+      } catch {
         resolve('');
       }
     };
@@ -110,36 +161,50 @@ export const fileToBase64 = (file) => {
 };
 
 // Track Form Submission to Guest sheet
-export const trackFormSubmission = async (formData, cvUrl = '') => {
-  try {
-    let fileBase64Str = '';
-    if (formData.cvFile && formData.cvFile.size < 12 * 1024 * 1024) {
-      try {
-        fileBase64Str = await fileToBase64(formData.cvFile);
-      } catch (b64Err) {
-        console.debug('Base64 conversion notice:', b64Err);
-      }
-    }
-
-    const payload = {
-      type: 'guest',
-      Timestamp: getVietnamTimestamp(),
-      Name: formData.fullName || '',
-      Email: formData.email || '',
-      Phone: formData.phone || '',
-      Position: formData.position || '',
-      Location: formData.location || '',
-      Experience: '',
-      CV_Link: cvUrl || (formData.cvFile ? formData.cvFile.name : ''),
-      fileBase64: fileBase64Str,
-      fileName: formData.cvFile ? formData.cvFile.name : '',
-      fileMime: formData.cvFile ? (formData.cvFile.type || 'application/pdf') : 'application/pdf',
-      Note: formData.coverLetter || '',
-      Source: window.location.search || document.referrer || 'Direct'
-    };
-
-    await postToGoogleSheet(payload);
-  } catch (err) {
-    console.debug('Form tracking notice:', err);
+export const trackFormSubmission = async (formData) => {
+  if (!formData.cvFile) {
+    throw new Error('Vui lòng chọn file CV.');
   }
+
+  if (formData.cvFile.size > 10 * 1024 * 1024) {
+    throw new Error('Dung lượng file CV tối đa là 10MB.');
+  }
+
+  const fileBase64Str = await fileToBase64(formData.cvFile);
+  if (!fileBase64Str) {
+    throw new Error('Không thể đọc file CV. Vui lòng chọn lại file.');
+  }
+
+  const applicationId = typeof crypto !== 'undefined' && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+  const payload = {
+    type: 'guest',
+    ApplicationId: applicationId,
+    Timestamp: getVietnamTimestamp(),
+    Name: formData.fullName || '',
+    Email: formData.email || '',
+    Phone: formData.phone || '',
+    Position: formData.position || '',
+    Location: formData.location || '',
+    fileBase64: fileBase64Str,
+    fileName: formData.cvFile.name,
+    fileMime: formData.cvFile.type || 'application/pdf',
+    Note: formData.coverLetter || '',
+    Source: window.location.search || document.referrer || 'Direct',
+    PageUrl: window.location.href || 'https://sametel.com.vn/'
+  };
+
+  await postToGoogleSheet(payload);
+  return verifyApplicationSubmission(applicationId);
+};
+
+export const updateApplicationEmailStatus = async (applicationId, emailStatus, errorMessage = '') => {
+  await postToGoogleSheet({
+    type: 'email_status',
+    ApplicationId: applicationId,
+    EmailStatus: emailStatus,
+    ErrorMessage: errorMessage
+  }, { ignoreErrors: true });
 };
