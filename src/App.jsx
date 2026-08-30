@@ -198,7 +198,7 @@ function App() {
       if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
         setSubmitSuccess(true);
         // 1. Record form submission to Google Sheets & Google Drive
-        trackFormSubmission(formData, cvDirectUrl);
+        trackFormSubmission(formData);
         // 2. Track Meta Pixel Lead event
         if (typeof window.fbq === 'function') {
           window.fbq('track', 'Lead', {
