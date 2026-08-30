@@ -105,6 +105,11 @@ function App() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+      if (!isPdf) {
+        setFormErrors(prev => ({ ...prev, cvFile: 'Vui lòng chỉ tải lên file CV định dạng PDF (.pdf)' }));
+        return;
+      }
       if (file.size > 10 * 1024 * 1024) {
         setFormErrors(prev => ({ ...prev, cvFile: 'Dung lượng file tối đa là 10MB' }));
         return;
@@ -144,7 +149,7 @@ function App() {
     }
 
     if (!formData.cvFile) {
-      errors.cvFile = 'Vui lòng tải lên file CV (PDF/DOCX)';
+      errors.cvFile = 'Vui lòng tải lên file CV định dạng PDF';
     }
 
     return errors;
@@ -162,7 +167,7 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a direct Catbox clickable link
+      // 1. Upload CV file to generate a permanent direct clickable link (Catbox Permanent)
       let cvDirectUrl = '';
       if (formData.cvFile) {
         try {
@@ -181,28 +186,6 @@ function App() {
           }
         } catch (catErr) {
           console.debug('Catbox upload notice:', catErr);
-        }
-
-        // Kênh dự phòng Catbox nếu Kênh chính bị gián đoạn
-        if (!cvDirectUrl) {
-          try {
-            const fbForm = new FormData();
-            fbForm.append('reqtype', 'fileupload');
-            fbForm.append('time', '72h');
-            fbForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-            const fbRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
-              method: 'POST',
-              body: fbForm
-            });
-            if (fbRes.ok) {
-              const fbText = await fbRes.text();
-              if (fbText && fbText.startsWith('http')) {
-                cvDirectUrl = fbText.trim();
-              }
-            }
-          } catch (fbErr) {
-            console.debug('Fallback upload notice:', fbErr);
-          }
         }
       }
 
@@ -1102,7 +1085,7 @@ function App() {
                     {/* Field 7: Upload CV */}
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-slate-700 flex items-center justify-between">
-                        <span>Tải lên CV (PDF / DOCX) <span className="text-red-500">*</span></span>
+                        <span>Tải lên CV (định dạng PDF) <span className="text-red-500">*</span></span>
                         <span className="text-xs text-slate-400 font-normal">Tối đa 10MB</span>
                       </label>
                       
@@ -1116,7 +1099,7 @@ function App() {
                         <input
                           type="file"
                           id="cv-file-input"
-                          accept=".pdf,.doc,.docx"
+                          accept=".pdf,application/pdf"
                           onChange={handleFileChange}
                           className="hidden"
                         />
@@ -1148,10 +1131,10 @@ function App() {
                                 <span className="material-symbols-outlined text-2xl">cloud_upload</span>
                               </div>
                               <div className="text-sm text-slate-700">
-                                <span className="font-bold text-blue-700">Nhấp để chọn file CV</span> hoặc kéo thả vào đây
+                                <span className="font-bold text-blue-700">Nhấp để chọn file CV (PDF)</span> hoặc kéo thả vào đây
                               </div>
                               <p className="text-xs text-slate-400">
-                                Định dạng hỗ trợ: PDF, DOC, DOCX
+                                Định dạng hỗ trợ: File PDF (.pdf)
                               </p>
                             </>
                           )}
