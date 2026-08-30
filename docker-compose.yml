@@ -5,6 +5,7 @@ services:
       args:
         VITE_HR_EMAIL: ${VITE_HR_EMAIL:-hr@udata.ai}
         VITE_USE_MAILTO_FOR_APPLY: ${VITE_USE_MAILTO_FOR_APPLY:-true}
+        VITE_GOOGLE_SHEET_URL: ${VITE_GOOGLE_SHEET_URL}
     ports:
       - "8081:80"
     restart: unless-stopped

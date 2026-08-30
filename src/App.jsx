@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import sametelJobs from './data/sametel_jobs.json';
-import { trackPageView, trackFormSubmission } from './utils/tracker';
+import { trackPageView, trackFormSubmission, updateApplicationEmailStatus } from './utils/tracker';
 
 const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@sametel.com.vn';
 
@@ -165,81 +165,58 @@ function App() {
 
     setIsSubmitting(true);
     setSubmitError('');
+    let submission = null;
 
     try {
-      // 1. Upload CV file to generate a direct clickable link (Catbox API with Full Browser CORS)
-      let cvDirectUrl = '';
-      if (formData.cvFile) {
-        try {
-          const upForm = new FormData();
-          upForm.append('reqtype', 'fileupload');
-          upForm.append('time', '72h');
-          upForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const upRes = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
-            method: 'POST',
-            body: upForm
-          });
-          if (upRes.ok) {
-            const resText = await upRes.text();
-            if (resText && resText.startsWith('http')) {
-              cvDirectUrl = resText.trim();
-            }
-          }
-        } catch (catErr) {
-          console.debug('Catbox upload notice:', catErr);
-        }
-      }
+      // Apps Script upload Drive + ghi Sheet trước, sau đó trình duyệt gửi link
+      // Drive qua FormSubmit để request có origin/referrer của website thật.
+      submission = await trackFormSubmission(formData);
 
-      // 2. Prepare multipart form data for FormSubmit.co
-      const payload = new FormData();
-      payload.append('Họ và tên', formData.fullName);
-      payload.append('Số điện thoại', formData.phone);
-      payload.append('Email', formData.email || 'Không cung cấp');
-      payload.append('Vị trí ứng tuyển', formData.position);
-      payload.append('Khu vực làm việc', formData.location);
-      if (formData.cvFile) {
-        payload.append('Tên file CV', formData.cvFile.name);
-        if (cvDirectUrl) {
-          payload.append('Link_xem_CV', cvDirectUrl);
-          payload.append('Hồ_sơ_đính_kèm', cvDirectUrl);
-        }
-      }
-      payload.append('Lời nhắn', formData.coverLetter || 'Không có');
-      payload.append('UTM Source', window.location.search || 'Direct');
-      payload.append('_subject', `[SAMETEL Tuyển dụng] Ứng tuyển: ${formData.position} - ${formData.fullName}`);
-      payload.append('_template', 'table');
-      payload.append('_captcha', 'false');
+      const emailPayload = new FormData();
+      emailPayload.append('Mã hồ sơ', submission.applicationId);
+      emailPayload.append('Họ và tên', formData.fullName);
+      emailPayload.append('Số điện thoại', formData.phone);
+      emailPayload.append('Email', formData.email || 'Không cung cấp');
+      emailPayload.append('Vị trí ứng tuyển', formData.position);
+      emailPayload.append('Khu vực làm việc', formData.location);
+      emailPayload.append('CV ứng viên', submission.cvUrl);
+      emailPayload.append('Lời nhắn', formData.coverLetter || 'Không có');
+      emailPayload.append('UTM Source', window.location.search || 'Direct');
+      emailPayload.append('_url', window.location.hostname === 'localhost'
+        ? 'https://sametel.com.vn/'
+        : window.location.href);
+      emailPayload.append('_subject', `[SAMETEL Tuyển dụng] ${formData.position} - ${formData.fullName}`);
+      emailPayload.append('_template', 'table');
+      emailPayload.append('_captcha', 'false');
 
-      // 2. Send email to HR via FormSubmit endpoint
-      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
+      const emailResponse = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: payload
+        headers: { Accept: 'application/json' },
+        body: emailPayload
       });
+      const emailResult = await emailResponse.json().catch(() => ({}));
+      if (!emailResponse.ok || emailResult.success === false || emailResult.success === 'false') {
+        throw new Error(emailResult.message || 'CV đã được lưu nhưng chưa gửi được email cho HR.');
+      }
 
-      const result = await response.json().catch(() => ({}));
+      await updateApplicationEmailStatus(submission.applicationId, 'Sent');
+      setSubmitSuccess(true);
 
-      if (response.ok && (result.success === 'true' || result.success === true || result.message)) {
-        setSubmitSuccess(true);
-        // 1. Record form submission to Google Sheets & Google Drive
-        trackFormSubmission(formData, cvDirectUrl);
-        // 2. Track Meta Pixel Lead event
-        if (typeof window.fbq === 'function') {
-          window.fbq('track', 'Lead', {
-            content_name: formData.position,
-            content_category: 'Recruitment Application',
-            location: formData.location,
-            value: 1,
-            currency: 'VND'
-          });
-        }
-      } else {
-        throw new Error(result.message || 'Không thể gửi biểu mẫu. Vui lòng thử lại sau.');
+      // Track Meta Pixel Lead event
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: formData.position,
+          content_category: 'Recruitment Application',
+          location: formData.location,
+          value: 1,
+          currency: 'VND'
+        });
       }
     } catch (err) {
       console.error('Form submission error:', err);
+      if (submission?.applicationId) {
+        updateApplicationEmailStatus(submission.applicationId, 'Failed', err.message);
+      }
       setSubmitError(err.message || 'Đã có lỗi xảy ra khi gửi hồ sơ. Vui lòng kiểm tra lại kết nối mạng.');
     } finally {
       setIsSubmitting(false);
