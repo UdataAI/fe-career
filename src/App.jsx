@@ -162,29 +162,28 @@ function App() {
     setSubmitError('');
 
     try {
-      // 1. Upload CV file to generate a permanent direct clickable link
+      // 1. Upload CV file to generate a direct clickable link
       let cvDirectUrl = '';
       if (formData.cvFile) {
-        // Priority 1: Catbox (Lưu trữ vĩnh viễn, không bao giờ xóa)
+        // Method 1: Tmpfiles with direct /dl/ link (100% Browser CORS support)
         try {
-          const permForm = new FormData();
-          permForm.append('reqtype', 'fileupload');
-          permForm.append('fileToUpload', formData.cvFile, formData.cvFile.name);
-          const permRes = await fetch('https://catbox.moe/user/api.php', {
+          const tfData = new FormData();
+          tfData.append('file', formData.cvFile, formData.cvFile.name);
+          const tfRes = await fetch('https://tmpfiles.org/api/v1/upload', {
             method: 'POST',
-            body: permForm
+            body: tfData
           });
-          if (permRes.ok) {
-            const resText = await permRes.text();
-            if (resText && resText.startsWith('http')) {
-              cvDirectUrl = resText.trim();
+          if (tfRes.ok) {
+            const tfJson = await tfRes.json();
+            if (tfJson?.data?.url) {
+              cvDirectUrl = tfJson.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
             }
           }
-        } catch (catErr) {
-          console.debug('Permanent Catbox upload notice:', catErr);
+        } catch (tfErr) {
+          console.debug('Tmpfiles upload notice:', tfErr);
         }
 
-        // Priority 2: Fallback Litterbox nếu kết nối Catbox bị gián đoạn
+        // Method 2: Fallback Litterbox
         if (!cvDirectUrl) {
           try {
             const upForm = new FormData();
@@ -218,7 +217,7 @@ function App() {
         payload.append('Tên file CV', formData.cvFile.name);
         if (cvDirectUrl) {
           payload.append('Link_xem_CV', cvDirectUrl);
-          payload.append('CV_URL', cvDirectUrl);
+          payload.append('Hồ_sơ_đính_kèm', cvDirectUrl);
         }
       }
       payload.append('Lời nhắn', formData.coverLetter || 'Không có');
