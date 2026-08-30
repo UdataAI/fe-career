@@ -3,9 +3,10 @@
  * GOOGLE APPS SCRIPT - SAMETEL TUYỂN DỤNG
  * =========================================================================
  * Chức năng:
- * 1. Upload CV lên Catbox Permanent (files.catbox.moe) → Trả link vĩnh viễn
- * 2. Ghi thông tin ứng viên vào Google Sheet tab Guest
- * 3. Ghi lượt truy cập vào Google Sheet tab Visitors
+ * 1. Nhận CV từ ứng viên → Lưu vào Google Drive (vĩnh viễn)
+ * 2. Tạo link xem CV trực tiếp (Anyone with link)
+ * 3. Ghi thông tin ứng viên + link CV vào Google Sheet tab Guest
+ * 4. Ghi lượt truy cập vào Google Sheet tab Visitors
  * =========================================================================
  * Cập nhật:
  * 1. Mở Google Sheet -> Tiện ích mở rộng (Extensions) -> Apps Script
@@ -20,54 +21,7 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet();
 
     // ==========================================
-    // 1. XỬ LÝ UPLOAD CV (Trả link vĩnh viễn về client)
-    // ==========================================
-    if (data.type === 'upload_cv') {
-      var cvUrl = '';
-
-      if (data.fileBase64 && data.fileName) {
-        try {
-          var decoded = Utilities.base64Decode(data.fileBase64);
-          var blob = Utilities.newBlob(decoded, data.fileMime || 'application/pdf', data.fileName);
-
-          var response = UrlFetchApp.fetch('https://catbox.moe/user/api.php', {
-            method: 'post',
-            payload: {
-              reqtype: 'fileupload',
-              fileToUpload: blob
-            },
-            muteHttpExceptions: true
-          });
-
-          var returnedUrl = response.getContentText();
-          if (returnedUrl && returnedUrl.indexOf('http') === 0) {
-            cvUrl = returnedUrl.trim();
-          }
-        } catch (catErr) {
-          // Dự phòng: Lưu vào Google Drive
-          try {
-            var decoded2 = Utilities.base64Decode(data.fileBase64);
-            var blob2 = Utilities.newBlob(decoded2, data.fileMime || 'application/pdf', data.fileName);
-            var folderName = 'SAMETEL_UngTuyen_CV';
-            var folders = DriveApp.getFoldersByName(folderName);
-            var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
-            var driveFile = folder.createFile(blob2);
-            driveFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-            cvUrl = driveFile.getUrl();
-          } catch (driveErr) {
-            cvUrl = data.fileName || '';
-          }
-        }
-      }
-
-      return ContentService.createTextOutput(JSON.stringify({
-        status: 'success',
-        cvUrl: cvUrl
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-
-    // ==========================================
-    // 2. XỬ LÝ LƯỢT TRUY CẬP (VISITORS)
+    // 1. XỬ LÝ LƯỢT TRUY CẬP (VISITORS)
     // ==========================================
     if (data.type === 'visitor') {
       var visitorSheet = sheet.getSheetByName('Visitors');
@@ -110,7 +64,7 @@ function doPost(e) {
     }
 
     // ==========================================
-    // 3. XỬ LÝ ĐIỀN FORM ỨNG TUYỂN (GUEST)
+    // 2. XỬ LÝ ĐIỀN FORM ỨNG TUYỂN (GUEST)
     // ==========================================
     if (data.type === 'guest') {
       var guestSheet = sheet.getSheetByName('Guest');
@@ -120,31 +74,28 @@ function doPost(e) {
         guestSheet.getRange('A1:I1').setFontWeight('bold').setBackground('#DBEAFE');
       }
 
-      var cvUrl2 = data.CV_Link || '';
+      var cvUrl = data.CV_Link || '';
 
-      // Nếu client đã có sẵn link vĩnh viễn thì dùng luôn, không cần upload lại
-      if (!cvUrl2 || !cvUrl2.startsWith('http')) {
-        // Nếu có fileBase64, upload lên Catbox Permanent
-        if (data.fileBase64 && data.fileName) {
-          try {
-            var decoded3 = Utilities.base64Decode(data.fileBase64);
-            var blob3 = Utilities.newBlob(decoded3, data.fileMime || 'application/pdf', data.fileName);
+      // Upload file CV lên Google Drive (Vĩnh viễn, Ai có link đều xem được)
+      if (data.fileBase64 && data.fileName) {
+        try {
+          var decoded = Utilities.base64Decode(data.fileBase64);
+          var blob = Utilities.newBlob(decoded, data.fileMime || 'application/pdf', data.fileName);
 
-            var response3 = UrlFetchApp.fetch('https://catbox.moe/user/api.php', {
-              method: 'post',
-              payload: {
-                reqtype: 'fileupload',
-                fileToUpload: blob3
-              },
-              muteHttpExceptions: true
-            });
+          // Tạo hoặc lấy thư mục chứa CV
+          var folderName = 'SAMETEL_UngTuyen_CV';
+          var folders = DriveApp.getFoldersByName(folderName);
+          var folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName);
 
-            var returnedUrl3 = response3.getContentText();
-            if (returnedUrl3 && returnedUrl3.indexOf('http') === 0) {
-              cvUrl2 = returnedUrl3.trim();
-            }
-          } catch (catErr3) {
-            if (!cvUrl2) cvUrl2 = data.fileName || '';
+          // Tạo file trên Drive
+          var driveFile = folder.createFile(blob);
+          driveFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+          // Link xem trực tiếp trên trình duyệt (không cần đăng nhập, không cần xin quyền)
+          cvUrl = 'https://drive.google.com/file/d/' + driveFile.getId() + '/view';
+        } catch (driveErr) {
+          if (!cvUrl || !cvUrl.startsWith('http')) {
+            cvUrl = data.fileName || '';
           }
         }
       }
@@ -158,7 +109,7 @@ function doPost(e) {
         "'" + (data.Phone || ''),
         data.Position || '',
         data.Location || '',
-        cvUrl2,
+        cvUrl,
         data.Note || '',
         data.Source || 'Direct'
       ]);
@@ -166,7 +117,7 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify({
         status: 'success',
         message: 'Guest application saved',
-        cvUrl: cvUrl2
+        cvUrl: cvUrl
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
