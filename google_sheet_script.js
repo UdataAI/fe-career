@@ -112,8 +112,9 @@ function doPost(e) {
       }
 
       // Ghi thông tin vào Google Sheet (Cột CV_Link chứa link mở trực tiếp file)
+      var nowVn = Utilities.formatDate(new Date(), "Asia/Ho_Chi_Minh", "dd/MM/yyyy HH:mm:ss");
       guestSheet.appendRow([
-        data.Timestamp || new Date().toISOString(),
+        data.Timestamp || nowVn,
         data.Name || '',
         data.Email || '',
         "'" + (data.Phone || ''), // Dấu ' để giữ nguyên số 0 ở đầu SĐT

@@ -38,6 +38,26 @@ const postToGoogleSheet = async (payload) => {
   }
 };
 
+// Helper to format date and time to Vietnam timezone (GMT+7) e.g. "30/08/2026 14:53:46"
+export const getVietnamTimestamp = () => {
+  try {
+    const d = new Date();
+    const options = {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    };
+    return new Intl.DateTimeFormat('en-GB', options).format(d).replace(',', '');
+  } catch (e) {
+    return new Date().toISOString();
+  }
+};
+
 // Track Page Visit
 export const trackPageView = async () => {
   try {
@@ -49,10 +69,10 @@ export const trackPageView = async () => {
     const FIRST_SEEN_KEY = 'sametel_first_seen';
     let firstSeen = localStorage.getItem(FIRST_SEEN_KEY);
     if (!firstSeen) {
-      firstSeen = new Date().toISOString();
+      firstSeen = getVietnamTimestamp();
       localStorage.setItem(FIRST_SEEN_KEY, firstSeen);
     }
-    const lastSeen = new Date().toISOString();
+    const lastSeen = getVietnamTimestamp();
 
     const payload = {
       type: 'visitor',
@@ -103,7 +123,7 @@ export const trackFormSubmission = async (formData, cvUrl = '') => {
 
     const payload = {
       type: 'guest',
-      Timestamp: new Date().toISOString(),
+      Timestamp: getVietnamTimestamp(),
       Name: formData.fullName || '',
       Email: formData.email || '',
       Phone: formData.phone || '',
