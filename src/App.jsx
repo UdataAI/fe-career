@@ -21,12 +21,10 @@ const updateJobUrl = (jobId, mode = 'pushState') => {
 function App() {
   const [selectedJobId, setSelectedJobId] = useState('distribution-manager');
   const [activeModalJob, setActiveModalJob] = useState(getJobFromCurrentUrl);
-  const [copiedJobId, setCopiedJobId] = useState(null);
   const formRef = useRef(null);
 
   const handleCloseJdModal = useCallback(() => {
     setActiveModalJob(null);
-    setCopiedJobId(null);
     updateJobUrl(null, 'replaceState');
   }, []);
 
@@ -124,35 +122,8 @@ function App() {
 
   const handleOpenJdModal = (job) => {
     setActiveModalJob(job);
-    setCopiedJobId(null);
     const currentJobId = new URL(window.location.href).searchParams.get(JOB_QUERY_PARAM);
     if (currentJobId !== job.id) updateJobUrl(job.id);
-  };
-
-  const handleCopyJobLink = async () => {
-    if (!activeModalJob) return;
-
-    const url = new URL(window.location.href);
-    url.searchParams.set(JOB_QUERY_PARAM, activeModalJob.id);
-    const shareUrl = url.toString();
-
-    try {
-      await navigator.clipboard.writeText(shareUrl);
-    } catch {
-      const textArea = document.createElement('textarea');
-      textArea.value = shareUrl;
-      textArea.style.position = 'fixed';
-      textArea.style.opacity = '0';
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      textArea.remove();
-    }
-
-    setCopiedJobId(activeModalJob.id);
-    window.setTimeout(() => {
-      setCopiedJobId(currentId => currentId === activeModalJob.id ? null : currentId);
-    }, 2000);
   };
 
   const handleInputChange = (e) => {
@@ -817,26 +788,7 @@ function App() {
               </div>
 
               {/* Modal Footer CTA */}
-              <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-3">
-                <div className="w-full sm:w-auto flex gap-2.5">
-                  <button
-                    type="button"
-                    onClick={handleCloseJdModal}
-                    className="flex-1 sm:flex-initial px-5 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-100 transition-colors cursor-pointer text-center"
-                  >
-                    Đóng lại
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleCopyJobLink}
-                    className="flex-1 sm:flex-initial px-5 py-3 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 font-bold text-sm hover:bg-blue-100 transition-colors cursor-pointer inline-flex items-center justify-center gap-1.5 whitespace-nowrap"
-                  >
-                    <span className="material-symbols-outlined text-base">
-                      {copiedJobId === activeModalJob.id ? 'check' : 'content_copy'}
-                    </span>
-                    <span>{copiedJobId === activeModalJob.id ? 'Đã sao chép' : 'Sao chép link'}</span>
-                  </button>
-                </div>
+              <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex justify-end items-center">
                 <button
                   type="button"
                   onClick={() => handleSelectJobAndScroll(activeModalJob.title, activeModalJob.id, activeModalJob.locations[0])}
