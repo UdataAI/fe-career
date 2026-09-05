@@ -1,17 +1,45 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import sametelJobs from './data/sametel_jobs.json';
 import { trackPageView, trackFormSubmission, updateApplicationEmailStatus } from './utils/tracker';
 
 const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@sametel.com.vn';
+const JOB_QUERY_PARAM = 'job';
+
+const getJobFromCurrentUrl = () => {
+  if (typeof window === 'undefined') return null;
+  const jobId = new URL(window.location.href).searchParams.get(JOB_QUERY_PARAM);
+  return sametelJobs.find(job => job.id === jobId) || null;
+};
+
+const updateJobUrl = (jobId, mode = 'pushState') => {
+  const url = new URL(window.location.href);
+  if (jobId) url.searchParams.set(JOB_QUERY_PARAM, jobId);
+  else url.searchParams.delete(JOB_QUERY_PARAM);
+  window.history[mode]({}, '', url);
+};
 
 function App() {
   const [selectedJobId, setSelectedJobId] = useState('distribution-manager');
-  const [activeModalJob, setActiveModalJob] = useState(null);
+  const [activeModalJob, setActiveModalJob] = useState(getJobFromCurrentUrl);
+  const [copiedJobId, setCopiedJobId] = useState(null);
   const formRef = useRef(null);
+
+  const handleCloseJdModal = useCallback(() => {
+    setActiveModalJob(null);
+    setCopiedJobId(null);
+    updateJobUrl(null, 'replaceState');
+  }, []);
 
   // Auto track page visit on load
   useEffect(() => {
     trackPageView();
+  }, []);
+
+  // Open the linked job on first load and keep modal state in sync with Back/Forward.
+  useEffect(() => {
+    const syncModalWithUrl = () => setActiveModalJob(getJobFromCurrentUrl());
+    window.addEventListener('popstate', syncModalWithUrl);
+    return () => window.removeEventListener('popstate', syncModalWithUrl);
   }, []);
 
   // Prevent background scrolling when JD Modal is open
@@ -26,16 +54,27 @@ function App() {
     };
   }, [activeModalJob]);
 
+  // Track both card clicks and visits opened directly from a shared job URL.
+  useEffect(() => {
+    if (activeModalJob && typeof window.fbq === 'function') {
+      window.fbq('trackCustom', 'ViewJobDetails', {
+        job_title: activeModalJob.title,
+        job_code: activeModalJob.code,
+        content_name: activeModalJob.title
+      });
+    }
+  }, [activeModalJob]);
+
   // Handle ESC key to close modal
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setActiveModalJob(null);
+        handleCloseJdModal();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [handleCloseJdModal]);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -76,7 +115,7 @@ function App() {
       location: location
     }));
     if (activeModalJob) {
-      setActiveModalJob(null);
+      handleCloseJdModal();
     }
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -85,13 +124,35 @@ function App() {
 
   const handleOpenJdModal = (job) => {
     setActiveModalJob(job);
-    if (typeof window.fbq === 'function') {
-      window.fbq('trackCustom', 'ViewJobDetails', {
-        job_title: job.title,
-        job_code: job.code,
-        content_name: job.title
-      });
+    setCopiedJobId(null);
+    const currentJobId = new URL(window.location.href).searchParams.get(JOB_QUERY_PARAM);
+    if (currentJobId !== job.id) updateJobUrl(job.id);
+  };
+
+  const handleCopyJobLink = async () => {
+    if (!activeModalJob) return;
+
+    const url = new URL(window.location.href);
+    url.searchParams.set(JOB_QUERY_PARAM, activeModalJob.id);
+    const shareUrl = url.toString();
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+    } catch {
+      const textArea = document.createElement('textarea');
+      textArea.value = shareUrl;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      textArea.remove();
     }
+
+    setCopiedJobId(activeModalJob.id);
+    window.setTimeout(() => {
+      setCopiedJobId(currentId => currentId === activeModalJob.id ? null : currentId);
+    }, 2000);
   };
 
   const handleInputChange = (e) => {
@@ -591,7 +652,7 @@ function App() {
         {activeModalJob && (
           <div 
             className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-fade-in"
-            onClick={() => setActiveModalJob(null)}
+            onClick={handleCloseJdModal}
           >
             <div 
               className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden"
@@ -627,7 +688,7 @@ function App() {
 
                 {/* Close Button */}
                 <button
-                  onClick={() => setActiveModalJob(null)}
+                  onClick={handleCloseJdModal}
                   className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
                   title="Đóng cửa sổ"
                 >
@@ -637,6 +698,19 @@ function App() {
 
               {/* Modal Scrollable Body */}
               <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
+
+                {/* GIỚI THIỆU VỀ SAMETEL */}
+                <div className="text-center space-y-2 pb-6 border-b border-slate-100">
+                  <p className="text-xs font-bold uppercase tracking-wider text-blue-700">
+                    Giới thiệu về SAMETEL
+                  </p>
+                  <h3 className="font-display-lg text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">
+                    Gần 20 năm xây dựng năng lực trong Điện – Viễn thông – Solar
+                  </h3>
+                  <p className="max-w-2xl mx-auto text-slate-600 leading-relaxed">
+                    SAMETEL được thành lập từ năm 2006 và hiện hoạt động trong các lĩnh vực Solar, Điện lực, Viễn thông cùng nhiều giải pháp công nghiệp.
+                  </p>
+                </div>
                 
                 {/* 1. MÔ TẢ CÔNG VIỆC */}
                 <div className="space-y-4">
@@ -744,13 +818,25 @@ function App() {
 
               {/* Modal Footer CTA */}
               <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setActiveModalJob(null)}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-100 transition-colors cursor-pointer text-center"
-                >
-                  Đóng lại
-                </button>
+                <div className="w-full sm:w-auto flex gap-2.5">
+                  <button
+                    type="button"
+                    onClick={handleCloseJdModal}
+                    className="flex-1 sm:flex-initial px-5 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-100 transition-colors cursor-pointer text-center"
+                  >
+                    Đóng lại
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCopyJobLink}
+                    className="flex-1 sm:flex-initial px-5 py-3 rounded-xl border border-blue-200 bg-blue-50 text-blue-700 font-bold text-sm hover:bg-blue-100 transition-colors cursor-pointer inline-flex items-center justify-center gap-1.5 whitespace-nowrap"
+                  >
+                    <span className="material-symbols-outlined text-base">
+                      {copiedJobId === activeModalJob.id ? 'check' : 'content_copy'}
+                    </span>
+                    <span>{copiedJobId === activeModalJob.id ? 'Đã sao chép' : 'Sao chép link'}</span>
+                  </button>
+                </div>
                 <button
                   type="button"
                   onClick={() => handleSelectJobAndScroll(activeModalJob.title, activeModalJob.id, activeModalJob.locations[0])}
@@ -1162,7 +1248,7 @@ function App() {
 
                     {/* Privacy Note */}
                     <p className="text-center text-xs text-slate-500 leading-relaxed pt-2">
-                      🔒 Thông tin của ứng viên chỉ được sử dụng cho mục đích tuyển dụng. Bộ phận tuyển dụng SAMETEL sẽ liên hệ với các hồ sơ phù hợp.
+                      🔒 Nhấn &quot;Gửi hồ sơ ứng tuyển&quot; đồng nghĩa với việc bạn cho phép SAMETEL lưu trữ và xử lý thông tin này phục vụ cho công tác tuyển dụng. Chúng tôi cam kết không chia sẻ dữ liệu cho bên thứ ba và chỉ liên hệ với hồ sơ phù hợp.
                     </p>
 
                   </form>
