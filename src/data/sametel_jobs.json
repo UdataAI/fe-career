@@ -188,47 +188,55 @@
     "code": "05",
     "title": "Kỹ Sư Trưởng Phụ Trách Kỹ Thuật, Thi Công & Đào Tạo Solar - BESS (Quản Lý Team 3-5 Người)",
     "shortTitle": "Kỹ Sư Trưởng Solar – BESS",
-    "cardSalary": "25 – 35 triệu + Thưởng KPI",
-    "salary": "25.000.000 - 35.000.000 VNĐ + Thưởng KPI",
+    "cardSalary": "25 – 35 triệu + Thưởng hiệu quả",
+    "salary": "25.000.000 - 35.000.000 VNĐ/tháng + Thưởng hiệu quả",
     "baseSalary": "25 – 35 triệu",
-    "totalIncome": "25 – 35 triệu + KPI + Thưởng Quý/Năm",
+    "totalIncome": "25 – 35 triệu + Thưởng hiệu quả",
     "quantity": "01 vị trí",
     "locations": ["Hà Nội"],
-    "locationText": "Hà Nội",
+    "locationText": "Hà Đông, Hà Nội",
     "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
-    "badge": "Lương đến 35M • Lộ trình Tech Director",
-    "highlight": "Quản lý team kỹ thuật 3–5 người & Đào tạo kỹ thuật toàn hệ thống Đại lý",
+    "badge": "Lương đến 35M • Quản lý team kỹ thuật",
+    "highlight": "Quản lý team kỹ thuật 3–5 người | Solar – Inverter – BESS/Hybrid",
     "descriptionSections": [
       {
-        "title": "1. Quản lý & Điều hành Đội ngũ Kỹ thuật Nội bộ (Trọng tâm - 30%)",
-        "content": "• Quản lý & Phân công: Điều hành, phân công lịch trình làm việc và giao chỉ tiêu công việc hàng ngày/tuần cho đội ngũ kỹ sư/kỹ thuật viên nội bộ (3 - 5 nhân sự).\n• Đào tạo & Phát triển: Đào tạo nâng cao tay nghề, hướng dẫn chuyên môn và quy trình chuẩn cho nhân viên cấp dưới.\n• Đánh giá hiệu quả (KPI): Đánh giá năng lực, hiệu suất định kỳ; đề xuất khen thưởng hoặc xử lý.\n• Xây dựng quy trình: Thiết lập các quy trình vận hành tiêu chuẩn (SOP), an toàn lao động và checklist kiểm tra chất lượng thi công."
+        "title": "Quản lý & Điều phối đội ngũ kỹ thuật",
+        "content": "Quản lý, điều phối, hướng dẫn chuyên môn và phụ trách hiệu quả cho đội ngũ kỹ thuật 3–5 người trong các hoạt động liên quan đến Solar, Inverter và BESS."
       },
       {
-        "title": "2. Đào tạo & Chuyển giao Kỹ thuật cho Hệ thống Đại lý (30%)",
-        "content": "• Biên soạn tài liệu: Xây dựng bộ giáo trình, video/slide hướng dẫn chuẩn về tư vấn, lắp đặt, cài đặt Inverter & Hệ thống lưu trữ BESS (Grid-tied, Off-grid, Hybrid) cho Đại lý.\n• Tổ chức đào tạo: Trực tiếp đứng lớp huấn luyện kỹ thuật định kỳ (Online/Offline) cho kỹ thuật viên của hệ thống đại lý toàn quốc.\n• Cấp chứng chỉ: Kiểm tra, đánh giá năng lực lắp đặt của đối tác/đại lý để cấp chứng nhận chuẩn kỹ thuật của Công ty."
+        "title": "Đào tạo & Chuyển giao kiến thức",
+        "content": "Phụ trách hỗ trợ kỹ thuật, đào tạo và chuyển giao kiến thức cho đội ngũ nội bộ, đại lý và đối tác của Công ty."
       },
       {
-        "title": "3. Quản lý Thi công & Giám sát Dự án EPC / Dự án Mẫu (20%)",
-        "content": "• Khảo sát & Thiết kế: Phê duyệt hoặc trực tiếp lập bản vẽ thiết kế (AutoCAD, PVSyst, Helioscope), bóc tách khối lượng (BOQ) cho các dự án Solar - BESS trọng điểm.\n• Giám sát chất lượng: Kiểm soát tiến độ, an toàn điện và chất lượng thi công tại công trường.\n• Xử lý sự cố (Troubleshooting): Trực tiếp chỉ đạo xử lý các sự cố phức tạp về Inverter, Cell pin BESS, hệ thống quản lý pin BMS, kết nối lưới điện."
+        "title": "Triển khai & Giám sát dự án",
+        "content": "Tham gia triển khai, giám sát và hỗ trợ xử lý các vấn đề kỹ thuật tại các dự án Solar – BESS."
       },
       {
-        "title": "4. Nghiên cứu Sản phẩm (R&D) & Dịch vụ Sau bán hàng (20%)",
-        "content": "• Thử nghiệm sản phẩm (Test Lab): Phối hợp với Hãng thiết bị để test, đánh giá tính năng các dòng Inverter, BESS mới trước khi phân phối đại trà.\n• Quản lý Bảo hành: Quản lý quy trình tiếp nhận, chẩn đoán lỗi, bảo hành, sửa chữa, thay thế linh kiện cho khách hàng và đại lý."
+        "title": "Đánh giá sản phẩm & Dịch vụ sau bán hàng",
+        "content": "Phối hợp đánh giá sản phẩm mới, hỗ trợ kỹ thuật, bảo hành và các hoạt động sau bán hàng liên quan đến sản phẩm Inverter/BESS."
       }
     ],
     "requirements": [
-      "Trình độ: Tốt nghiệp Đại học trở lên chuyên ngành Điện - Điện tử, Hệ thống Điện, Năng lượng tái tạo, Tự động hóa hoặc các ngành liên quan.",
-      "Kinh nghiệm: Tối thiểu 3 - 5 năm kinh nghiệm thiết kế, thi công Solar (Bắt buộc có kinh nghiệm thực chiến BESS / Hybrid).",
-      "Tối thiểu 1 - 2 năm kinh nghiệm quản lý nhóm kỹ thuật (từ 3 người trở lên).",
-      "Kỹ năng chuyên môn: Sử dụng thành thạo AutoCAD, PVsyst, PV*SOL, PVSketch... Am hiểu sâu về Inverter Hybrid, Lithium-ion Battery, BMS, tủ điện AC/DC.",
-      "Kỹ năng quản lý & mềm: Kỹ năng lãnh đạo, giao việc, kỹ năng sư phạm truyền đạt tốt, sẵn sàng đi công tác thị trường."
+      "Tốt nghiệp Đại học chuyên ngành Điện – Điện tử, Hệ thống điện, Năng lượng tái tạo, Tự động hóa hoặc lĩnh vực liên quan.",
+      "Có khoảng 3–5 năm kinh nghiệm trong lĩnh vực điện mặt trời, ưu tiên ứng viên đã tham gia các dự án BESS/Hybrid.",
+      "Có kinh nghiệm lead, điều phối hoặc hướng dẫn đội kỹ thuật (từ 3 người trở lên).",
+      "Có kinh nghiệm thiết kế, thi công hoặc vận hành hệ thống Solar.",
+      "Sử dụng được AutoCAD, PVsyst hoặc các phần mềm thiết kế Solar tương đương.",
+      "Có kiến thức về Inverter, Battery/BESS, BMS và hệ thống điện AC/DC.",
+      "Có khả năng giao tiếp, hướng dẫn và phối hợp công việc tốt.",
+      "Có thể đi công tác khi dự án yêu cầu.",
+      "Ưu tiên: Ứng viên từng làm việc với các hãng Inverter, Battery/BESS hoặc đơn vị EPC Solar.",
+      "Ưu tiên: Có kinh nghiệm đào tạo kỹ thuật hoặc hỗ trợ hệ thống đại lý.",
+      "Ưu tiên: Có kinh nghiệm thực tế với hệ thống Hybrid/BESS."
     ],
     "benefits": [
-      "Thu nhập: Lương cứng 25.000.000 - 35.000.000 VNĐ/tháng (Thỏa thuận theo năng lực) + Thưởng KPI quản lý team & chất lượng đào tạo + Thưởng Quý/Năm.",
-      "Phụ cấp: Đầy đủ công tác phí, phụ cấp điện thoại, xăng xe, ăn trưa.",
-      "Chế độ Bảo hiểm: Đóng BHXH, BHYT, BHTN theo đúng quy định pháp luật.",
-      "Lộ trình thăng tiến: Cơ hội phát triển lên Giám đốc Kỹ thuật (Technical Director).",
-      "Phúc lợi khác: Thưởng Lễ/Tết, tháng lương 13+, du lịch hàng năm, quà sinh nhật."
+      "Thu nhập: 25.000.000 – 35.000.000 VNĐ/tháng, thỏa thuận theo năng lực + thưởng hiệu quả công việc.",
+      "Được làm việc trực tiếp với các giải pháp Solar – Inverter – BESS/Hybrid và các sản phẩm mới trên thị trường.",
+      "Có đội ngũ kỹ thuật để phối hợp và trực tiếp dẫn dắt.",
+      "Đầy đủ công tác phí, phụ cấp điện thoại, xăng xe, ăn trưa theo chính sách Công ty.",
+      "Tham gia BHXH, BHYT, BHTN theo quy định.",
+      "Thưởng Lễ/Tết, tháng lương 13+, du lịch và các chế độ phúc lợi khác.",
+      "Có cơ hội phát triển lên các vị trí quản lý kỹ thuật cao hơn."
     ]
   }
 ]
