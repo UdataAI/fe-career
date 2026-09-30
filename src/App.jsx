@@ -197,41 +197,47 @@ function App() {
 
     setIsSubmitting(true);
     setSubmitError('');
-    let submission = null;
-
     try {
-      // Apps Script upload Drive + ghi Sheet trước, sau đó trình duyệt gửi link
-      // Drive qua FormSubmit để request có origin/referrer của website thật.
-      submission = await trackFormSubmission(formData);
+      const submission = await trackFormSubmission(formData);
 
-      const emailPayload = new FormData();
-      emailPayload.append('Mã hồ sơ', submission.applicationId);
-      emailPayload.append('Họ và tên', formData.fullName);
-      emailPayload.append('Số điện thoại', formData.phone);
-      emailPayload.append('Email', formData.email || 'Không cung cấp');
-      emailPayload.append('Vị trí ứng tuyển', formData.position);
-      emailPayload.append('Khu vực làm việc', formData.location);
-      emailPayload.append('CV ứng viên', submission.cvUrl);
-      emailPayload.append('Lời nhắn', formData.coverLetter || 'Không có');
-      emailPayload.append('UTM Source', window.location.search || 'Direct');
-      emailPayload.append('_url', window.location.hostname === 'localhost'
-        ? 'https://sametel.com.vn/'
-        : window.location.href);
-      emailPayload.append('_subject', `[SAMETEL Tuyển dụng] ${formData.position} - ${formData.fullName}`);
-      emailPayload.append('_template', 'table');
-      emailPayload.append('_captcha', 'false');
+      // Giữ tương thích với deployment cũ trong lúc chuyển sang MailApp.
+      // Lỗi email không được làm thất bại hồ sơ đã xác nhận lưu.
+      if (submission.emailProvider !== 'apps-script') {
+        try {
+          const emailPayload = new FormData();
+          emailPayload.append('Mã hồ sơ', submission.applicationId);
+          emailPayload.append('Họ và tên', formData.fullName);
+          emailPayload.append('Số điện thoại', formData.phone);
+          emailPayload.append('Email', formData.email || 'Không cung cấp');
+          emailPayload.append('Vị trí ứng tuyển', formData.position);
+          emailPayload.append('Khu vực làm việc', formData.location);
+          emailPayload.append('CV ứng viên', submission.cvUrl);
+          emailPayload.append('Lời nhắn', formData.coverLetter || 'Không có');
+          emailPayload.append('UTM Source', window.location.search || 'Direct');
+          emailPayload.append('_url', window.location.hostname === 'localhost'
+            ? 'https://sametel.com.vn/'
+            : window.location.href);
+          emailPayload.append('_subject', `[SAMETEL Tuyển dụng] ${formData.position} - ${formData.fullName}`);
+          emailPayload.append('_template', 'table');
+          emailPayload.append('_captcha', 'false');
 
-      const emailResponse = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: emailPayload
-      });
-      const emailResult = await emailResponse.json().catch(() => ({}));
-      if (!emailResponse.ok || emailResult.success === false || emailResult.success === 'false') {
-        throw new Error(emailResult.message || 'CV đã được lưu nhưng chưa gửi được email cho HR.');
+          const emailResponse = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(HR_EMAIL)}`, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: emailPayload,
+            signal: AbortSignal.timeout(15000)
+          });
+          const emailResult = await emailResponse.json().catch(() => ({}));
+          if (!emailResponse.ok || (emailResult.success !== true && emailResult.success !== 'true')) {
+            throw new Error(emailResult.message || 'CV đã được lưu nhưng chưa gửi được email cho HR.');
+          }
+
+          void updateApplicationEmailStatus(submission.applicationId, 'Sent');
+        } catch (emailError) {
+          console.error('HR email notification error:', emailError);
+          void updateApplicationEmailStatus(submission.applicationId, 'Failed', emailError.message);
+        }
       }
-
-      await updateApplicationEmailStatus(submission.applicationId, 'Sent');
       setSubmitSuccess(true);
 
       // Track Meta Pixel Lead event
@@ -246,9 +252,6 @@ function App() {
       }
     } catch (err) {
       console.error('Form submission error:', err);
-      if (submission?.applicationId) {
-        updateApplicationEmailStatus(submission.applicationId, 'Failed', err.message);
-      }
       setSubmitError(err.message || 'Đã có lỗi xảy ra khi gửi hồ sơ. Vui lòng kiểm tra lại kết nối mạng.');
     } finally {
       setIsSubmitting(false);
@@ -954,10 +957,10 @@ function App() {
                     </div>
                     <div className="space-y-2">
                       <h3 className="font-display-lg text-2xl font-bold text-slate-900">
-                        Nộp hồ sơ thành công!
+                        Hồ sơ đã được tiếp nhận!
                       </h3>
                       <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto">
-                        Cảm ơn bạn đã ứng tuyển vào vị trí <strong>{formData.position}</strong> tại SAMETEL. Chúng tôi sẽ phản hồi lại bạn sớm nhất có thể.
+                        Cảm ơn bạn đã ứng tuyển vào vị trí <strong>{formData.position}</strong> tại SAMETEL. Hồ sơ của bạn đã được lưu. Bộ phận tuyển dụng sẽ liên hệ với hồ sơ phù hợp.
                       </p>
                     </div>
                     

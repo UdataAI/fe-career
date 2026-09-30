@@ -2,10 +2,13 @@
  * GOOGLE APPS SCRIPT - SAMETEL TUYỂN DỤNG
  *
  * Guest flow: upload CV to Drive -> append Google Sheet -> return status to browser.
- * The browser then sends the Drive link to FormSubmit with a real web origin.
+ * MailApp notifies HR after the application is saved. Email failures do not
+ * invalidate a saved application.
  * Visitor flow: create/update the Visitors sheet.
  *
  * Script Properties (Project Settings -> Script Properties):
+ *   HR_EMAIL = HR recipient address (required)
+ *   SPREADSHEET_ID = receiving Google Sheet ID (required for standalone scripts)
  *   CV_FOLDER_NAME = SAMETEL_UngTuyen_CV (optional)
  *
  * Deploy as Web app:
@@ -14,7 +17,7 @@
  */
 
 /* global ContentService, PropertiesService, DriveApp, Utilities, LockService,
-          SpreadsheetApp */
+          SpreadsheetApp, MailApp */
 
 var GUEST_HEADERS = [
   'Timestamp', 'Name', 'Email', 'Phone', 'Position', 'Location',
@@ -28,16 +31,28 @@ var ERROR_HEADERS = ['Timestamp', 'Application_ID', 'Error'];
  */
 // eslint-disable-next-line no-unused-vars
 function authorizeServices() {
-  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  if (!spreadsheet) {
-    throw new Error('Apps Script phải được mở từ Google Sheet nhận hồ sơ.');
-  }
+  var spreadsheet = getSpreadsheet_();
 
   var folder = getCvFolder_();
+  var hrEmail = getHrEmail_();
+  var remainingQuota = MailApp.getRemainingDailyQuota();
   var authorizationResult = 'Authorized: Sheet=' + spreadsheet.getName() +
-    ', Drive folder=' + folder.getName();
+    ', Drive folder=' + folder.getName() + ', HR=' + hrEmail +
+    ', Email quota=' + remainingQuota;
   console.log(authorizationResult);
   return authorizationResult;
+}
+
+function getSpreadsheet_() {
+  var spreadsheetId = String(PropertiesService.getScriptProperties()
+    .getProperty('SPREADSHEET_ID') || '').trim();
+  if (spreadsheetId) return SpreadsheetApp.openById(spreadsheetId);
+
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  if (!spreadsheet) {
+    throw new Error('Cần thêm SPREADSHEET_ID trong Script Properties: ID của Google Sheet nhận hồ sơ.');
+  }
+  return spreadsheet;
 }
 
 function jsonResponse_(body) {
@@ -192,6 +207,8 @@ function handleGuest_(spreadsheet, data) {
       'Ready',
       data.ApplicationId
     ]);
+    SpreadsheetApp.flush();
+    notifyHrForRow_(guestSheet, guestSheet.getLastRow());
   } finally {
     lock.releaseLock();
   }
@@ -199,7 +216,90 @@ function handleGuest_(spreadsheet, data) {
   return cvUrl;
 }
 
+function getHrEmail_() {
+  var email = String(PropertiesService.getScriptProperties().getProperty('HR_EMAIL') || '').trim();
+  if (!/^[^\s@,;]+@[^\s@,;]+\.[^\s@,;]+$/.test(email)) {
+    throw new Error('Cần cấu hình HR_EMAIL hợp lệ trong Script Properties.');
+  }
+  return email;
+}
+
+function notifyHrForRow_(sheet, row) {
+  var statusCell = sheet.getRange(row, 10);
+  var values = sheet.getRange(row, 1, 1, GUEST_HEADERS.length).getValues()[0];
+  if (!values[6] || !values[10] || values[9] === 'Sent' || values[9] === 'Sending') return;
+
+  try {
+    var recipient = getHrEmail_();
+    if (MailApp.getRemainingDailyQuota() < 1) {
+      throw new Error('Hết hạn mức gửi mail hôm nay. Chạy retryFailedHrEmails vào ngày tiếp theo.');
+    }
+    statusCell.setValue('Sending');
+    SpreadsheetApp.flush();
+    MailApp.sendEmail({
+      to: recipient,
+      name: 'SAMETEL Tuyển dụng',
+      subject: ('[SAMETEL Tuyển dụng] ' + values[4] + ' - ' + values[1]).replace(/[\r\n]/g, ' ').slice(0, 200),
+      body: [
+        'Mã hồ sơ: ' + values[10],
+        'Thời gian: ' + values[0],
+        'Họ và tên: ' + values[1],
+        'Email: ' + (values[2] || 'Không cung cấp'),
+        'Số điện thoại: ' + String(values[3]).replace(/^'/, ''),
+        'Vị trí ứng tuyển: ' + values[4],
+        'Khu vực làm việc: ' + values[5],
+        'CV ứng viên: ' + values[6],
+        'Lời nhắn: ' + (values[7] || 'Không có'),
+        'Nguồn: ' + values[8]
+      ].join('\n')
+    });
+  } catch (error) {
+    console.error('HR notification failed:', error);
+    try {
+      statusCell.setValue('Failed: ' + String(error.message || error).slice(0, 500));
+    } catch (statusError) {
+      console.error('Cannot record email failure:', statusError);
+    }
+    return;
+  }
+
+  // Không đổi thành Failed khi đã gửi mail nhưng ghi trạng thái Sent bị lỗi.
+  // Giữ Sending để tránh tự gửi trùng trong lần retry.
+  try {
+    statusCell.setValue('Sent');
+  } catch (statusError) {
+    console.error('Email sent; cannot record Sent status:', statusError);
+  }
+}
+
+// Chạy thủ công trong Editor: xử lý tối đa 20 hồ sơ lỗi/chưa gửi mỗi lần,
+// chỉ dùng dữ liệu có sẵn trong Sheet, không upload lại CV.
+// eslint-disable-next-line no-unused-vars
+function retryFailedHrEmails() {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    var sheet = getSpreadsheet_().getSheetByName('Guest');
+    if (!sheet || sheet.getLastRow() < 2) return;
+    var rows = sheet.getRange(2, 1, sheet.getLastRow() - 1, GUEST_HEADERS.length).getValues();
+    var attempted = 0;
+    for (var i = 0; i < rows.length && attempted < 20; i++) {
+      var status = String(rows[i][9] || '');
+      if (rows[i][6] && rows[i][10] && (status === 'Ready' || status.indexOf('Failed:') === 0)) {
+        if (MailApp.getRemainingDailyQuota() < 1) break;
+        notifyHrForRow_(sheet, i + 2);
+        attempted++;
+      }
+    }
+    console.log('HR email retries attempted: ' + attempted);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
 function handleEmailStatus_(spreadsheet, data) {
+  // Frontend cũ có thể vẫn gửi FormSubmit; không ghi đè kết quả MailApp.
+  if (PropertiesService.getScriptProperties().getProperty('HR_EMAIL')) return;
   var guestSheet = spreadsheet.getSheetByName('Guest');
   if (!guestSheet || guestSheet.getLastRow() < 2 || !data.ApplicationId) {
     throw new Error('Application not found');
@@ -242,7 +342,7 @@ function doGet(e) {
       return jsonpResponse_(callback, { status: 'ignored' });
     }
 
-    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var spreadsheet = getSpreadsheet_();
     var guestSheet = spreadsheet.getSheetByName('Guest');
     if (!guestSheet || guestSheet.getLastRow() < 2) {
       var earlyError = findSubmissionError_(spreadsheet, e.parameter.applicationId);
@@ -264,17 +364,12 @@ function doGet(e) {
     }
 
     var emailStatus = String(guestSheet.getRange(match.getRow(), 10).getValue() || 'Pending');
-    if (emailStatus.indexOf('Failed:') === 0) {
-      return jsonpResponse_(callback, {
-        status: 'failed',
-        message: emailStatus.replace(/^Failed:\s*/, '') || 'Không thể gửi email cho HR'
-      });
-    }
-
+    var cvUrl = guestSheet.getRange(match.getRow(), 7).getValue();
     return jsonpResponse_(callback, {
-      status: emailStatus === 'Ready' || emailStatus === 'Sent' ? 'success' : 'pending',
+      status: cvUrl ? 'success' : 'pending',
       emailStatus: emailStatus,
-      cvUrl: guestSheet.getRange(match.getRow(), 7).getValue()
+      emailProvider: 'apps-script',
+      cvUrl: cvUrl
     });
   } catch (error) {
     console.error(error);
@@ -288,7 +383,7 @@ function doPost(e) {
   var spreadsheet = null;
   try {
     data = JSON.parse(e.postData.contents);
-    spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    spreadsheet = getSpreadsheet_();
 
     if (data.type === 'visitor') {
       handleVisitor_(spreadsheet, data);
@@ -304,7 +399,7 @@ function doPost(e) {
       var cvUrl = handleGuest_(spreadsheet, data);
       return jsonResponse_({
         status: 'success',
-        message: 'Application saved; browser may notify HR',
+        message: 'Application saved; HR notification handled separately',
         applicationId: data.ApplicationId,
         cvUrl: cvUrl
       });

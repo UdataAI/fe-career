@@ -32,27 +32,53 @@ cp .env.example .env
 | `VITE_USE_MAILTO_FOR_APPLY` | `true` = mở mailto, `false` = dùng form trên web | `true` |
 | `VITE_GOOGLE_SHEET_URL` | URL `/exec` của Google Apps Script Web App | Không có |
 
-## Cấu hình Google Drive, Sheet và FormSubmit
+## Cấu hình Google Drive, Sheet và email HR
 
 Luồng nộp hồ sơ upload PDF lên Drive và ghi link vào tab `Guest` qua Apps
-Script. Sau khi xác nhận link Drive, trình duyệt gửi link đó cho HR qua
-FormSubmit để request có origin/referrer của website.
+Script. Hồ sơ được tiếp nhận khi đã có file Drive và dòng trong Sheet.
+Apps Script gửi email kèm link CV bằng MailApp; lỗi email được ghi riêng
+trong `Email_Status`, không làm ứng viên phải nộp lại hồ sơ.
+Frontend vẫn hỗ trợ FormSubmit với deployment Apps Script cũ trong thời gian chuyển đổi.
 
 1. Mở Google Sheet nhận dữ liệu, chọn **Extensions → Apps Script**.
 2. Thay code hiện có bằng toàn bộ nội dung file `google_sheet_script.js`.
 3. Vào **Project Settings → Script Properties**, thêm:
+   - `SPREADSHEET_ID`: ID trong URL Google Sheet nhận hồ sơ:
+     `https://docs.google.com/spreadsheets/d/ID_CUA_SHEET/edit`.
+     Bắt buộc với Apps Script độc lập; tài khoản chạy script cần quyền sửa Sheet.
+   - `HR_EMAIL`: email HR nhận hồ sơ, ví dụ `hr@sametel.com.vn`. Đây là
+     cấu hình phía server, độc lập với `VITE_HR_EMAIL` ở frontend.
    - `CV_FOLDER_NAME`: tên thư mục Drive, không bắt buộc; mặc định là
      `SAMETEL_UngTuyen_CV`.
-4. Chọn **Deploy → Manage deployments → Edit → New version**.
-5. Chọn **Execute as: Me** và **Who has access: Anyone**, sau đó cấp quyền
+4. Chọn hàm **authorizeServices → Run**, chấp nhận quyền gửi email mới.
+   Log cần có `HR=...` và `Email quota=...`. Nếu manifest `appsscript.json`
+   khai báo `oauthScopes` thủ công, bổ sung
+   `https://www.googleapis.com/auth/script.send_mail`, giữ các quyền cũ.
+5. Chọn **Deploy → Manage deployments → Edit → New version**.
+6. Chọn **Execute as: Me** và **Who has access: Anyone**, sau đó cấp quyền
    Google Drive và Google Sheet.
-6. Sao chép URL kết thúc bằng `/exec` vào `VITE_GOOGLE_SHEET_URL`, rồi build
+7. Giữ URL `/exec` hiện có nếu cập nhật deployment cũ. Nếu tạo deployment
+   mới, sao chép URL vào `VITE_GOOGLE_SHEET_URL`, rồi build
    lại website.
-7. Gửi một hồ sơ thử. Nếu FormSubmit gửi thư kích hoạt tới HR, mở thư và xác
-   nhận địa chỉ, sau đó gửi hồ sơ thử lần nữa.
+8. Gửi một hồ sơ thử, kiểm tra link Drive, dòng Sheet, `Email_Status` và
+   mail HR (kể cả thư rác). HR dùng Microsoft vẫn nhận được; mail được gửi
+   từ tài khoản Google thực thi Apps Script.
 
 Tab `Guest` sẽ có thêm `Email_Status` và `Application_ID`. Một hồ sơ hoàn tất
-khi `CV_Link` mở được và `Email_Status` có giá trị `Sent`.
+khi `CV_Link` mở được. `Sent` nghĩa là dịch vụ gửi mail đã chấp nhận gửi,
+không bảo đảm mail đã vào inbox HR.
+
+Khi nâng cấp, deploy frontend mới trước Apps Script mới để hạn chế client cũ
+gửi FormSubmit đồng thời với MailApp. Không thay đổi CI/CD hoặc URL webhook.
+
+Để gửi lại các hồ sơ lỗi cũ, kiểm tra HR chưa nhận email rồi chạy thủ công
+**retryFailedHrEmails** trong Apps Script Editor. Mỗi lần xử lý tối đa 20 dòng
+`Ready` hoặc `Failed: ...`, bỏ qua `Sent` và `Sending`, không tạo lại file CV.
+`Failed to fetch` có thể xảy ra sau khi dịch vụ cũ đã nhận yêu cầu, nên cần
+kiểm tra inbox trước khi gửi lại để tránh mail trùng. Nếu trạng thái dừng ở
+`Sending`, kiểm tra inbox và Executions trước khi đổi thành `Ready` để retry.
+MailApp có hạn mức hàng ngày; nếu hết quota, giữ hồ sơ trong Sheet và chạy lại
+sau khi quota được cấp lại.
 
 ## Docker
 
