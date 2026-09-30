@@ -48,139 +48,145 @@
   {
     "id": "sales-outdoor",
     "code": "02",
-    "title": "Nhân Viên Phát Triển Đại Lý (Sales Outdoor)",
-    "shortTitle": "Sales Outdoor",
-    "cardSalary": "15 – 18 triệu + % Hoa hồng",
-    "salary": "15.000.000 - 18.000.000 VNĐ + % Hoa hồng cao",
+    "title": "Sales Thị Trường – Phát Triển Đại Lý (Sales Outdoor)",
+    "shortTitle": "Sales Thị Trường – Phát Triển Đại Lý",
+    "cardSalary": "15 – 18 triệu + Hoa hồng",
+    "salary": "15.000.000 - 18.000.000 VNĐ + Hoa hồng (Tổng 25 – 40+ triệu/tháng)",
     "baseSalary": "15 – 18 triệu",
     "totalIncome": "25 – 40+ triệu/tháng",
     "quantity": "10 vị trí",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng"],
-    "locationText": "Hà Nội – TP.HCM – Đà Nẵng",
-    "workType": "Toàn thời gian",
+    "locationText": "Hà Nội • TP.HCM • Đà Nẵng",
+    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
     "badge": "Lương cứng 15-18M • Thu nhập 25-40M+",
-    "highlight": "Hoa hồng cao + Phụ cấp công tác phí, xăng xe, điện thoại + Đào tạo Solar/BESS/Inverter",
+    "highlight": "Hỗ trợ công tác phí, xăng xe, điện thoại | Đào tạo Solar – Inverter – BESS",
     "descriptionSections": [
       {
-        "title": "Phát triển đại lý",
-        "content": "Chủ động thị sát địa bàn, tìm kiếm, tiếp cận và mở rộng hệ thống đại lý, nhà thầu EPC bán lẻ sản phẩm Solar, Inverter, BESS."
+        "title": "Phát triển Đại lý mới",
+        "content": "Tìm kiếm và kết nối với các Đại lý, Nhà thầu có nhu cầu kinh doanh sản phẩm Solar – Inverter – BESS."
       },
       {
-        "title": "Duy trì quan hệ",
-        "content": "Chăm sóc đại lý hiện có, hỗ trợ đại lý về chính sách bán hàng, kỹ thuật cơ bản và chương trình khuyến mãi."
+        "title": "Chăm sóc Đại lý",
+        "content": "Duy trì liên hệ với hệ thống Đại lý hiện có, cập nhật chính sách bán hàng, chương trình và hỗ trợ thông tin sản phẩm."
       },
       {
-        "title": "Theo sát thị trường",
-        "content": "Thu thập thông tin đối thủ, nhu cầu khách hàng khu vực phụ trách để đề xuất chính sách bán hàng phù hợp."
+        "title": "Phát triển doanh số",
+        "content": "Theo dõi nhu cầu tại khu vực, chăm sóc cơ hội bán hàng và phát triển doanh số từ hệ thống Đại lý phụ trách. Thực hiện chỉ tiêu doanh số và số lượng đại lý mở mới theo tháng/quý."
       },
       {
-        "title": "Hoàn thành KPI",
-        "content": "Đảm bảo chỉ tiêu doanh số và số lượng đại lý mở mới theo tháng/quý."
+        "title": "Đi thị trường",
+        "content": "Gặp gỡ Đại lý/Nhà thầu tại khu vực phụ trách khi cần. Công ty hỗ trợ công tác phí, xăng xe và điện thoại."
       }
     ],
     "requirements": [
       "Tốt nghiệp Cao đẳng/Đại học trở lên.",
-      "Tối thiểu 1 - 2 năm kinh nghiệm làm Sales thị trường (Outdoor) B2B/Kênh phân phối (ưu tiên ngành Điện, Năng lượng mặt trời, Vật tư công trình).",
-      "Có khả năng đi công tác thị trường (được hỗ trợ công tác phí đầy đủ).",
-      "Giao tiếp tốt, nhanh nhạy, chịu được áp lực doanh số."
+      "Có 1–2 năm kinh nghiệm Sales thị trường, Sales B2B hoặc phát triển kênh phân phối (có kinh nghiệm ngành Điện, Năng lượng mặt trời, Vật tư công trình là lợi thế).",
+      "Có khả năng giao tiếp, xây dựng và duy trì quan hệ với khách hàng/đối tác.",
+      "Sẵn sàng đi thị trường và gặp gỡ Đại lý/Nhà thầu.",
+      "Có tinh thần chủ động và định hướng theo mục tiêu doanh số.",
+      "Chưa từng làm Solar? SAMETEL có chương trình đào tạo về Solar – Inverter – BESS để bạn nắm sản phẩm và tự tin làm việc."
     ],
     "benefits": [
-      "Thu nhập: Lương cứng 15 - 18 triệu + Thu nhập theo doanh số (Tổng thu nhập 25 - 40+ triệu/tháng).",
-      "Phụ cấp công tác phí, xăng xe, điện thoại đầy đủ.",
-      "Đóng BHXH, BHYT, BHTN theo Luật Lao Động.",
-      "Được đào tạo bài bản về kỹ thuật sản phẩm Solar - BESS - Inverter."
+      "Lương cứng 15–18 triệu/tháng + hoa hồng/thu nhập theo doanh số (Tổng thu nhập 25–40+ triệu/tháng).",
+      "Hỗ trợ chi phí đi thị trường: Công tác phí • Xăng xe • Điện thoại đầy đủ.",
+      "Được đào tạo sản phẩm: Đào tạo kiến thức chuyên sâu về Solar – Inverter – BESS để hỗ trợ quá trình tư vấn và làm việc với Đại lý.",
+      "Chế độ đầy đủ: BHXH • BHYT • BHTN theo quy định.",
+      "Thưởng Lễ/Tết, tháng lương 13+, du lịch hàng năm cùng Công ty."
     ]
   },
   {
     "id": "sales-indoor",
     "code": "03",
-    "title": "Nhân Viên Bán Hàng Trực Tiếp (Sales Indoor)",
-    "shortTitle": "Sales Indoor",
-    "cardSalary": "10 – 12 triệu + % Hoa hồng",
-    "salary": "10.000.000 - 12.000.000 VNĐ + % Hoa hồng",
+    "title": "Nhân Viên Tư Vấn Bán Hàng (Sales Indoor)",
+    "shortTitle": "Nhân Viên Tư Vấn Bán Hàng",
+    "cardSalary": "10 – 12 triệu + % Doanh số",
+    "salary": "10.000.000 - 12.000.000 VNĐ + % Doanh số (Tổng 15 – 25 triệu/tháng)",
     "baseSalary": "10 – 12 triệu",
     "totalIncome": "15 – 25 triệu/tháng",
     "quantity": "10 vị trí",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
-    "locationText": "Hà Nội – TP.HCM",
-    "workType": "Toàn thời gian",
-    "badge": "Data Marketing cấp • Lương cứng 10-12M",
-    "highlight": "Data khách hàng tiềm năng sẵn có do Marketing cung cấp đều đặn",
+    "locationText": "Hà Nội • TP.HCM",
+    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
+    "badge": "Data Marketing có sẵn • Lương cứng 10-12M",
+    "highlight": "Data khách hàng có sẵn từ Marketing | Làm việc tại văn phòng | Thu nhập 15–25M",
     "descriptionSections": [
       {
-        "title": "Tư vấn bán hàng",
-        "content": "Tiếp nhận data khách hàng tiềm năng do Công ty cung cấp (qua hotline, fanpage, website) để tư vấn sản phẩm Solar, BESS, Inverter phù hợp."
+        "title": "Tiếp nhận & tư vấn khách hàng",
+        "content": "Tiếp nhận data khách hàng tiềm năng từ Marketing và tư vấn sản phẩm Solar – BESS – Inverter phù hợp với nhu cầu."
       },
       {
-        "title": "Chăm sóc khách hàng",
-        "content": "Báo giá, theo dõi đơn hàng, giải đáp thắc mắc của khách hàng lẻ và khách hàng đại lý nhỏ qua điện thoại/Zalo."
+        "title": "Báo giá & theo dõi khách hàng",
+        "content": "Tư vấn, gửi báo giá và hỗ trợ khách hàng qua điện thoại/Zalo trong quá trình lựa chọn sản phẩm và đặt hàng."
       },
       {
-        "title": "Phối hợp liên phòng ban",
-        "content": "Phối hợp cùng Sales Outdoor và bộ phận Kho/Kỹ thuật để lên đơn hàng, theo dõi tiến độ giao hàng và thanh toán."
+        "title": "Theo dõi đơn hàng",
+        "content": "Phối hợp cùng Sales, Kho và Kỹ thuật để xử lý đơn hàng, theo dõi giao hàng và thanh toán."
       },
       {
-        "title": "Cập nhật dữ liệu",
-        "content": "Lưu trữ thông tin khách hàng lên hệ thống CRM/Excel của công ty."
+        "title": "Cập nhật thông tin",
+        "content": "Cập nhật thông tin và tình trạng khách hàng trên CRM/Excel để thuận tiện theo dõi và chăm sóc."
       }
     ],
     "requirements": [
       "Tốt nghiệp Cao đẳng/Đại học.",
-      "Tối thiểu 6 tháng - 1 năm kinh nghiệm làm Sales Telesales, Sales Online, Chăm sóc khách hàng (ưu tiên hàng kỹ thuật, thiết bị gia dụng, điện lực).",
-      "Giọng nói chuẩn, dễ nghe, giao tiếp qua điện thoại/tin nhắn tốt.",
-      "Chăm chỉ, kiên trì và phản ứng nhanh với nhu cầu của khách hàng."
+      "Có từ 6 tháng – 1 năm kinh nghiệm Telesales, Sales Online hoặc Chăm sóc khách hàng (đã từng bán hàng kỹ thuật, thiết bị gia dụng, điện lực là lợi thế).",
+      "Giao tiếp tốt qua điện thoại và tin nhắn, giọng nói chuẩn, dễ nghe.",
+      "Chủ động, kiên trì theo dõi và chăm sóc khách hàng.",
+      "Chưa từng làm Solar – BESS – Inverter? Sẽ được Công ty đào tạo chi tiết về sản phẩm."
     ],
     "benefits": [
-      "Thu nhập: Lương cứng 10 - 12 triệu + Thưởng % Doanh số (Thực nhận từ 15 - 25 triệu/tháng).",
-      "Nguồn data khách hàng có sẵn do Marketing cung cấp.",
-      "Đóng BHXH đầy đủ, thưởng Lễ/Tết, Teambuilding.",
-      "Môi trường làm việc trẻ trung, năng động, cơ hội thăng tiến lên Trưởng nhóm Sales."
+      "Thu nhập: Lương cứng 10–12 triệu/tháng + % doanh số (Tổng thu nhập 15–25 triệu/tháng, tăng theo kết quả bán hàng).",
+      "Data khách hàng có sẵn từ Marketing: Tiếp nhận khách hàng tiềm năng từ Hotline • Fanpage • Website để tư vấn và chăm sóc.",
+      "Làm việc tại văn phòng: Tập trung tư vấn khách hàng qua điện thoại/Zalo và phối hợp xử lý đơn hàng, không phải đi thị trường.",
+      "Cơ hội phát triển lên Trưởng nhóm Sales: Có lộ trình phát triển khi đạt kết quả tốt và thể hiện được năng lực quản lý.",
+      "Chế độ đầy đủ: BHXH • Thưởng Lễ/Tết • Teambuilding theo chính sách Công ty."
     ]
   },
   {
     "id": "sales-admin",
     "code": "04",
-    "title": "Nhân Viên Hỗ Trợ Kinh Doanh (Sales Admin)",
+    "title": "Sales Admin – Hỗ Trợ Kinh Doanh",
     "shortTitle": "Sales Admin",
     "cardSalary": "10 – 11 triệu + Thưởng KPI",
-    "salary": "10.000.000 - 11.000.000 VNĐ + Thưởng KPI",
+    "salary": "10.000.000 - 11.000.000 VNĐ/tháng + Thưởng KPI",
     "baseSalary": "10 – 11 triệu",
-    "totalIncome": "10 – 11 triệu + KPI",
+    "totalIncome": "10 – 11 triệu/tháng + Thưởng KPI",
     "quantity": "02 vị trí",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
-    "locationText": "Hà Nội – TP.HCM",
-    "workType": "Toàn thời gian (Nghỉ Chủ Nhật)",
-    "badge": "Văn phòng • Nghỉ Chủ Nhật",
-    "highlight": "Giờ hành chính ổn định, BHXH/BHYT, Thưởng tháng 13 & Phúc lợi",
+    "locationText": "Hà Nội • TP.HCM",
+    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
+    "badge": "Văn phòng ổn định • Nghỉ chiều T7 & CN",
+    "highlight": "Không áp KPI bán hàng | Giờ hành chính ổn định | BHXH đầy đủ",
     "descriptionSections": [
       {
-        "title": "Quản lý hợp đồng & Đơn hàng",
-        "content": "Soạn thảo hợp đồng, báo giá, làm đơn hàng trên hệ thống và theo dõi quá trình duyệt đơn cho bộ phận Kinh doanh."
+        "title": "Báo giá – Hợp đồng – Đơn hàng",
+        "content": "Soạn báo giá, hợp đồng, tạo đơn hàng trên hệ thống và theo dõi quá trình xử lý đơn cho bộ phận Kinh doanh."
       },
       {
         "title": "Theo dõi công nợ",
-        "content": "Phối hợp với Kế toán kiểm tra, đối soát công nợ đại lý và hỗ trợ đôn đốc thu hồi nợ."
+        "content": "Phối hợp cùng Kế toán kiểm tra công nợ Đại lý, cập nhật tình trạng thanh toán và hỗ trợ Sales theo dõi các khoản đến hạn."
       },
       {
-        "title": "Quản lý dữ liệu",
-        "content": "Cập nhật, quản lý hồ sơ khách hàng, số liệu doanh số hàng ngày/tuần/tháng của Sales Outdoor và Indoor."
+        "title": "Cập nhật số liệu",
+        "content": "Cập nhật hồ sơ khách hàng và số liệu kinh doanh của đội ngũ Sales trên hệ thống."
       },
       {
-        "title": "Hỗ trợ vận hành",
-        "content": "Phối hợp với bộ phận Kho và Vận chuyển để điều phối hàng hóa cho đại lý đúng tiến độ."
+        "title": "Theo dõi giao hàng",
+        "content": "Phối hợp cùng Kho và Vận chuyển để cập nhật tiến độ và hỗ trợ đơn hàng được giao đúng kế hoạch."
       }
     ],
     "requirements": [
-      "Tốt nghiệp Cao đẳng/Đại học chuyên ngành Kế toán, Quản trị kinh doanh, Tài chính hoặc các ngành liên quan.",
-      "Tối thiểu 1 năm kinh nghiệm làm Sales Admin, Kế toán bán hàng.",
-      "Thành thạo tin học văn phòng (Word, Excel nâng cao, phần mềm MISA/ERP là lợi thế).",
-      "Tỉ mỉ, cẩn thận, có trách nhiệm cao với số liệu và giấy tờ."
+      "Có từ 1 năm kinh nghiệm Sales Admin hoặc Kế toán bán hàng.",
+      "Tốt nghiệp Cao đẳng/Đại học ngành Kế toán, QTKD, Tài chính hoặc ngành liên quan.",
+      "Sử dụng tốt Word, Excel (phần mềm MISA/ERP là lợi thế).",
+      "Cẩn thận, tỉ mỉ và thoải mái khi làm việc với số liệu, chứng từ."
     ],
     "benefits": [
-      "Lương cứng 10 - 11 triệu + Thưởng hiệu quả công việc (KPI).",
-      "Môi trường làm việc văn phòng máy lạnh, giờ hành chính ổn định (Nghỉ Chủ Nhật).",
-      "Chế độ BHXH, BHYT, phép năm theo quy định.",
-      "Thưởng tháng 13, quà sinh nhật, du lịch định kỳ cùng Công ty."
+      "Lương cứng 10–11 triệu/tháng + Thưởng KPI theo hiệu quả công việc.",
+      "Công việc văn phòng ổn định: Làm việc chủ yếu với Sales • Kế toán • Kho • Vận chuyển, không phải vị trí Sales trực tiếp, không yêu cầu tự tìm kiếm khách hàng.",
+      "Giờ hành chính: 08:00 – 17:00 (Nghỉ chiều Thứ 7 & Chủ Nhật), thuận tiện sắp xếp thời gian cá nhân.",
+      "Thưởng & hoạt động Công ty: Thưởng tháng 13 • Quà sinh nhật • Du lịch định kỳ.",
+      "Chế độ đầy đủ: BHXH • BHYT • Phép năm theo quy định."
     ]
   },
   {
