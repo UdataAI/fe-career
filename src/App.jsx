@@ -682,6 +682,20 @@ function App() {
                     SAMETEL được thành lập từ năm 2006 và hiện hoạt động trong các lĩnh vực Solar, Điện lực, Viễn thông cùng nhiều giải pháp công nghiệp.
                   </p>
                 </div>
+
+                {/* THÔNG ĐIỆP DÀNH CHO ỨNG VIÊN */}
+                {activeModalJob.callout && (
+                  <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50/90 via-indigo-50/60 to-blue-50/90 border border-blue-200/80 shadow-sm space-y-2.5">
+                    {activeModalJob.callout.headline && (
+                      <h4 className="font-display-lg text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                        {activeModalJob.callout.headline}
+                      </h4>
+                    )}
+                    <p className="text-slate-600 text-xs sm:text-sm whitespace-pre-line leading-relaxed">
+                      {activeModalJob.callout.content}
+                    </p>
+                  </div>
+                )}
                 
                 {/* 1. MÔ TẢ CÔNG VIỆC */}
                 <div className="space-y-4">
