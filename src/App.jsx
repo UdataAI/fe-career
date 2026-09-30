@@ -670,6 +670,20 @@ function App() {
               {/* Modal Scrollable Body */}
               <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
 
+                {/* THÔNG ĐIỆP DÀNH CHO ỨNG VIÊN */}
+                {activeModalJob.callout && (
+                  <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50/90 via-indigo-50/60 to-blue-50/90 border border-blue-200/80 shadow-sm space-y-2.5">
+                    {activeModalJob.callout.headline && (
+                      <h4 className="font-display-lg text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                        {activeModalJob.callout.headline}
+                      </h4>
+                    )}
+                    <p className="text-slate-600 text-xs sm:text-sm whitespace-pre-line leading-relaxed">
+                      {activeModalJob.callout.content}
+                    </p>
+                  </div>
+                )}
+
                 {/* GIỚI THIỆU VỀ SAMETEL */}
                 <div className="text-center space-y-2 pb-6 border-b border-slate-100">
                   <p className="text-xs font-bold uppercase tracking-wider text-blue-700">
