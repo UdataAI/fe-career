@@ -6,7 +6,7 @@ const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL || DEFAULT_GOOGLE
 const delay = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 // Apps Script Web Apps không trả CORS header ổn định cho POST. JSONP chỉ trả
-// trạng thái theo ApplicationId (không trả PII/CV URL) để frontend xác minh.
+// trạng thái theo ApplicationId để frontend xác minh hồ sơ đã được lưu.
 const fetchApplicationStatus = (applicationId) => new Promise((resolve, reject) => {
   const callbackName = `__sametelStatus_${Date.now()}_${Math.random().toString(16).slice(2)}`;
   const script = document.createElement('script');
@@ -35,7 +35,7 @@ const verifyApplicationSubmission = async (applicationId) => {
   for (let attempt = 0; attempt < 4; attempt += 1) {
     const result = await fetchApplicationStatus(applicationId);
     if (result?.status === 'success' && result.cvUrl) {
-      return { applicationId, cvUrl: result.cvUrl };
+      return { applicationId, cvUrl: result.cvUrl, emailProvider: result.emailProvider };
     }
     if (result?.status === 'failed') {
       throw new Error(result.message || 'Hệ thống chưa thể xử lý hồ sơ. Vui lòng liên hệ bộ phận tuyển dụng.');
