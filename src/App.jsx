@@ -19,7 +19,7 @@ const updateJobUrl = (jobId, mode = 'pushState') => {
 };
 
 function App() {
-  const [selectedJobId, setSelectedJobId] = useState('distribution-manager');
+  const [selectedJobId, setSelectedJobId] = useState(sametelJobs[0]?.id || '');
   const [activeModalJob, setActiveModalJob] = useState(getJobFromCurrentUrl);
   const formRef = useRef(null);
 
@@ -79,8 +79,8 @@ function App() {
     fullName: '',
     phone: '',
     email: '',
-    position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
-    location: 'Hà Nội',
+    position: sametelJobs[0]?.title || '',
+    location: sametelJobs[0]?.locations?.[0] || 'Hà Nội',
     cvFile: null,
     coverLetter: '',
   });
@@ -263,8 +263,8 @@ function App() {
       fullName: '',
       phone: '',
       email: '',
-      position: 'Trưởng Phòng Phân Phối (Distribution Manager)',
-      location: 'Hà Nội',
+      position: sametelJobs[0]?.title || '',
+      location: sametelJobs[0]?.locations?.[0] || 'Hà Nội',
       cvFile: null,
       coverLetter: '',
     });
@@ -317,7 +317,7 @@ function App() {
           {/* Apply Now Button */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleSelectJobAndScroll('Trưởng Phòng Phân Phối (Distribution Manager)', 'distribution-manager')}
+              onClick={() => handleSelectJobAndScroll(sametelJobs[0]?.title, sametelJobs[0]?.id, sametelJobs[0]?.locations?.[0])}
               className="bg-blue-700 hover:bg-blue-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md shadow-blue-700/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <span>Ứng tuyển ngay</span>
@@ -527,7 +527,7 @@ function App() {
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
-                5 Nhóm Vị Trí Tuyển Dụng
+                {sametelJobs.length} Vị Trí Tuyển Dụng
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
                 Bạn đang tìm kiếm cơ hội nào?
@@ -537,7 +537,7 @@ function App() {
               </p>
             </div>
 
-            {/* 5 Horizontal Job Rows Layout */}
+            {/* Horizontal Job Rows Layout */}
             <div className="space-y-4 max-w-6xl mx-auto">
               {sametelJobs.map((job) => (
                 <div 
@@ -1253,7 +1253,7 @@ function App() {
 
             <div className="pt-2">
               <button
-                onClick={() => handleSelectJobAndScroll('Trưởng Phòng Phân Phối (Distribution Manager)', 'distribution-manager')}
+                onClick={() => handleSelectJobAndScroll(sametelJobs[0]?.title, sametelJobs[0]?.id, sametelJobs[0]?.locations?.[0])}
                 className="bg-white text-blue-800 hover:bg-slate-50 font-extrabold text-base px-10 py-4 rounded-xl shadow-xl active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer"
               >
                 <span>ỨNG TUYỂN NGAY</span>

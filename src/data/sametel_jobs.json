@@ -1,260 +1,113 @@
 [
   {
-    "id": "distribution-manager",
+    "id": "sales-executive",
     "code": "01",
-    "title": "Trưởng Phòng Phân Phối (Distribution Manager)",
-    "shortTitle": "Trưởng Phòng Phân Phối",
-    "cardSalary": "35 – 40 triệu + % Hoa hồng",
-    "salary": "35.000.000 - 40.000.000 VNĐ + % Hoa hồng doanh số",
-    "baseSalary": "35 – 40 triệu",
-    "totalIncome": "35 – 40 triệu + % Doanh số phòng + Thưởng Quý/Năm",
-    "quantity": "03 vị trí",
+    "title": "Nhân Viên Kinh Doanh (Bán Thiết Bị Solar - Pin Lưu Trữ)",
+    "shortTitle": "Nhân Viên Kinh Doanh",
+    "cardSalary": "10 – 25 triệu VNĐ",
+    "salary": "10.000.000 – 25.000.000 VNĐ/tháng",
+    "baseSalary": "10 – 25 triệu",
+    "totalIncome": "10 – 25 triệu VNĐ/tháng + Hoa hồng doanh số",
+    "quantity": "10 vị trí (HN: 05 • HCM: 05)",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
-    "locationText": "Hà Nội – TP.HCM",
-    "workType": "Toàn thời gian",
-    "badge": "Lương 35-40M • Lộ trình CCO",
-    "highlight": "Quản lý 20 Sales (10 Outdoor + 10 Indoor) | % Doanh số phòng",
+    "locationText": "Hà Nội • TP.HCM",
+    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
+    "badge": "Thu nhập 10-25M • Hoa hồng hấp dẫn",
+    "highlight": "Bán thiết bị Solar - Pin lưu trữ | Hà Nội (5 người) • TP.HCM (5 người)",
+    "callout": {
+      "headline": "Mô tả vị trí",
+      "content": "• Nhân viên kinh doanh phụ trách giới thiệu, tư vấn và bán thiết bị điện mặt trời, pin lưu trữ cùng các giải pháp liên quan cho khách hàng cá nhân, doanh nghiệp, đại lý và đơn vị thi công.\n• Chủ động phát triển thị trường, xây dựng quan hệ khách hàng và phối hợp với bộ phận kỹ thuật để đề xuất cấu hình phù hợp nhu cầu, ngân sách và điều kiện lắp đặt."
+    },
     "descriptionSections": [
       {
-        "title": "Xây dựng chiến lược",
-        "content": "Lập kế hoạch và triển khai chiến lược phát triển kênh phân phối (Đại lý, Sub-dealer, Nhà thầu EPC) cho các dòng sản phẩm Solar, BESS (hệ thống lưu trữ năng lượng) và Inverter."
+        "title": "Tìm kiếm & Chăm sóc khách hàng",
+        "content": "Tìm kiếm khách hàng tiềm năng qua gọi điện, mạng xã hội, sự kiện, kênh đối tác và hoạt động thị trường; chăm sóc khách hàng từ lúc tiếp nhận nhu cầu đến sau bán hàng."
       },
       {
-        "title": "Quản lý & Điều hành",
-        "content": "Quản lý, đào tạo và thúc đẩy đội ngũ Sales Outdoor (10 nhân sự) và Sales Indoor (10 nhân sự) đạt chỉ tiêu doanh số được giao."
+        "title": "Khảo sát & Tư vấn sản phẩm giải pháp",
+        "content": "Khảo sát sơ bộ nhu cầu sử dụng điện, tư vấn sản phẩm như tấm quang điện, inverter, pin lưu trữ, phụ kiện và giải pháp hệ thống."
       },
       {
-        "title": "Mở rộng thị trường",
-        "content": "Trực tiếp đàm phán, ký kết hợp đồng với các đại lý lớn, đối tác chiến lược trên toàn quốc."
+        "title": "Báo giá, Đàm phán & Quản lý hợp đồng",
+        "content": "Lập báo giá, đề xuất phương án thương mại, đàm phán và theo dõi hợp đồng, đơn hàng, công nợ theo quy trình công ty."
       },
       {
-        "title": "Báo cáo & Phân tích",
-        "content": "Phân tích biến động thị trường, đối thủ cạnh tranh và báo cáo doanh số định kỳ cho Ban Giám đốc."
+        "title": "Cập nhật dữ liệu & Báo cáo thị trường",
+        "content": "Cập nhật thông tin khách hàng, cơ hội bán hàng và kết quả kinh doanh trên hệ thống; báo cáo thị trường, đối thủ và nhu cầu sản phẩm."
+      },
+      {
+        "title": "Phối hợp vận hành & Xử lý phản hồi",
+        "content": "Phối hợp với kỹ thuật, kho vận và chăm sóc khách hàng để đảm bảo giao hàng, triển khai và xử lý phản hồi đúng cam kết."
       }
     ],
     "requirements": [
-      "Tốt nghiệp Đại học chuyên ngành Kinh tế, Quản trị kinh doanh, Điện - Điện tử hoặc các ngành liên quan.",
-      "Tối thiểu 3 - 5 năm kinh nghiệm ở vị trí tương đương trong ngành Năng lượng mặt trời / Thiết bị điện / Vật liệu xây dựng / Công nghiệp.",
-      "Am hiểu chuyên sâu về thị trường, sản phẩm Solar, BESS, Inverter.",
-      "Kỹ năng lãnh đạo, đàm phán B2B xuất sắc và tư duy chiến lược tốt."
+      "Tốt nghiệp trung cấp, cao đẳng hoặc đại học; có kỹ năng giao tiếp, tư vấn, thương lượng và chăm sóc khách hàng.",
+      "Có kinh nghiệm bán hàng, phát triển khách hàng hoặc kinh doanh dự án; sử dụng được tin học văn phòng và sẵn sàng đi công tác khi cần.",
+      "Có tinh thần chủ động, kiên trì, chịu được áp lực doanh số và trung thực trong công việc.",
+      "Ưu tiên: Từng kinh doanh thiết bị điện, điện công nghiệp, năng lượng tái tạo, điện mặt trời hoặc pin lưu trữ.",
+      "Ưu tiên: Có mạng lưới khách hàng là đại lý, nhà thầu, đơn vị EPC, doanh nghiệp hoặc chủ đầu tư; hiểu cơ bản về điện và quy trình bán hàng B2B."
     ],
     "benefits": [
-      "Thu nhập hấp dẫn: Lương cứng 35 - 40 triệu + Thưởng % Doanh số phòng + Thưởng Quý/Năm.",
-      "Đóng BHXH, BHYT đầy đủ theo quy định của nhà nước.",
-      "Thưởng lễ, tết, tháng lương 13+, du lịch hàng năm cùng công ty.",
-      "Lộ trình thăng tiến rõ ràng lên Giám đốc Kinh doanh (CCO)."
+      "Lương cơ bản cạnh tranh, hoa hồng và thưởng theo doanh số; mức thu nhập thực tế từ 10 – 25 triệu VNĐ (phụ thuộc kết quả kinh doanh).",
+      "Được đào tạo bài bản về sản phẩm, kiến thức kỹ thuật và kỹ năng bán hàng chuyên nghiệp.",
+      "Tham gia đầy đủ bảo hiểm (BHXH, BHYT, BHTN), nghỉ phép và chế độ theo quy định pháp luật.",
+      "Có cơ hội phát triển lên vị trí quản lý kinh doanh hoặc phụ trách khách hàng dự án."
     ]
   },
   {
-    "id": "sales-outdoor",
+    "id": "solar-rooftop-engineer",
     "code": "02",
-    "title": "Sales Thị Trường – Phát Triển Đại Lý (Sales Outdoor)",
-    "shortTitle": "Sales Thị Trường – Phát Triển Đại Lý",
-    "cardSalary": "15 – 18 triệu + Hoa hồng",
-    "salary": "15.000.000 - 18.000.000 VNĐ + Hoa hồng (Tổng 25 – 40+ triệu/tháng)",
-    "baseSalary": "15 – 18 triệu",
-    "totalIncome": "25 – 40+ triệu/tháng",
-    "quantity": "10 vị trí",
-    "locations": ["Hà Nội", "TP. Hồ Chí Minh", "Đà Nẵng"],
-    "locationText": "Hà Nội • TP.HCM • Đà Nẵng",
-    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
-    "badge": "Lương cứng 15-18M • Thu nhập 25-40M+",
-    "highlight": "Hỗ trợ công tác phí, xăng xe, điện thoại | Đào tạo Solar – Inverter – BESS",
-    "callout": {
-      "headline": "Đã có kinh nghiệm Sales thị trường/B2B nhưng chưa từng làm Solar? Bạn vẫn có thể ứng tuyển.",
-      "content": "SAMETEL có chương trình đào tạo về Solar – Inverter – BESS để bạn nắm sản phẩm và tự tin làm việc với Đại lý/Nhà thầu."
-    },
-    "descriptionSections": [
-      {
-        "title": "Phát triển Đại lý mới",
-        "content": "Tìm kiếm và kết nối với các Đại lý, Nhà thầu có nhu cầu kinh doanh sản phẩm Solar – Inverter – BESS."
-      },
-      {
-        "title": "Chăm sóc Đại lý",
-        "content": "Duy trì liên hệ với hệ thống Đại lý hiện có, cập nhật chính sách bán hàng, chương trình và hỗ trợ thông tin sản phẩm."
-      },
-      {
-        "title": "Phát triển doanh số",
-        "content": "Theo dõi nhu cầu tại khu vực, chăm sóc cơ hội bán hàng và phát triển doanh số từ hệ thống Đại lý phụ trách. Thực hiện chỉ tiêu doanh số và số lượng đại lý mở mới theo tháng/quý."
-      },
-      {
-        "title": "Đi thị trường",
-        "content": "Gặp gỡ Đại lý/Nhà thầu tại khu vực phụ trách khi cần. Công ty hỗ trợ công tác phí, xăng xe và điện thoại."
-      }
-    ],
-    "requirements": [
-      "Tốt nghiệp Cao đẳng/Đại học trở lên.",
-      "Có 1–2 năm kinh nghiệm Sales thị trường, Sales B2B hoặc phát triển kênh phân phối (có kinh nghiệm ngành Điện, Năng lượng mặt trời, Vật tư công trình là lợi thế).",
-      "Có khả năng giao tiếp, xây dựng và duy trì quan hệ với khách hàng/đối tác.",
-      "Sẵn sàng đi thị trường và gặp gỡ Đại lý/Nhà thầu.",
-      "Có tinh thần chủ động và định hướng theo mục tiêu doanh số.",
-      "Chưa từng làm Solar? SAMETEL có chương trình đào tạo về Solar – Inverter – BESS để bạn nắm sản phẩm và tự tin làm việc."
-    ],
-    "benefits": [
-      "Lương cứng 15–18 triệu/tháng + hoa hồng/thu nhập theo doanh số (Tổng thu nhập 25–40+ triệu/tháng).",
-      "Hỗ trợ chi phí đi thị trường: Công tác phí • Xăng xe • Điện thoại đầy đủ.",
-      "Được đào tạo sản phẩm: Đào tạo kiến thức chuyên sâu về Solar – Inverter – BESS để hỗ trợ quá trình tư vấn và làm việc với Đại lý.",
-      "Chế độ đầy đủ: BHXH • BHYT • BHTN theo quy định.",
-      "Thưởng Lễ/Tết, tháng lương 13+, du lịch hàng năm cùng Công ty."
-    ]
-  },
-  {
-    "id": "sales-indoor",
-    "code": "03",
-    "title": "Nhân Viên Tư Vấn Bán Hàng (Sales Indoor)",
-    "shortTitle": "Nhân Viên Tư Vấn Bán Hàng",
-    "cardSalary": "10 – 12 triệu + % Doanh số",
-    "salary": "10.000.000 - 12.000.000 VNĐ + % Doanh số (Tổng 15 – 25 triệu/tháng)",
-    "baseSalary": "10 – 12 triệu",
-    "totalIncome": "15 – 25 triệu/tháng",
-    "quantity": "10 vị trí",
+    "title": "Kỹ Sư Điện Mặt Trời Áp Mái (Solar & Pin Lưu Trữ)",
+    "shortTitle": "Kỹ Sư Điện Mặt Trời Áp Mái",
+    "cardSalary": "15 – 20 triệu VNĐ",
+    "salary": "15.000.000 – 20.000.000 VNĐ/tháng",
+    "baseSalary": "15 – 20 triệu",
+    "totalIncome": "15 – 20 triệu VNĐ/tháng + Thưởng dự án",
+    "quantity": "04 vị trí (HN: 02 • HCM: 02)",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
     "locationText": "Hà Nội • TP.HCM",
     "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
-    "badge": "Data Marketing có sẵn • Lương cứng 10-12M",
-    "highlight": "Data khách hàng có sẵn từ Marketing | Làm việc tại văn phòng | Thu nhập 15–25M",
+    "badge": "Lương 15-20M • Kỹ sư chuyên môn",
+    "highlight": "Điện mặt trời, pin lưu trữ | Hà Nội (2 người) • TP.HCM (2 người)",
     "callout": {
-      "headline": "📞 Data khách hàng có sẵn – Làm việc tại văn phòng",
-      "content": "Bạn không phải tự tìm kiếm khách hàng từ đầu. Marketing cung cấp data khách hàng tiềm năng từ Hotline, Fanpage, Website để bạn tập trung vào tư vấn, báo giá và theo dõi khách hàng.\n\nChưa từng làm Solar – BESS – Inverter? Kinh nghiệm Telesales, Sales Online hoặc Chăm sóc khách hàng vẫn có thể phù hợp."
+      "headline": "Mô tả vị trí",
+      "content": "• Kỹ sư điện mặt trời áp mái chịu trách nhiệm khảo sát, thiết kế, triển khai và giám sát hệ thống điện mặt trời áp mái, có thể tích hợp pin lưu trữ (BESS), cho khách hàng dân dụng, thương mại và công nghiệp.\n• Vị trí phối hợp với khách hàng, đội thi công, nhà cung cấp và các bộ phận nội bộ để bảo đảm hệ thống an toàn, đúng tiến độ và đáp ứng yêu cầu kỹ thuật."
     },
     "descriptionSections": [
       {
-        "title": "Tiếp nhận & tư vấn khách hàng",
-        "content": "Tiếp nhận data khách hàng tiềm năng từ Marketing và tư vấn sản phẩm Solar – BESS – Inverter phù hợp với nhu cầu."
+        "title": "Khảo sát hiện trạng & Thu thập dữ liệu",
+        "content": "Khảo sát hiện trạng mái, kết cấu, phụ tải và điểm đấu nối; thu thập dữ liệu phục vụ phương án thiết kế."
       },
       {
-        "title": "Báo giá & theo dõi khách hàng",
-        "content": "Tư vấn, gửi báo giá và hỗ trợ khách hàng qua điện thoại/Zalo trong quá trình lựa chọn sản phẩm và đặt hàng."
+        "title": "Tính toán công suất & Lập hồ sơ kỹ thuật",
+        "content": "Tính toán công suất, sản lượng, cấu hình inverter, tấm pin, dây dẫn, bảo vệ điện và pin lưu trữ; lập bản vẽ, sơ đồ một sợi, bảng khối lượng và thuyết minh kỹ thuật."
       },
       {
-        "title": "Theo dõi đơn hàng",
-        "content": "Phối hợp cùng Sales, Kho và Kỹ thuật để xử lý đơn hàng, theo dõi giao hàng và thanh toán."
+        "title": "Mô phỏng sản lượng & Hỗ trợ chào thầu",
+        "content": "Sử dụng phần mềm chuyên ngành để mô phỏng sản lượng, đánh giá phương án và hỗ trợ lập hồ sơ chào thầu hoặc đề xuất kỹ thuật."
       },
       {
-        "title": "Cập nhật thông tin",
-        "content": "Cập nhật thông tin và tình trạng khách hàng trên CRM/Excel để thuận tiện theo dõi và chăm sóc."
+        "title": "Giám sát lắp đặt, Đấu nối & Nghiệm thu",
+        "content": "Giám sát lắp đặt, đấu nối, chạy thử và nghiệm thu; kiểm tra chất lượng, an toàn lao động, tiếp địa, chống sét và tuân thủ quy chuẩn, tiêu chuẩn hiện hành."
+      },
+      {
+        "title": "Theo dõi vận hành, Xử lý sự cố & Bảo dưỡng",
+        "content": "Theo dõi hiệu suất vận hành, xử lý sự cố, phân tích dữ liệu giám sát và đề xuất bảo trì, cải tiến hệ thống. Phối hợp hoàn thiện hồ sơ kỹ thuật, hồ sơ nghiệm thu và hướng dẫn khách hàng vận hành, bảo dưỡng."
       }
     ],
     "requirements": [
-      "Tốt nghiệp Cao đẳng/Đại học.",
-      "Có từ 6 tháng – 1 năm kinh nghiệm Telesales, Sales Online hoặc Chăm sóc khách hàng (đã từng bán hàng kỹ thuật, thiết bị gia dụng, điện lực là lợi thế).",
-      "Giao tiếp tốt qua điện thoại và tin nhắn, giọng nói chuẩn, dễ nghe.",
-      "Chủ động, kiên trì theo dõi và chăm sóc khách hàng.",
-      "Chưa từng làm Solar – BESS – Inverter? Sẽ được Công ty đào tạo chi tiết về sản phẩm."
+      "Tốt nghiệp cao đẳng hoặc đại học ngành Điện, Hệ thống điện, Năng lượng hoặc ngành liên quan.",
+      "Có kinh nghiệm thực tế trong thiết kế, thi công, giám sát hoặc vận hành hệ thống điện; ưu tiên đã làm điện mặt trời áp mái.",
+      "Đọc hiểu bản vẽ điện, nắm nguyên lý thiết bị điện, an toàn điện và có khả năng sử dụng AutoCAD, Excel.",
+      "Có thể đi công tác, khảo sát công trường; làm việc cẩn thận, chủ động và phối hợp tốt.",
+      "Ưu tiên: Biết PVsyst hoặc phần mềm mô phỏng tương đương; có kinh nghiệm inverter hybrid, BESS, EMS và hệ thống giám sát.",
+      "Ưu tiên: Có chứng chỉ an toàn điện, giám sát hoặc kinh nghiệm làm việc với khách hàng công nghiệp."
     ],
     "benefits": [
-      "Thu nhập: Lương cứng 10–12 triệu/tháng + % doanh số (Tổng thu nhập 15–25 triệu/tháng, tăng theo kết quả bán hàng).",
-      "Data khách hàng có sẵn từ Marketing: Tiếp nhận khách hàng tiềm năng từ Hotline • Fanpage • Website để tư vấn và chăm sóc.",
-      "Làm việc tại văn phòng: Tập trung tư vấn khách hàng qua điện thoại/Zalo và phối hợp xử lý đơn hàng, không phải đi thị trường.",
-      "Cơ hội phát triển lên Trưởng nhóm Sales: Có lộ trình phát triển khi đạt kết quả tốt và thể hiện được năng lực quản lý.",
-      "Chế độ đầy đủ: BHXH • Thưởng Lễ/Tết • Teambuilding theo chính sách Công ty."
-    ]
-  },
-  {
-    "id": "sales-admin",
-    "code": "04",
-    "title": "Sales Admin – Hỗ Trợ Kinh Doanh",
-    "shortTitle": "Sales Admin",
-    "cardSalary": "10 – 11 triệu + Thưởng KPI",
-    "salary": "10.000.000 - 11.000.000 VNĐ/tháng + Thưởng KPI",
-    "baseSalary": "10 – 11 triệu",
-    "totalIncome": "10 – 11 triệu/tháng + Thưởng KPI",
-    "quantity": "02 vị trí",
-    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
-    "locationText": "Hà Nội • TP.HCM",
-    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
-    "badge": "Văn phòng ổn định • Nghỉ chiều T7 & CN",
-    "highlight": "Không áp KPI bán hàng | Giờ hành chính ổn định | BHXH đầy đủ",
-    "callout": {
-      "headline": "🏢 Công việc văn phòng – Quy trình rõ ràng – Giờ hành chính ổn định",
-      "content": "Nếu bạn đã từng làm Sales Admin hoặc Kế toán bán hàng, công việc tại SAMETEL sẽ quen thuộc với bạn: xử lý báo giá, hợp đồng, đơn hàng, theo dõi công nợ và phối hợp với các bộ phận để hỗ trợ Sales.\n\nKhông phải vị trí Sales trực tiếp, không yêu cầu tự tìm kiếm khách hàng."
-    },
-    "descriptionSections": [
-      {
-        "title": "Báo giá – Hợp đồng – Đơn hàng",
-        "content": "Soạn báo giá, hợp đồng, tạo đơn hàng trên hệ thống và theo dõi quá trình xử lý đơn cho bộ phận Kinh doanh."
-      },
-      {
-        "title": "Theo dõi công nợ",
-        "content": "Phối hợp cùng Kế toán kiểm tra công nợ Đại lý, cập nhật tình trạng thanh toán và hỗ trợ Sales theo dõi các khoản đến hạn."
-      },
-      {
-        "title": "Cập nhật số liệu",
-        "content": "Cập nhật hồ sơ khách hàng và số liệu kinh doanh của đội ngũ Sales trên hệ thống."
-      },
-      {
-        "title": "Theo dõi giao hàng",
-        "content": "Phối hợp cùng Kho và Vận chuyển để cập nhật tiến độ và hỗ trợ đơn hàng được giao đúng kế hoạch."
-      }
-    ],
-    "requirements": [
-      "Có từ 1 năm kinh nghiệm Sales Admin hoặc Kế toán bán hàng.",
-      "Tốt nghiệp Cao đẳng/Đại học ngành Kế toán, QTKD, Tài chính hoặc ngành liên quan.",
-      "Sử dụng tốt Word, Excel (phần mềm MISA/ERP là lợi thế).",
-      "Cẩn thận, tỉ mỉ và thoải mái khi làm việc với số liệu, chứng từ."
-    ],
-    "benefits": [
-      "Lương cứng 10–11 triệu/tháng + Thưởng KPI theo hiệu quả công việc.",
-      "Công việc văn phòng ổn định: Làm việc chủ yếu với Sales • Kế toán • Kho • Vận chuyển, không phải vị trí Sales trực tiếp, không yêu cầu tự tìm kiếm khách hàng.",
-      "Giờ hành chính: 08:00 – 17:00 (Nghỉ chiều Thứ 7 & Chủ Nhật), thuận tiện sắp xếp thời gian cá nhân.",
-      "Thưởng & hoạt động Công ty: Thưởng tháng 13 • Quà sinh nhật • Du lịch định kỳ.",
-      "Chế độ đầy đủ: BHXH • BHYT • Phép năm theo quy định."
-    ]
-  },
-  {
-    "id": "lead-engineer",
-    "code": "05",
-    "title": "Kỹ Sư Trưởng Phụ Trách Kỹ Thuật, Thi Công & Đào Tạo Solar - BESS (Quản Lý Team 3-5 Người)",
-    "shortTitle": "Kỹ Sư Trưởng Solar – BESS",
-    "cardSalary": "25 – 35 triệu + Thưởng hiệu quả",
-    "salary": "25.000.000 - 35.000.000 VNĐ/tháng + Thưởng hiệu quả",
-    "baseSalary": "25 – 35 triệu",
-    "totalIncome": "25 – 35 triệu + Thưởng hiệu quả",
-    "quantity": "01 vị trí",
-    "locations": ["Hà Nội"],
-    "locationText": "Hà Đông, Hà Nội",
-    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
-    "badge": "Lương đến 35M • Quản lý team kỹ thuật",
-    "highlight": "Quản lý team kỹ thuật 3–5 người | Solar – Inverter – BESS/Hybrid",
-    "descriptionSections": [
-      {
-        "title": "Quản lý & Điều phối đội ngũ kỹ thuật",
-        "content": "Quản lý, điều phối, hướng dẫn chuyên môn và phụ trách hiệu quả cho đội ngũ kỹ thuật 3–5 người trong các hoạt động liên quan đến Solar, Inverter và BESS."
-      },
-      {
-        "title": "Đào tạo & Chuyển giao kiến thức",
-        "content": "Phụ trách hỗ trợ kỹ thuật, đào tạo và chuyển giao kiến thức cho đội ngũ nội bộ, đại lý và đối tác của Công ty."
-      },
-      {
-        "title": "Triển khai & Giám sát dự án",
-        "content": "Tham gia triển khai, giám sát và hỗ trợ xử lý các vấn đề kỹ thuật tại các dự án Solar – BESS."
-      },
-      {
-        "title": "Đánh giá sản phẩm & Dịch vụ sau bán hàng",
-        "content": "Phối hợp đánh giá sản phẩm mới, hỗ trợ kỹ thuật, bảo hành và các hoạt động sau bán hàng liên quan đến sản phẩm Inverter/BESS."
-      }
-    ],
-    "requirements": [
-      "Tốt nghiệp Đại học chuyên ngành Điện – Điện tử, Hệ thống điện, Năng lượng tái tạo, Tự động hóa hoặc lĩnh vực liên quan.",
-      "Có khoảng 3–5 năm kinh nghiệm trong lĩnh vực điện mặt trời, ưu tiên ứng viên đã tham gia các dự án BESS/Hybrid.",
-      "Có kinh nghiệm lead, điều phối hoặc hướng dẫn đội kỹ thuật (từ 3 người trở lên).",
-      "Có kinh nghiệm thiết kế, thi công hoặc vận hành hệ thống Solar.",
-      "Sử dụng được AutoCAD, PVsyst hoặc các phần mềm thiết kế Solar tương đương.",
-      "Có kiến thức về Inverter, Battery/BESS, BMS và hệ thống điện AC/DC.",
-      "Có khả năng giao tiếp, hướng dẫn và phối hợp công việc tốt.",
-      "Có thể đi công tác khi dự án yêu cầu.",
-      "Ưu tiên: Ứng viên từng làm việc với các hãng Inverter, Battery/BESS hoặc đơn vị EPC Solar.",
-      "Ưu tiên: Có kinh nghiệm đào tạo kỹ thuật hoặc hỗ trợ hệ thống đại lý.",
-      "Ưu tiên: Có kinh nghiệm thực tế với hệ thống Hybrid/BESS."
-    ],
-    "benefits": [
-      "Thu nhập: 25.000.000 – 35.000.000 VNĐ/tháng, thỏa thuận theo năng lực + thưởng hiệu quả công việc.",
-      "Được làm việc trực tiếp với các giải pháp Solar – Inverter – BESS/Hybrid và các sản phẩm mới trên thị trường.",
-      "Có đội ngũ kỹ thuật để phối hợp và trực tiếp dẫn dắt.",
-      "Đầy đủ công tác phí, phụ cấp điện thoại, xăng xe, ăn trưa theo chính sách Công ty.",
-      "Tham gia BHXH, BHYT, BHTN theo quy định.",
-      "Thưởng Lễ/Tết, tháng lương 13+, du lịch và các chế độ phúc lợi khác.",
-      "Có cơ hội phát triển lên các vị trí quản lý kỹ thuật cao hơn."
+      "Thu nhập: 15.000.000 – 20.000.000 VNĐ/tháng (Cạnh tranh theo năng lực, kinh nghiệm và kết quả công việc).",
+      "Thưởng dự án, phụ cấp công tác theo chính sách Công ty.",
+      "Được đào tạo về công nghệ điện mặt trời, pin lưu trữ (BESS) và tiêu chuẩn an toàn kỹ thuật.",
+      "Tham gia đầy đủ chế độ bảo hiểm (BHXH, BHYT, BHTN) theo quy định."
     ]
   }
 ]
