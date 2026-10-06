@@ -4,16 +4,16 @@
     "code": "01",
     "title": "Nhân Viên Kinh Doanh – Thiết Bị Solar & Pin Lưu Trữ",
     "shortTitle": "Nhân Viên Kinh Doanh",
-    "cardSalary": "10 – 25 triệu + Hoa hồng",
-    "salary": "10 – 25 triệu VNĐ/tháng + Hoa hồng",
+    "cardSalary": "10 – 25 triệu/tháng + Hoa hồng",
+    "salary": "10 – 25 triệu/tháng + Hoa hồng",
     "baseSalary": "10 – 25 triệu",
     "totalIncome": "10 – 25 triệu/tháng + Hoa hồng",
-    "quantity": "10 nhân sự (Hà Nội: 5 | TP.HCM: 5)",
+    "quantity": "10 nhân sự: Hà Nội 5 | TP.HCM 5",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
     "locationText": "Hà Nội | TP. Hồ Chí Minh",
     "workType": "Toàn thời gian",
     "badge": "Thu nhập 10-25M • Hoa hồng",
-    "highlight": "Hà Nội: 5 nhân sự | TP.HCM: 5 nhân sự | Đào tạo từ đầu",
+    "highlight": "Hà Nội: 5 | TP.HCM: 5 | Đào tạo từ đầu",
     "callout": {
       "headline": "Cơ hội dành cho Sales muốn phát triển trong thị trường Solar & Pin lưu trữ",
       "content": "Không yêu cầu bạn phải là chuyên gia kỹ thuật Solar ngay từ đầu. Bạn sẽ được đào tạo kiến thức sản phẩm và giải pháp để có thể tự tin tư vấn khách hàng."
@@ -26,22 +26,36 @@
       "Phối hợp với bộ phận kỹ thuật khi khách hàng cần tư vấn chuyên sâu hoặc xây dựng cấu hình hệ thống.",
       "Duy trì quan hệ và chăm sóc khách hàng sau bán hàng."
     ],
-    "requirements": [
-      "Có kinh nghiệm Sales/Kinh doanh/Bán hàng là một lợi thế.",
-      "Tốt nghiệp Trung cấp/Cao đẳng/Đại học.",
-      "Có khả năng giao tiếp, tư vấn và xây dựng quan hệ với khách hàng.",
-      "Chủ động, nhiệt tình, trung thực và có tinh thần hướng đến kết quả.",
-      "Có thể sử dụng các công cụ văn phòng cơ bản.",
-      "Ưu tiên: Đã từng kinh doanh Solar, thiết bị điện, điện công nghiệp, inverter, pin lưu trữ hoặc sản phẩm kỹ thuật.",
-      "Ưu tiên: Có kinh nghiệm làm việc với đại lý, nhà thầu, EPC, doanh nghiệp hoặc khách hàng dự án.",
-      "Ưu tiên: Có sẵn network khách hàng trong ngành.",
-      "Chưa từng làm Solar vẫn có thể ứng tuyển – Công ty có đào tạo sản phẩm và kiến thức cần thiết."
-    ],
+    "requirements": {
+      "general": [
+        "Có kinh nghiệm Sales/Kinh doanh/Bán hàng là một lợi thế.",
+        "Tốt nghiệp Trung cấp/Cao đẳng/Đại học.",
+        "Có khả năng giao tiếp, tư vấn và xây dựng quan hệ với khách hàng.",
+        "Chủ động, nhiệt tình, trung thực và có tinh thần hướng đến kết quả.",
+        "Có thể sử dụng các công cụ văn phòng cơ bản."
+      ],
+      "advantagesTitle": "Bạn sẽ có lợi thế nếu:",
+      "advantages": [
+        "Đã từng kinh doanh Solar, thiết bị điện, điện công nghiệp, inverter, pin lưu trữ hoặc sản phẩm kỹ thuật.",
+        "Có kinh nghiệm làm việc với đại lý, nhà thầu, EPC, doanh nghiệp hoặc khách hàng dự án.",
+        "Có sẵn network khách hàng trong ngành."
+      ],
+      "note": "Chưa từng làm Solar vẫn có thể ứng tuyển – Công ty có đào tạo sản phẩm và kiến thức cần thiết."
+    },
+    "income": {
+      "headline": "10 – 25 triệu VNĐ/tháng",
+      "breakdownTitle": "Bao gồm:",
+      "items": [
+        "Lương cứng",
+        "Hoa hồng kinh doanh",
+        "Thưởng theo kết quả/KPI"
+      ],
+      "note": "Thu nhập có thể tăng theo năng lực bán hàng và kết quả kinh doanh."
+    },
     "benefits": [
-      "Thu nhập: 10 – 25 triệu VNĐ/tháng (Bao gồm: Lương cứng + Hoa hồng kinh doanh + Thưởng theo kết quả/KPI; thu nhập có thể tăng theo năng lực bán hàng và kết quả kinh doanh).",
       "Được đào tạo từ đầu về sản phẩm Solar, inverter và pin lưu trữ.",
       "Có đội ngũ kỹ thuật hỗ trợ trong quá trình tư vấn và xây dựng giải pháp cho khách hàng.",
-      "Chính sách lương + hoa hồng + thưởng theo kết quả kinh doanh minh bạch.",
+      "Chính sách lương + hoa hồng + thưởng theo kết quả kinh doanh.",
       "Được tham gia đầy đủ BHXH, BHYT và các chế độ theo quy định.",
       "Thưởng lễ, Tết và các chế độ phúc lợi của Công ty.",
       "Có lộ trình phát triển lên Senior Sales / Key Account / Quản lý kinh doanh."
@@ -55,13 +69,13 @@
     "cardSalary": "15 – 20 triệu VNĐ/tháng",
     "salary": "15 – 20 triệu VNĐ/tháng",
     "baseSalary": "15 – 20 triệu",
-    "totalIncome": "15 – 20 triệu VNĐ/tháng + Thưởng dự án",
-    "quantity": "04 vị trí (Hà Nội: 2 | TP.HCM: 2)",
+    "totalIncome": "15 – 20 triệu VNĐ/tháng",
+    "quantity": "04 vị trí: Hà Nội 2 | TP.HCM 2",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
     "locationText": "Hà Nội | TP. Hồ Chí Minh",
     "workType": "Toàn thời gian",
     "badge": "Lương 15-20M • Kỹ sư chuyên môn",
-    "highlight": "Hà Nội: 2 vị trí | TP.HCM: 2 vị trí | Dự án Solar & BESS",
+    "highlight": "Hà Nội: 2 | TP.HCM: 2 | Dự án Solar & BESS",
     "callout": {
       "headline": "Cơ hội dành cho kỹ sư điện muốn phát triển chuyên sâu trong Solar & Pin lưu trữ",
       "content": "Tham gia trực tiếp các dự án điện mặt trời áp mái và hệ thống lưu trữ năng lượng từ Sametel với 20 năm kinh nghiệm trong ngành, từ khảo sát – thiết kế – triển khai thực tế."
@@ -76,19 +90,33 @@
       "Theo dõi hiệu suất vận hành, xử lý sự cố, phân tích dữ liệu giám sát và đề xuất bảo trì, cải tiến hệ thống.",
       "Có cơ hội tham gia các dự án Solar kết hợp BESS/Hybrid và tiếp cận các công nghệ năng lượng mới."
     ],
-    "requirements": [
-      "Tốt nghiệp Cao đẳng/Đại học chuyên ngành Điện, Điện – Điện tử, Hệ thống điện, Năng lượng hoặc ngành liên quan.",
-      "Có kiến thức hoặc kinh nghiệm thực tế về hệ thống điện.",
-      "Đọc hiểu bản vẽ kỹ thuật và sử dụng được AutoCAD, Excel.",
-      "Có khả năng đi khảo sát/công tác tại dự án khi cần.",
-      "Chủ động, cẩn thận và có tinh thần phối hợp trong công việc.",
-      "Ưu tiên: Biết PVsyst hoặc phần mềm mô phỏng tương đương.",
-      "Ưu tiên: Có kinh nghiệm inverter hybrid, BESS, EMS và hệ thống giám sát.",
-      "Ưu tiên: Có chứng chỉ an toàn điện, giám sát hoặc kinh nghiệm làm việc với khách hàng công nghiệp.",
-      "Ứng viên có nền tảng điện nhưng chưa có nhiều kinh nghiệm Solar vẫn có thể ứng tuyển và được đào tạo thêm về sản phẩm, hệ thống và quy trình triển khai."
-    ],
+    "requirements": {
+      "general": [
+        "Tốt nghiệp Cao đẳng/Đại học chuyên ngành Điện, Điện – Điện tử, Hệ thống điện, Năng lượng hoặc ngành liên quan.",
+        "Có kiến thức hoặc kinh nghiệm thực tế về hệ thống điện.",
+        "Đọc hiểu bản vẽ kỹ thuật và sử dụng được AutoCAD, Excel.",
+        "Có khả năng đi khảo sát/công tác tại dự án khi cần.",
+        "Chủ động, cẩn thận và có tinh thần phối hợp trong công việc."
+      ],
+      "advantagesTitle": "Bạn sẽ có lợi thế nếu:",
+      "advantages": [
+        "Biết PVsyst hoặc phần mềm mô phỏng tương đương;",
+        "Có kinh nghiệm inverter hybrid, BESS, EMS và hệ thống giám sát.",
+        "Có chứng chỉ an toàn điện, giám sát hoặc kinh nghiệm làm việc với khách hàng công nghiệp."
+      ],
+      "note": "Ứng viên có nền tảng điện nhưng chưa có nhiều kinh nghiệm Solar vẫn có thể ứng tuyển và được đào tạo thêm về sản phẩm, hệ thống và quy trình triển khai."
+    },
+    "income": {
+      "headline": "15 – 20 triệu VNĐ/tháng",
+      "description": "Thu nhập được xem xét theo năng lực và kinh nghiệm thực tế.",
+      "breakdownTitle": "Ngoài ra:",
+      "items": [
+        "Thưởng theo dự án/hiệu quả công việc.",
+        "Phụ cấp công tác theo chính sách Công ty.",
+        "Xét điều chỉnh thu nhập theo năng lực và quá trình phát triển."
+      ]
+    },
     "benefits": [
-      "Thu nhập: 15 – 20 triệu VNĐ/tháng (Xem xét theo năng lực và kinh nghiệm thực tế; thưởng theo dự án/hiệu quả công việc; phụ cấp công tác theo chính sách Công ty; xét điều chỉnh thu nhập theo năng lực và quá trình phát triển).",
       "Được đào tạo và làm việc thực tế với Solar, inverter, hệ thống Hybrid và BESS.",
       "Tham gia đầy đủ BHXH, BHYT và các chế độ theo quy định.",
       "Thưởng lễ, Tết và các chế độ phúc lợi của Công ty.",
