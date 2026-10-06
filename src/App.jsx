@@ -362,33 +362,10 @@ function App() {
                 </span>
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-lg sm:text-xl font-bold text-blue-900">
-                26 cơ hội nghề nghiệp tại Hà Nội – TP.HCM – Đà Nẵng
-              </p>
-
               {/* Description */}
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
                 Cùng SAMETEL phát triển hệ thống kinh doanh, phân phối và kỹ thuật cho các giải pháp Solar – BESS – Inverter trên toàn quốc.
               </p>
-
-              {/* Quick Highlight Stats Pill */}
-              <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-3 bg-white rounded-2xl border border-slate-200/80 shadow-sm text-xs sm:text-sm text-slate-700 font-medium">
-                <span className="flex items-center gap-1 text-blue-700 font-bold">
-                  <span className="material-symbols-outlined text-base">work</span>
-                  5 nhóm vị trí
-                </span>
-                <span className="text-slate-300">•</span>
-                <span className="flex items-center gap-1 text-emerald-700 font-bold">
-                  <span className="material-symbols-outlined text-base">payments</span>
-                  Lương cứng đến 40 triệu/tháng
-                </span>
-                <span className="text-slate-300">•</span>
-                <span className="flex items-center gap-1 text-amber-700 font-bold">
-                  <span className="material-symbols-outlined text-base">trending_up</span>
-                  Hoa hồng/KPI theo từng vị trí
-                </span>
-              </div>
 
               {/* Hero CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -407,11 +384,6 @@ function App() {
                   <span>Nộp hồ sơ trực tuyến</span>
                 </a>
               </div>
-
-              {/* Subtext */}
-              <p className="text-xs sm:text-sm text-slate-500 font-medium pt-2">
-                Hà Nội • TP.HCM • Đà Nẵng | Full-time
-              </p>
 
             </div>
           </div>
@@ -1090,7 +1062,6 @@ function App() {
                         >
                           <option value="Hà Nội">Hà Nội</option>
                           <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                          <option value="Đà Nẵng">Đà Nẵng</option>
                         </select>
                       </div>
 
