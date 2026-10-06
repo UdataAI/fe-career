@@ -677,7 +677,7 @@ function App() {
                   <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
                     <span className="material-symbols-outlined text-blue-700 text-2xl">description</span>
                     <h3 className="font-display-lg text-lg font-bold text-slate-900">
-                      MÔ TẢ CÔNG VIỆC (JOB DESCRIPTION)
+                      MÔ TẢ CÔNG VIỆC
                     </h3>
                   </div>
                   <div className="space-y-3.5 pl-1">
@@ -709,25 +709,113 @@ function App() {
                   <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
                     <span className="material-symbols-outlined text-blue-700 text-2xl">task_alt</span>
                     <h3 className="font-display-lg text-lg font-bold text-slate-900">
-                      YÊU CẦU ỨNG VIÊN (JOB REQUIREMENTS)
+                      YÊU CẦU ỨNG VIÊN
                     </h3>
                   </div>
-                  <ul className="space-y-2.5 pl-1">
-                    {activeModalJob.requirements.map((req, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600">
-                        <span className="material-symbols-outlined text-base text-emerald-600 mt-0.5 shrink-0">check_circle</span>
-                        <span>{req}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  {Array.isArray(activeModalJob.requirements) ? (
+                    <ul className="space-y-2.5 pl-1">
+                      {activeModalJob.requirements.map((req, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600">
+                          <span className="material-symbols-outlined text-base text-emerald-600 mt-0.5 shrink-0">check_circle</span>
+                          <span>{req}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className="space-y-4 text-xs sm:text-sm text-slate-600 pl-1">
+                      {activeModalJob.requirements?.general && (
+                        <ul className="space-y-2.5">
+                          {activeModalJob.requirements.general.map((req, idx) => (
+                            <li key={idx} className="flex items-start gap-2.5">
+                              <span className="material-symbols-outlined text-base text-emerald-600 mt-0.5 shrink-0">check_circle</span>
+                              <span>{req}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {activeModalJob.requirements?.advantages && (
+                        <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 space-y-2">
+                          <div className="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-2">
+                            <span className="material-symbols-outlined text-blue-700 text-base">stars</span>
+                            <span>{activeModalJob.requirements.advantagesTitle || 'Bạn sẽ có lợi thế nếu:'}</span>
+                          </div>
+                          <ul className="space-y-2 pl-2">
+                            {activeModalJob.requirements.advantages.map((adv, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-slate-700">
+                                <span className="text-blue-600 font-bold">•</span>
+                                <span>{adv}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {activeModalJob.requirements?.note && (
+                        <div className="p-3.5 rounded-xl bg-amber-50/90 border border-amber-200 text-amber-900 font-medium text-xs sm:text-sm flex items-start gap-2.5">
+                          <span className="material-symbols-outlined text-base text-amber-600 mt-0.5 shrink-0">info</span>
+                          <span>{activeModalJob.requirements.note}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
-                {/* 3. QUYỀN LỢI ĐƯỢC HƯỞNG */}
+                {/* 3. THU NHẬP */}
+                {activeModalJob.income && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                      <span className="material-symbols-outlined text-blue-700 text-2xl">payments</span>
+                      <h3 className="font-display-lg text-lg font-bold text-slate-900">
+                        THU NHẬP
+                      </h3>
+                    </div>
+                    <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-50/80 via-teal-50/50 to-emerald-50/80 border border-emerald-200 space-y-3">
+                      <div className="flex items-center gap-2 text-emerald-800 font-extrabold text-base sm:text-lg">
+                        <span className="material-symbols-outlined text-xl">monetization_on</span>
+                        <span>Thu nhập: {activeModalJob.income.headline}</span>
+                      </div>
+
+                      {activeModalJob.income.description && (
+                        <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                          {activeModalJob.income.description}
+                        </p>
+                      )}
+
+                      {activeModalJob.income.items && (
+                        <div className="space-y-2 pt-1">
+                          {activeModalJob.income.breakdownTitle && (
+                            <p className="text-xs sm:text-sm font-bold text-slate-800">
+                              {activeModalJob.income.breakdownTitle}
+                            </p>
+                          )}
+                          <ul className="space-y-1.5 pl-2">
+                            {activeModalJob.income.items.map((item, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
+                                <span className="text-emerald-600 font-bold">•</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {activeModalJob.income.note && (
+                        <p className="text-xs sm:text-sm text-slate-600 italic pt-1 border-t border-emerald-200/60">
+                          {activeModalJob.income.note}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* 4. QUYỀN LỢI */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
                     <span className="material-symbols-outlined text-blue-700 text-2xl">card_giftcard</span>
                     <h3 className="font-display-lg text-lg font-bold text-slate-900">
-                      QUYỀN LỢI ĐƯỢC HƯỞNG (BENEFITS)
+                      QUYỀN LỢI
                     </h3>
                   </div>
                   <ul className="space-y-2.5 pl-1">
@@ -740,7 +828,7 @@ function App() {
                   </ul>
                 </div>
 
-                {/* 4. ĐỊA ĐIỂM & THỜI GIAN LÀM VIỆC */}
+                {/* 5. ĐỊA ĐIỂM & THỜI GIAN LÀM VIỆC */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
                     <span className="material-symbols-outlined text-blue-700 text-2xl">apartment</span>
@@ -757,7 +845,7 @@ function App() {
                         <span>Địa điểm làm việc:</span>
                       </div>
                       <p className="text-xs sm:text-sm font-semibold text-slate-700 pl-6">
-                        {activeModalJob.locationText || 'Hà Nội – TP. Hồ Chí Minh'}
+                        {activeModalJob.locationText || 'Hà Nội | TP. Hồ Chí Minh'}
                       </p>
                     </div>
 
@@ -768,7 +856,7 @@ function App() {
                         <span>Thời gian làm việc:</span>
                       </div>
                       <p className="text-xs sm:text-sm font-medium text-slate-700 pl-6">
-                        8:00 – 17:00 (Thứ 2 – Thứ 6, Thứ 7 làm buổi sáng. Nghỉ chiều Thứ 7 &amp; Chủ Nhật)
+                        8:00 – 17:00 (Thứ 2 – Thứ 6 và sáng Thứ 7. Nghỉ chiều Thứ 7 &amp; Chủ Nhật)
                       </p>
                     </div>
                   </div>
