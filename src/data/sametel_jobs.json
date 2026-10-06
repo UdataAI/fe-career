@@ -2,112 +2,97 @@
   {
     "id": "sales-executive",
     "code": "01",
-    "title": "Nhân Viên Kinh Doanh (Bán Thiết Bị Solar - Pin Lưu Trữ)",
+    "title": "Nhân Viên Kinh Doanh – Thiết Bị Solar & Pin Lưu Trữ",
     "shortTitle": "Nhân Viên Kinh Doanh",
-    "cardSalary": "10 – 25 triệu VNĐ",
-    "salary": "10.000.000 – 25.000.000 VNĐ/tháng",
+    "cardSalary": "10 – 25 triệu + Hoa hồng",
+    "salary": "10 – 25 triệu VNĐ/tháng + Hoa hồng",
     "baseSalary": "10 – 25 triệu",
-    "totalIncome": "10 – 25 triệu VNĐ/tháng + Hoa hồng doanh số",
-    "quantity": "10 vị trí (HN: 05 • HCM: 05)",
+    "totalIncome": "10 – 25 triệu/tháng + Hoa hồng",
+    "quantity": "10 nhân sự (Hà Nội: 5 | TP.HCM: 5)",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
-    "locationText": "Hà Nội • TP.HCM",
-    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
-    "badge": "Thu nhập 10-25M • Hoa hồng hấp dẫn",
-    "highlight": "Bán thiết bị Solar - Pin lưu trữ | Hà Nội (5 người) • TP.HCM (5 người)",
+    "locationText": "Hà Nội | TP. Hồ Chí Minh",
+    "workType": "Toàn thời gian",
+    "badge": "Thu nhập 10-25M • Hoa hồng",
+    "highlight": "Hà Nội: 5 nhân sự | TP.HCM: 5 nhân sự | Đào tạo từ đầu",
     "callout": {
-      "headline": "Mô tả vị trí",
-      "content": "• Nhân viên kinh doanh phụ trách giới thiệu, tư vấn và bán thiết bị điện mặt trời, pin lưu trữ cùng các giải pháp liên quan cho khách hàng cá nhân, doanh nghiệp, đại lý và đơn vị thi công.\n• Chủ động phát triển thị trường, xây dựng quan hệ khách hàng và phối hợp với bộ phận kỹ thuật để đề xuất cấu hình phù hợp nhu cầu, ngân sách và điều kiện lắp đặt."
+      "headline": "Cơ hội dành cho Sales muốn phát triển trong thị trường Solar & Pin lưu trữ",
+      "content": "Không yêu cầu bạn phải là chuyên gia kỹ thuật Solar ngay từ đầu. Bạn sẽ được đào tạo kiến thức sản phẩm và giải pháp để có thể tự tin tư vấn khách hàng."
     },
-    "descriptionSections": [
-      {
-        "title": "Tìm kiếm & Chăm sóc khách hàng",
-        "content": "Tìm kiếm khách hàng tiềm năng qua gọi điện, mạng xã hội, sự kiện, kênh đối tác và hoạt động thị trường; chăm sóc khách hàng từ lúc tiếp nhận nhu cầu đến sau bán hàng."
-      },
-      {
-        "title": "Khảo sát & Tư vấn sản phẩm giải pháp",
-        "content": "Khảo sát sơ bộ nhu cầu sử dụng điện, tư vấn sản phẩm như tấm quang điện, inverter, pin lưu trữ, phụ kiện và giải pháp hệ thống."
-      },
-      {
-        "title": "Báo giá, Đàm phán & Quản lý hợp đồng",
-        "content": "Lập báo giá, đề xuất phương án thương mại, đàm phán và theo dõi hợp đồng, đơn hàng, công nợ theo quy trình công ty."
-      },
-      {
-        "title": "Cập nhật dữ liệu & Báo cáo thị trường",
-        "content": "Cập nhật thông tin khách hàng, cơ hội bán hàng và kết quả kinh doanh trên hệ thống; báo cáo thị trường, đối thủ và nhu cầu sản phẩm."
-      },
-      {
-        "title": "Phối hợp vận hành & Xử lý phản hồi",
-        "content": "Phối hợp với kỹ thuật, kho vận và chăm sóc khách hàng để đảm bảo giao hàng, triển khai và xử lý phản hồi đúng cam kết."
-      }
+    "duties": [
+      "Tư vấn và kinh doanh các sản phẩm thiết bị điện mặt trời, inverter, pin lưu trữ và giải pháp liên quan.",
+      "Chăm sóc, tư vấn khách hàng và các cơ hội kinh doanh được tiếp nhận trong quá trình làm việc.",
+      "Tìm kiếm và phát triển thêm khách hàng, đại lý, nhà thầu và đối tác có nhu cầu phù hợp.",
+      "Tiếp nhận nhu cầu, tư vấn sản phẩm, lập báo giá và theo dõi khách hàng đến khi chốt đơn.",
+      "Phối hợp với bộ phận kỹ thuật khi khách hàng cần tư vấn chuyên sâu hoặc xây dựng cấu hình hệ thống.",
+      "Duy trì quan hệ và chăm sóc khách hàng sau bán hàng."
     ],
     "requirements": [
-      "Tốt nghiệp trung cấp, cao đẳng hoặc đại học; có kỹ năng giao tiếp, tư vấn, thương lượng và chăm sóc khách hàng.",
-      "Có kinh nghiệm bán hàng, phát triển khách hàng hoặc kinh doanh dự án; sử dụng được tin học văn phòng và sẵn sàng đi công tác khi cần.",
-      "Có tinh thần chủ động, kiên trì, chịu được áp lực doanh số và trung thực trong công việc.",
-      "Ưu tiên: Từng kinh doanh thiết bị điện, điện công nghiệp, năng lượng tái tạo, điện mặt trời hoặc pin lưu trữ.",
-      "Ưu tiên: Có mạng lưới khách hàng là đại lý, nhà thầu, đơn vị EPC, doanh nghiệp hoặc chủ đầu tư; hiểu cơ bản về điện và quy trình bán hàng B2B."
+      "Có kinh nghiệm Sales/Kinh doanh/Bán hàng là một lợi thế.",
+      "Tốt nghiệp Trung cấp/Cao đẳng/Đại học.",
+      "Có khả năng giao tiếp, tư vấn và xây dựng quan hệ với khách hàng.",
+      "Chủ động, nhiệt tình, trung thực và có tinh thần hướng đến kết quả.",
+      "Có thể sử dụng các công cụ văn phòng cơ bản.",
+      "Ưu tiên: Đã từng kinh doanh Solar, thiết bị điện, điện công nghiệp, inverter, pin lưu trữ hoặc sản phẩm kỹ thuật.",
+      "Ưu tiên: Có kinh nghiệm làm việc với đại lý, nhà thầu, EPC, doanh nghiệp hoặc khách hàng dự án.",
+      "Ưu tiên: Có sẵn network khách hàng trong ngành.",
+      "Chưa từng làm Solar vẫn có thể ứng tuyển – Công ty có đào tạo sản phẩm và kiến thức cần thiết."
     ],
     "benefits": [
-      "Lương cơ bản cạnh tranh, hoa hồng và thưởng theo doanh số; mức thu nhập thực tế từ 10 – 25 triệu VNĐ (phụ thuộc kết quả kinh doanh).",
-      "Được đào tạo bài bản về sản phẩm, kiến thức kỹ thuật và kỹ năng bán hàng chuyên nghiệp.",
-      "Tham gia đầy đủ bảo hiểm (BHXH, BHYT, BHTN), nghỉ phép và chế độ theo quy định pháp luật.",
-      "Có cơ hội phát triển lên vị trí quản lý kinh doanh hoặc phụ trách khách hàng dự án."
+      "Thu nhập: 10 – 25 triệu VNĐ/tháng (Bao gồm: Lương cứng + Hoa hồng kinh doanh + Thưởng theo kết quả/KPI; thu nhập có thể tăng theo năng lực bán hàng và kết quả kinh doanh).",
+      "Được đào tạo từ đầu về sản phẩm Solar, inverter và pin lưu trữ.",
+      "Có đội ngũ kỹ thuật hỗ trợ trong quá trình tư vấn và xây dựng giải pháp cho khách hàng.",
+      "Chính sách lương + hoa hồng + thưởng theo kết quả kinh doanh minh bạch.",
+      "Được tham gia đầy đủ BHXH, BHYT và các chế độ theo quy định.",
+      "Thưởng lễ, Tết và các chế độ phúc lợi của Công ty.",
+      "Có lộ trình phát triển lên Senior Sales / Key Account / Quản lý kinh doanh."
     ]
   },
   {
     "id": "solar-rooftop-engineer",
     "code": "02",
-    "title": "Kỹ Sư Điện Mặt Trời Áp Mái (Solar & Pin Lưu Trữ)",
+    "title": "Kỹ Sư Điện Mặt Trời Áp Mái",
     "shortTitle": "Kỹ Sư Điện Mặt Trời Áp Mái",
-    "cardSalary": "15 – 20 triệu VNĐ",
-    "salary": "15.000.000 – 20.000.000 VNĐ/tháng",
+    "cardSalary": "15 – 20 triệu VNĐ/tháng",
+    "salary": "15 – 20 triệu VNĐ/tháng",
     "baseSalary": "15 – 20 triệu",
     "totalIncome": "15 – 20 triệu VNĐ/tháng + Thưởng dự án",
-    "quantity": "04 vị trí (HN: 02 • HCM: 02)",
+    "quantity": "04 vị trí (Hà Nội: 2 | TP.HCM: 2)",
     "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
-    "locationText": "Hà Nội • TP.HCM",
-    "workType": "Toàn thời gian (Từ Thứ 2 đến sáng Thứ 7)",
+    "locationText": "Hà Nội | TP. Hồ Chí Minh",
+    "workType": "Toàn thời gian",
     "badge": "Lương 15-20M • Kỹ sư chuyên môn",
-    "highlight": "Điện mặt trời, pin lưu trữ | Hà Nội (2 người) • TP.HCM (2 người)",
+    "highlight": "Hà Nội: 2 vị trí | TP.HCM: 2 vị trí | Dự án Solar & BESS",
     "callout": {
-      "headline": "Mô tả vị trí",
-      "content": "• Kỹ sư điện mặt trời áp mái chịu trách nhiệm khảo sát, thiết kế, triển khai và giám sát hệ thống điện mặt trời áp mái, có thể tích hợp pin lưu trữ (BESS), cho khách hàng dân dụng, thương mại và công nghiệp.\n• Vị trí phối hợp với khách hàng, đội thi công, nhà cung cấp và các bộ phận nội bộ để bảo đảm hệ thống an toàn, đúng tiến độ và đáp ứng yêu cầu kỹ thuật."
+      "headline": "Cơ hội dành cho kỹ sư điện muốn phát triển chuyên sâu trong Solar & Pin lưu trữ",
+      "content": "Tham gia trực tiếp các dự án điện mặt trời áp mái và hệ thống lưu trữ năng lượng từ Sametel với 20 năm kinh nghiệm trong ngành, từ khảo sát – thiết kế – triển khai thực tế."
     },
-    "descriptionSections": [
-      {
-        "title": "Khảo sát hiện trạng & Thu thập dữ liệu",
-        "content": "Khảo sát hiện trạng mái, kết cấu, phụ tải và điểm đấu nối; thu thập dữ liệu phục vụ phương án thiết kế."
-      },
-      {
-        "title": "Tính toán công suất & Lập hồ sơ kỹ thuật",
-        "content": "Tính toán công suất, sản lượng, cấu hình inverter, tấm pin, dây dẫn, bảo vệ điện và pin lưu trữ; lập bản vẽ, sơ đồ một sợi, bảng khối lượng và thuyết minh kỹ thuật."
-      },
-      {
-        "title": "Mô phỏng sản lượng & Hỗ trợ chào thầu",
-        "content": "Sử dụng phần mềm chuyên ngành để mô phỏng sản lượng, đánh giá phương án và hỗ trợ lập hồ sơ chào thầu hoặc đề xuất kỹ thuật."
-      },
-      {
-        "title": "Giám sát lắp đặt, Đấu nối & Nghiệm thu",
-        "content": "Giám sát lắp đặt, đấu nối, chạy thử và nghiệm thu; kiểm tra chất lượng, an toàn lao động, tiếp địa, chống sét và tuân thủ quy chuẩn, tiêu chuẩn hiện hành."
-      },
-      {
-        "title": "Theo dõi vận hành, Xử lý sự cố & Bảo dưỡng",
-        "content": "Theo dõi hiệu suất vận hành, xử lý sự cố, phân tích dữ liệu giám sát và đề xuất bảo trì, cải tiến hệ thống. Phối hợp hoàn thiện hồ sơ kỹ thuật, hồ sơ nghiệm thu và hướng dẫn khách hàng vận hành, bảo dưỡng."
-      }
+    "duties": [
+      "Khảo sát hiện trạng công trình, mái, hệ thống điện và nhu cầu sử dụng của khách hàng.",
+      "Lên phương án và thiết kế hệ thống điện mặt trời áp mái phù hợp với từng dự án.",
+      "Tính toán, lựa chọn các thiết bị chính như tấm pin, inverter, pin lưu trữ, dây dẫn và thiết bị bảo vệ.",
+      "Triển khai bản vẽ kỹ thuật, sơ đồ điện và bóc tách khối lượng vật tư phục vụ báo giá, chào thầu và thi công.",
+      "Phối hợp với đội thi công và các bộ phận liên quan trong quá trình triển khai dự án.",
+      "Hỗ trợ kiểm tra, nghiệm thu và xử lý các vấn đề kỹ thuật phát sinh tại công trình.",
+      "Theo dõi hiệu suất vận hành, xử lý sự cố, phân tích dữ liệu giám sát và đề xuất bảo trì, cải tiến hệ thống.",
+      "Có cơ hội tham gia các dự án Solar kết hợp BESS/Hybrid và tiếp cận các công nghệ năng lượng mới."
     ],
     "requirements": [
-      "Tốt nghiệp cao đẳng hoặc đại học ngành Điện, Hệ thống điện, Năng lượng hoặc ngành liên quan.",
-      "Có kinh nghiệm thực tế trong thiết kế, thi công, giám sát hoặc vận hành hệ thống điện; ưu tiên đã làm điện mặt trời áp mái.",
-      "Đọc hiểu bản vẽ điện, nắm nguyên lý thiết bị điện, an toàn điện và có khả năng sử dụng AutoCAD, Excel.",
-      "Có thể đi công tác, khảo sát công trường; làm việc cẩn thận, chủ động và phối hợp tốt.",
-      "Ưu tiên: Biết PVsyst hoặc phần mềm mô phỏng tương đương; có kinh nghiệm inverter hybrid, BESS, EMS và hệ thống giám sát.",
-      "Ưu tiên: Có chứng chỉ an toàn điện, giám sát hoặc kinh nghiệm làm việc với khách hàng công nghiệp."
+      "Tốt nghiệp Cao đẳng/Đại học chuyên ngành Điện, Điện – Điện tử, Hệ thống điện, Năng lượng hoặc ngành liên quan.",
+      "Có kiến thức hoặc kinh nghiệm thực tế về hệ thống điện.",
+      "Đọc hiểu bản vẽ kỹ thuật và sử dụng được AutoCAD, Excel.",
+      "Có khả năng đi khảo sát/công tác tại dự án khi cần.",
+      "Chủ động, cẩn thận và có tinh thần phối hợp trong công việc.",
+      "Ưu tiên: Biết PVsyst hoặc phần mềm mô phỏng tương đương.",
+      "Ưu tiên: Có kinh nghiệm inverter hybrid, BESS, EMS và hệ thống giám sát.",
+      "Ưu tiên: Có chứng chỉ an toàn điện, giám sát hoặc kinh nghiệm làm việc với khách hàng công nghiệp.",
+      "Ứng viên có nền tảng điện nhưng chưa có nhiều kinh nghiệm Solar vẫn có thể ứng tuyển và được đào tạo thêm về sản phẩm, hệ thống và quy trình triển khai."
     ],
     "benefits": [
-      "Thu nhập: 15.000.000 – 20.000.000 VNĐ/tháng (Cạnh tranh theo năng lực, kinh nghiệm và kết quả công việc).",
-      "Thưởng dự án, phụ cấp công tác theo chính sách Công ty.",
-      "Được đào tạo về công nghệ điện mặt trời, pin lưu trữ (BESS) và tiêu chuẩn an toàn kỹ thuật.",
-      "Tham gia đầy đủ chế độ bảo hiểm (BHXH, BHYT, BHTN) theo quy định."
+      "Thu nhập: 15 – 20 triệu VNĐ/tháng (Xem xét theo năng lực và kinh nghiệm thực tế; thưởng theo dự án/hiệu quả công việc; phụ cấp công tác theo chính sách Công ty; xét điều chỉnh thu nhập theo năng lực và quá trình phát triển).",
+      "Được đào tạo và làm việc thực tế với Solar, inverter, hệ thống Hybrid và BESS.",
+      "Tham gia đầy đủ BHXH, BHYT và các chế độ theo quy định.",
+      "Thưởng lễ, Tết và các chế độ phúc lợi của Công ty.",
+      "Có lộ trình phát triển lên Senior Engineer / Project Engineer / Technical Lead."
     ]
   }
 ]
