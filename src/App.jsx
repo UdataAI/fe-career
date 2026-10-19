@@ -550,9 +550,9 @@ function App() {
                   </div>
 
                   {/* Middle Column: Salary & Highlight */}
-                  <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-center gap-1.5 shrink-0 lg:w-72">
+                  <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-stretch justify-center gap-1.5 shrink-0 lg:w-[22rem]">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-100">
-                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Thu nhập:</span>
+                      <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">Thu nhập:</span>
                       <span className="text-xs sm:text-sm font-extrabold text-blue-900 whitespace-nowrap">
                         {job.cardSalary || job.salary}
                       </span>
