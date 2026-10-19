@@ -203,10 +203,10 @@
     "code": "04",
     "title": "Chuyên Viên Nhân Sự & Tuyển Dụng",
     "shortTitle": "Chuyên Viên Nhân Sự & Tuyển Dụng",
-    "cardSalary": "Thỏa thuận + Thưởng",
-    "salary": "Thu nhập thỏa thuận theo năng lực + Thưởng",
-    "baseSalary": "Thỏa thuận",
-    "totalIncome": "Thu nhập thỏa thuận theo năng lực + Thưởng theo chính sách công ty",
+    "cardSalary": "12 – 18 triệu/tháng + Thưởng",
+    "salary": "12 – 18 triệu VNĐ/tháng + Thưởng",
+    "baseSalary": "12 – 18 triệu",
+    "totalIncome": "12 – 18 triệu VNĐ/tháng + Thưởng theo chính sách công ty",
     "quantity": "Đang tuyển",
     "locations": [
       "Hà Nội",
@@ -214,7 +214,7 @@
     ],
     "locationText": "Hà Nội | TP. Hồ Chí Minh",
     "workType": "Toàn thời gian",
-    "badge": "Thu nhập thỏa thuận • Văn phòng",
+    "badge": "Lương 12-18M • Văn phòng",
     "highlight": "Quy trình rõ ràng | Môi trường ổn định",
     "callout": {
       "headline": "20 năm hoạt động trong lĩnh vực Điện – Viễn thông – Solar",
@@ -258,8 +258,8 @@
       ]
     },
     "income": {
-      "headline": "Thỏa thuận theo năng lực",
-      "description": "Mức lương trao đổi cụ thể khi phỏng vấn, cùng các khoản thưởng theo chính sách công ty."
+      "headline": "12 – 18 triệu VNĐ/tháng",
+      "description": "Mức lương cụ thể căn cứ theo năng lực và kinh nghiệm, cùng các khoản thưởng theo chính sách công ty."
     },
     "benefits": [
       "Công việc văn phòng ổn định: Nghiệp vụ nhân sự rõ ràng, phối hợp trực tiếp với các phòng ban trong công ty.",
