@@ -9,7 +9,10 @@
     "baseSalary": "10 – 25 triệu",
     "totalIncome": "10 – 25 triệu/tháng + Hoa hồng",
     "quantity": "10 nhân sự: Hà Nội 5 | TP.HCM 5",
-    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
+    "locations": [
+      "Hà Nội",
+      "TP. Hồ Chí Minh"
+    ],
     "locationText": "Hà Nội | TP. Hồ Chí Minh",
     "workType": "Toàn thời gian",
     "badge": "Thu nhập 10-25M • Hoa hồng",
@@ -71,7 +74,10 @@
     "baseSalary": "15 – 20 triệu",
     "totalIncome": "15 – 20 triệu VNĐ/tháng",
     "quantity": "04 vị trí: Hà Nội 2 | TP.HCM 2",
-    "locations": ["Hà Nội", "TP. Hồ Chí Minh"],
+    "locations": [
+      "Hà Nội",
+      "TP. Hồ Chí Minh"
+    ],
     "locationText": "Hà Nội | TP. Hồ Chí Minh",
     "workType": "Toàn thời gian",
     "badge": "Lương 15-20M • Kỹ sư chuyên môn",
@@ -121,6 +127,146 @@
       "Tham gia đầy đủ BHXH, BHYT và các chế độ theo quy định.",
       "Thưởng lễ, Tết và các chế độ phúc lợi của Công ty.",
       "Có lộ trình phát triển lên Senior Engineer / Project Engineer / Technical Lead."
+    ]
+  },
+  {
+    "id": "sales-admin",
+    "code": "03",
+    "title": "Sales Admin – Hỗ Trợ Kinh Doanh",
+    "shortTitle": "Sales Admin",
+    "cardSalary": "10 – 12 triệu/tháng + Thưởng KPI",
+    "salary": "10 – 12 triệu VNĐ/tháng + Thưởng KPI",
+    "baseSalary": "10 – 12 triệu",
+    "totalIncome": "10 – 12 triệu VNĐ/tháng + Thưởng KPI",
+    "quantity": "02 nhân sự: Hà Nội 1 | TP.HCM 1",
+    "locations": [
+      "Hà Nội",
+      "TP. Hồ Chí Minh"
+    ],
+    "locationText": "Hà Nội | TP. Hồ Chí Minh",
+    "workType": "Toàn thời gian",
+    "badge": "Lương 10-12M • Thưởng KPI",
+    "highlight": "Hà Nội: 1 | TP.HCM: 1 | Giờ hành chính ổn định",
+    "callout": {
+      "headline": "20 năm hoạt động trong lĩnh vực Điện – Viễn thông – Solar",
+      "content": "SAMETEL được thành lập từ năm 2006, hoạt động trong các lĩnh vực Điện lực, Viễn thông, Năng lượng mặt trời, Pin lưu trữ và các giải pháp công nghiệp."
+    },
+    "descriptionSections": [
+      {
+        "title": "Báo giá – Hợp đồng – Đơn hàng",
+        "content": "Soạn thảo báo giá, hợp đồng, đơn đặt hàng và cập nhật hồ sơ bán hàng trên hệ thống. Theo dõi tình trạng xử lý đơn hàng theo quy trình."
+      },
+      {
+        "title": "Tiếp nhận và hỗ trợ khách hàng",
+        "content": "Tiếp nhận yêu cầu của khách hàng; cung cấp thông tin cơ bản về sản phẩm và kết nối khách hàng với nhân viên kinh doanh hoặc kỹ thuật."
+      },
+      {
+        "title": "Theo dõi giao hàng – Thanh toán – Bảo hành",
+        "content": "Phối hợp với Kho, Kế toán và Kỹ thuật để cập nhật tiến độ giao hàng, tình trạng thanh toán, công nợ và hỗ trợ xử lý các yêu cầu sau bán hàng."
+      },
+      {
+        "title": "Cập nhật số liệu – Báo cáo kinh doanh",
+        "content": "Cập nhật thông tin khách hàng, dữ liệu bán hàng trên hệ thống; tổng hợp báo cáo doanh số định kỳ và hỗ trợ đội ngũ Kinh doanh theo dõi tiến độ công việc."
+      }
+    ],
+    "requirements": {
+      "general": [
+        "Tốt nghiệp Cao đẳng/Đại học trở lên.",
+        "Ưu tiên ứng viên có kinh nghiệm Sales Admin, Kinh doanh hoặc Chăm sóc khách hàng.",
+        "Sử dụng tốt Word, Excel, Email hoặc Google Workspace, có khả năng nhập liệu, xử lý bảng tính và tổng hợp báo cáo.",
+        "Có khả năng giao tiếp, phối hợp công việc và hỗ trợ khách hàng qua điện thoại, email, ứng dụng nhắn tin.",
+        "Cẩn thận, có trách nhiệm, biết sắp xếp công việc và quản lý thời gian.",
+        "Sẵn sàng tìm hiểu kiến thức cơ bản về sản phẩm và quy trình kinh doanh."
+      ],
+      "advantagesTitle": "Ưu tiên:",
+      "advantages": [
+        "Có kinh nghiệm trong lĩnh vực Năng lượng mặt trời, Điện, Pin lưu trữ hoặc thiết bị công nghiệp.",
+        "Biết sử dụng phần mềm CRM/ERP, MISA hoặc các công cụ AI hỗ trợ công việc văn phòng."
+      ],
+      "note": "Không yêu cầu am hiểu chuyên sâu về kỹ thuật Solar. Ứng viên sẽ được đào tạo kiến thức sản phẩm và quy trình làm việc."
+    },
+    "income": {
+      "headline": "10 – 12 triệu VNĐ/tháng + Thưởng KPI",
+      "description": "Mức lương cụ thể căn cứ theo năng lực và kinh nghiệm của ứng viên."
+    },
+    "benefits": [
+      "Công việc văn phòng ổn định: Tập trung hỗ trợ đội ngũ Kinh doanh, phối hợp với Kế toán, Kho và Kỹ thuật; không yêu cầu trực tiếp tìm kiếm khách hàng.",
+      "Đào tạo chuyên môn: Được hướng dẫn về sản phẩm Solar, Pin lưu trữ, quy trình bán hàng và các công cụ phục vụ công việc.",
+      "Thời gian làm việc hành chính: Nghỉ chiều Thứ 7 và Chủ Nhật.",
+      "Chế độ công ty: Thưởng tháng 13, quà sinh nhật, du lịch định kỳ.",
+      "Phúc lợi đầy đủ: BHXH, BHYT, BHTN và phép năm theo quy định.",
+      "Cơ hội phát triển: Có định hướng phát triển lên Sales Operations hoặc các vị trí Kinh doanh phù hợp với năng lực."
+    ]
+  },
+  {
+    "id": "hr-recruitment-specialist",
+    "code": "04",
+    "title": "Chuyên Viên Nhân Sự & Tuyển Dụng",
+    "shortTitle": "Chuyên Viên Nhân Sự & Tuyển Dụng",
+    "cardSalary": "Thỏa thuận + Thưởng",
+    "salary": "Thu nhập thỏa thuận theo năng lực + Thưởng",
+    "baseSalary": "Thỏa thuận",
+    "totalIncome": "Thu nhập thỏa thuận theo năng lực + Thưởng theo chính sách công ty",
+    "quantity": "Đang tuyển",
+    "locations": [
+      "Hà Nội",
+      "TP. Hồ Chí Minh"
+    ],
+    "locationText": "Hà Nội | TP. Hồ Chí Minh",
+    "workType": "Toàn thời gian",
+    "badge": "Thu nhập thỏa thuận • Văn phòng",
+    "highlight": "Quy trình rõ ràng | Môi trường ổn định",
+    "callout": {
+      "headline": "20 năm hoạt động trong lĩnh vực Điện – Viễn thông – Solar",
+      "content": "SAMETEL được thành lập từ năm 2006, hoạt động trong các lĩnh vực Điện lực, Viễn thông, Năng lượng mặt trời, Pin lưu trữ và các giải pháp công nghiệp."
+    },
+    "descriptionSections": [
+      {
+        "title": "Tuyển dụng nhân sự",
+        "content": "Tiếp nhận nhu cầu tuyển dụng từ các phòng ban, cửa hàng; tư vấn tiêu chí và lập kế hoạch tuyển dụng, tìm kiếm ứng viên, sàng lọc hồ sơ, sắp xếp phỏng vấn và theo dõi kết quả tuyển dụng."
+      },
+      {
+        "title": "Tiếp nhận nhân viên mới",
+        "content": "Trao đổi thông tin tuyển dụng, đề nghị nhận việc với ứng viên; phối hợp hướng dẫn nhân viên mới hoàn thiện hồ sơ, tiếp nhận công việc và theo dõi quá trình thử việc."
+      },
+      {
+        "title": "Quản lý hồ sơ nhân sự",
+        "content": "Cập nhật và lưu trữ hồ sơ nhân sự, quyết định nhân sự, lưu trữ hồ sơ bảo mật."
+      },
+      {
+        "title": "Chấm công – Lương – Chế độ",
+        "content": "Phối hợp tổng hợp dữ liệu chấm công, tính lương, BHXH, thuế TNCN và theo dõi các chế độ phúc lợi của nhân viên theo phân công."
+      },
+      {
+        "title": "Báo cáo – Hoạt động nội bộ",
+        "content": "Cập nhật dữ liệu tuyển dụng, tổng hợp báo cáo nhân sự định kỳ; hỗ trợ đào tạo hội nhập, đánh giá nhân sự và các hoạt động nội bộ của công ty."
+      }
+    ],
+    "requirements": {
+      "general": [
+        "Tốt nghiệp Cao đẳng/Đại học chuyên ngành Quản trị nhân lực, Kinh tế, Luật hoặc các ngành liên quan.",
+        "Có từ 1–3 năm kinh nghiệm Tuyển dụng hoặc Nhân sự tổng hợp.",
+        "Sử dụng tốt Word, Excel, Email và các nền tảng tuyển dụng trực tuyến; có khả năng nhập liệu, quản lý hồ sơ và tổng hợp báo cáo.",
+        "Có kiến thức cơ bản về Luật Lao động, hợp đồng lao động, BHXH và quy trình tuyển dụng.",
+        "Giao tiếp tốt, cẩn thận, có trách nhiệm, biết sắp xếp công việc và bảo mật thông tin."
+      ],
+      "advantagesTitle": "Ưu tiên:",
+      "advantages": [
+        "Có kinh nghiệm tuyển dụng các vị trí Kinh doanh, Bán lẻ, Vận hành hoặc Kho vận.",
+        "Từng làm việc trong doanh nghiệp thương mại, phân phối hoặc chuỗi cửa hàng.",
+        "Biết sử dụng phần mềm HRM/ATS, có khả năng đọc hiểu tiếng Anh và chủ động xây dựng nguồn ứng viên."
+      ]
+    },
+    "income": {
+      "headline": "Thỏa thuận theo năng lực",
+      "description": "Mức lương trao đổi cụ thể khi phỏng vấn, cùng các khoản thưởng theo chính sách công ty."
+    },
+    "benefits": [
+      "Công việc văn phòng ổn định: Nghiệp vụ nhân sự rõ ràng, phối hợp trực tiếp với các phòng ban trong công ty.",
+      "Đào tạo chuyên môn: Được hướng dẫn về quy trình nhân sự, công cụ làm việc và các nghiệp vụ liên quan.",
+      "Chế độ phúc lợi: Thưởng và các quyền lợi khác theo chính sách công ty.",
+      "Phúc lợi đầy đủ: BHXH, BHYT, BHTN và phép năm theo quy định.",
+      "Cơ hội phát triển: Định hướng phát triển lên vị trí Nhân sự tổng hợp hoặc Chuyên viên Tuyển dụng cấp cao."
     ]
   }
 ]
