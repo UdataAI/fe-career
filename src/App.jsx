@@ -762,55 +762,7 @@ function App() {
                   )}
                 </div>
 
-                {/* 3. THU NHẬP */}
-                {activeModalJob.income && (
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-                      <span className="material-symbols-outlined text-blue-700 text-2xl">payments</span>
-                      <h3 className="font-display-lg text-lg font-bold text-slate-900">
-                        THU NHẬP
-                      </h3>
-                    </div>
-                    <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-50/80 via-teal-50/50 to-emerald-50/80 border border-emerald-200 space-y-3">
-                      <div className="flex items-center gap-2 text-emerald-800 font-extrabold text-base sm:text-lg">
-                        <span className="material-symbols-outlined text-xl">monetization_on</span>
-                        <span>Thu nhập: {activeModalJob.income.headline}</span>
-                      </div>
-
-                      {activeModalJob.income.description && (
-                        <p className="text-xs sm:text-sm text-slate-700 font-medium">
-                          {activeModalJob.income.description}
-                        </p>
-                      )}
-
-                      {activeModalJob.income.items && (
-                        <div className="space-y-2 pt-1">
-                          {activeModalJob.income.breakdownTitle && (
-                            <p className="text-xs sm:text-sm font-bold text-slate-800">
-                              {activeModalJob.income.breakdownTitle}
-                            </p>
-                          )}
-                          <ul className="space-y-1.5 pl-2">
-                            {activeModalJob.income.items.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
-                                <span className="text-emerald-600 font-bold">•</span>
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {activeModalJob.income.note && (
-                        <p className="text-xs sm:text-sm text-slate-600 italic pt-1 border-t border-emerald-200/60">
-                          {activeModalJob.income.note}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {/* 4. QUYỀN LỢI */}
+                {/* 3. QUYỀN LỢI */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
                     <span className="material-symbols-outlined text-blue-700 text-2xl">card_giftcard</span>
