@@ -110,73 +110,8 @@
     ]
   },
   {
-    "id": "sales-admin",
-    "code": "03",
-    "title": "Sales Admin – Hỗ Trợ Kinh Doanh",
-    "shortTitle": "Sales Admin",
-    "cardSalary": "10 – 12 triệu/tháng + Thưởng KPI",
-    "salary": "10 – 12 triệu VNĐ/tháng + Thưởng KPI",
-    "baseSalary": "10 – 12 triệu",
-    "totalIncome": "10 – 12 triệu VNĐ/tháng + Thưởng KPI",
-    "quantity": "02 nhân sự: Hà Nội 1 | TP.HCM 1",
-    "locations": [
-      "Hà Nội",
-      "TP. Hồ Chí Minh"
-    ],
-    "locationText": "Hà Nội | TP. Hồ Chí Minh",
-    "workType": "Toàn thời gian",
-    "badge": "Lương 10-12M • Thưởng KPI",
-    "highlight": "Hà Nội: 1 | TP.HCM: 1 | Giờ hành chính ổn định",
-    "callout": {
-      "headline": "20 năm hoạt động trong lĩnh vực Điện – Viễn thông – Solar",
-      "content": "SAMETEL được thành lập từ năm 2006, hoạt động trong các lĩnh vực Điện lực, Viễn thông, Năng lượng mặt trời, Pin lưu trữ và các giải pháp công nghiệp."
-    },
-    "descriptionSections": [
-      {
-        "title": "Báo giá – Hợp đồng – Đơn hàng",
-        "content": "Soạn thảo báo giá, hợp đồng, đơn đặt hàng và cập nhật hồ sơ bán hàng trên hệ thống. Theo dõi tình trạng xử lý đơn hàng theo quy trình."
-      },
-      {
-        "title": "Tiếp nhận và hỗ trợ khách hàng",
-        "content": "Tiếp nhận yêu cầu của khách hàng; cung cấp thông tin cơ bản về sản phẩm và kết nối khách hàng với nhân viên kinh doanh hoặc kỹ thuật."
-      },
-      {
-        "title": "Theo dõi giao hàng – Thanh toán – Bảo hành",
-        "content": "Phối hợp với Kho, Kế toán và Kỹ thuật để cập nhật tiến độ giao hàng, tình trạng thanh toán, công nợ và hỗ trợ xử lý các yêu cầu sau bán hàng."
-      },
-      {
-        "title": "Cập nhật số liệu – Báo cáo kinh doanh",
-        "content": "Cập nhật thông tin khách hàng, dữ liệu bán hàng trên hệ thống; tổng hợp báo cáo doanh số định kỳ và hỗ trợ đội ngũ Kinh doanh theo dõi tiến độ công việc."
-      }
-    ],
-    "requirements": {
-      "general": [
-        "Tốt nghiệp Cao đẳng/Đại học trở lên.",
-        "Ưu tiên ứng viên có kinh nghiệm Sales Admin, Kinh doanh hoặc Chăm sóc khách hàng.",
-        "Sử dụng tốt Word, Excel, Email hoặc Google Workspace, có khả năng nhập liệu, xử lý bảng tính và tổng hợp báo cáo.",
-        "Có khả năng giao tiếp, phối hợp công việc và hỗ trợ khách hàng qua điện thoại, email, ứng dụng nhắn tin.",
-        "Cẩn thận, có trách nhiệm, biết sắp xếp công việc và quản lý thời gian.",
-        "Sẵn sàng tìm hiểu kiến thức cơ bản về sản phẩm và quy trình kinh doanh."
-      ],
-      "advantagesTitle": "Ưu tiên:",
-      "advantages": [
-        "Có kinh nghiệm trong lĩnh vực Năng lượng mặt trời, Điện, Pin lưu trữ hoặc thiết bị công nghiệp.",
-        "Biết sử dụng phần mềm CRM/ERP, MISA hoặc các công cụ AI hỗ trợ công việc văn phòng."
-      ],
-      "note": "Không yêu cầu am hiểu chuyên sâu về kỹ thuật Solar. Ứng viên sẽ được đào tạo kiến thức sản phẩm và quy trình làm việc."
-    },
-    "benefits": [
-      "Công việc văn phòng ổn định: Tập trung hỗ trợ đội ngũ Kinh doanh, phối hợp với Kế toán, Kho và Kỹ thuật; không yêu cầu trực tiếp tìm kiếm khách hàng.",
-      "Đào tạo chuyên môn: Được hướng dẫn về sản phẩm Solar, Pin lưu trữ, quy trình bán hàng và các công cụ phục vụ công việc.",
-      "Thời gian làm việc hành chính: Nghỉ chiều Thứ 7 và Chủ Nhật.",
-      "Chế độ công ty: Thưởng tháng 13, quà sinh nhật, du lịch định kỳ.",
-      "Phúc lợi đầy đủ: BHXH, BHYT, BHTN và phép năm theo quy định.",
-      "Cơ hội phát triển: Có định hướng phát triển lên Sales Operations hoặc các vị trí Kinh doanh phù hợp với năng lực."
-    ]
-  },
-  {
     "id": "hr-recruitment-specialist",
-    "code": "04",
+    "code": "03",
     "title": "Chuyên Viên Nhân Sự & Tuyển Dụng",
     "shortTitle": "Chuyên Viên Nhân Sự & Tuyển Dụng",
     "cardSalary": "12 – 18 triệu/tháng + Thưởng",
