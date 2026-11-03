@@ -107,7 +107,7 @@ docker compose up -d
 ```
 ├── public/              # Static assets (logo, social icons)
 ├── src/
-│   ├── data/jds.json    # Dữ liệu vị trí tuyển dụng
+│   ├── data/sametel_jobs.json # Dữ liệu vị trí tuyển dụng
 │   ├── App.jsx          # Component chính
 │   ├── index.css        # Tailwind + theme config
 │   └── main.jsx         # Entry point
