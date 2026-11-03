@@ -1,5 +1,5 @@
 /**
- * GOOGLE APPS SCRIPT - SAMETEL TUYỂN DỤNG
+ * GOOGLE APPS SCRIPT - ONESPHERE TUYỂN DỤNG
  *
  * Guest flow: upload CV to Drive -> append Google Sheet -> return status to browser.
  * MailApp notifies HR after the application is saved. Email failures do not
@@ -238,8 +238,8 @@ function notifyHrForRow_(sheet, row) {
     SpreadsheetApp.flush();
     MailApp.sendEmail({
       to: recipient,
-      name: 'SAMETEL Tuyển dụng',
-      subject: ('[SAMETEL Tuyển dụng] ' + values[4] + ' - ' + values[1]).replace(/[\r\n]/g, ' ').slice(0, 200),
+      name: 'OneSphere Tuyển dụng',
+      subject: ('[OneSphere Tuyển dụng] ' + values[4] + ' - ' + values[1]).replace(/[\r\n]/g, ' ').slice(0, 200),
       body: [
         'Mã hồ sơ: ' + values[10],
         'Thời gian: ' + values[0],

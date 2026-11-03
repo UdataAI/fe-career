@@ -26,10 +26,10 @@
   --spacing-base: 8px;
   --spacing-margin-desktop: 64px;
 
-  --font-display-lg: "Montserrat", sans-serif;
-  --font-headline-md: "Montserrat", sans-serif;
-  --font-body-lg: "Inter", sans-serif;
-  --font-body-md: "Inter", sans-serif;
+  --font-display-lg: "Be Vietnam Pro", sans-serif;
+  --font-headline-md: "Be Vietnam Pro", sans-serif;
+  --font-body-lg: "Be Vietnam Pro", sans-serif;
+  --font-body-md: "Be Vietnam Pro", sans-serif;
   --font-label-sm: "JetBrains Mono", monospace;
 }
 
@@ -68,5 +68,5 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
