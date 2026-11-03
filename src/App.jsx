@@ -25,8 +25,7 @@ const PILLARS = [
 ];
 
 const STATS = [
-  { value: 'HNX: SMT', text: 'Doanh nghiệp niêm yết, minh bạch tài chính' },
-  { value: 'Từ 2006', text: 'Gần 20 năm kinh nghiệm từ nền tảng Sametel' },
+  { value: 'Từ 2006', text: 'Gần 20 năm kinh nghiệm phát triển' },
   { value: '13.000 m²', text: 'Nhà máy tại KCN Long Thành, Đồng Nai' },
   { value: 'Hàng trăm dự án Solar', text: 'Từ vài trăm kWp đến trên 2 MWp' },
 ];
@@ -318,11 +317,6 @@ function App() {
                 className="h-10 sm:h-12 w-auto object-contain rounded transition-transform group-hover:scale-105" 
               />
             </a>
-            <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-slate-200 text-xs">
-              <span className="font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                Tiền thân là Sametel • HNX: SMT
-              </span>
-            </div>
           </div>
 
           {/* Navigation Links */}
@@ -374,7 +368,7 @@ function App() {
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-display-lg text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h1 className="font-display-lg text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-snug">
                 ONESPHERE CHIÊU MỘ ĐỒNG ĐỘI – PHÁT TRIỂN ĐỘT PHÁ CÙNG <br className="hidden sm:inline" />
                 <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   HỆ SINH THÁI SOLAR
@@ -383,7 +377,7 @@ function App() {
 
               {/* Description */}
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-                <strong className="font-extrabold text-blue-700">OneSphere</strong> (tiền thân là Sametel – HNX: SMT), nổi bật với văn hóa trao quyền để bạn chủ động phát huy năng lực và nhận về thành quả xứng đáng.
+                <strong className="font-extrabold text-blue-700">OneSphere</strong>, nổi bật với văn hóa trao quyền để bạn chủ động phát huy năng lực và nhận về thành quả xứng đáng.
                 <br />
                 Thu nhập 10–25 triệu + hoa hồng, có đào tạo kiến thức làm việc.
               </p>
@@ -416,14 +410,14 @@ function App() {
             
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
                 Về OneSphere
               </span>
-              <h2 className="font-display-lg text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+              <h2 className="font-display-lg text-2xl sm:text-4xl font-extrabold text-slate-900 leading-snug">
                 Gần 20 năm kiến tạo hệ sinh thái -<br />Trao quyền làm chủ, mở lối thành công
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                OneSphere là nền tảng đầu tư phát triển theo mô hình roll-up, với tiền thân là Sametel, doanh nghiệp niêm yết trên HNX (mã SMT). Chúng tôi tin vào năng lực của mỗi nhân viên, trao quyền làm chủ, cùng chia sẻ tài nguyên để tăng trưởng dài hạn và bứt phá thu nhập.
+                OneSphere là nền tảng đầu tư phát triển theo mô hình roll-up. Chúng tôi tin vào năng lực của mỗi nhân viên, trao quyền làm chủ, cùng chia sẻ tài nguyên để tăng trưởng dài hạn và bứt phá thu nhập.
               </p>
             </div>
 
@@ -444,7 +438,7 @@ function App() {
             </div>
 
             {/* Credibility strip */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {STATS.map(s => (
                 <div key={s.value} className="rounded-xl bg-slate-50 border border-slate-200/80 p-4 text-center">
                   <div className="text-lg sm:text-xl font-extrabold text-blue-700 font-display-lg">{s.value}</div>
@@ -460,7 +454,7 @@ function App() {
         <section className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-100" id="culture">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="space-y-6">
-              <h2 className="font-display-lg text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+              <h2 className="font-display-lg text-2xl sm:text-3xl font-extrabold text-slate-900 leading-snug">
                 Văn hóa mỗi cá thể là một doanh nhân, tự chủ trong mọi hành động
               </h2>
               <ul className="space-y-4">
@@ -487,7 +481,7 @@ function App() {
             
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
                 {sametelJobs.length} Vị Trí Tuyển Dụng
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -808,13 +802,13 @@ function App() {
           </div>
         )}
 
-        {/* SECTION 4 — ĐIỀU GÌ ĐANG CHỜ BẠN TẠI SAMETEL? */}
+        {/* SECTION 4 — ĐIỀU GÌ ĐANG CHỜ BẠN TẠI ONESPHERE? */}
         <section className="py-20 bg-white border-b border-slate-100" id="benefits">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
                 Phúc Lợi &amp; Phát Triển
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -1224,7 +1218,7 @@ function App() {
           
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
             
-            <h2 className="font-display-lg text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+            <h2 className="font-display-lg text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-snug">
               Cùng xây dựng chặng đường tiếp theo cùng OneSphere
             </h2>
             
@@ -1275,7 +1269,7 @@ function App() {
             <p className="text-xs text-slate-500 leading-relaxed">
               <strong className="text-slate-800 font-bold">CÔNG TY CỔ PHẦN ONESPHERE</strong>
               <br />
-              OneSphere – tiền thân là Sametel (HNX: SMT). Hệ sinh thái kinh doanh trong phân phối công nghiệp, năng lượng mặt trời và bán lẻ solar.
+              OneSphere – Hệ sinh thái kinh doanh trong phân phối công nghiệp, năng lượng mặt trời và bán lẻ solar.
             </p>
           </div>
 
