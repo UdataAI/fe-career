@@ -26,7 +26,7 @@ const PILLARS = [
 
 const STATS = [
   { value: 'HNX: SMT', text: 'Doanh nghiệp niêm yết, minh bạch tài chính' },
-  { value: 'Từ 2006', text: 'Gần 20 năm kinh nghiệm từ nền tảng Sametel' },
+  { value: 'Từ 2006', text: 'Gần 20 năm kinh nghiệm phát triển' },
   { value: '13.000 m²', text: 'Nhà máy tại KCN Long Thành, Đồng Nai' },
   { value: 'Hàng trăm dự án Solar', text: 'Từ vài trăm kWp đến trên 2 MWp' },
 ];
@@ -320,7 +320,7 @@ function App() {
             </a>
             <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-slate-200 text-xs">
               <span className="font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                Tiền thân là Sametel • HNX: SMT
+                Niêm yết HNX: SMT
               </span>
             </div>
           </div>
@@ -383,7 +383,7 @@ function App() {
 
               {/* Description */}
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-                <strong className="font-extrabold text-blue-700">OneSphere</strong> (tiền thân là Sametel – HNX: SMT), nổi bật với văn hóa trao quyền để bạn chủ động phát huy năng lực và nhận về thành quả xứng đáng.
+                <strong className="font-extrabold text-blue-700">OneSphere</strong> (HNX: SMT), nổi bật với văn hóa trao quyền để bạn chủ động phát huy năng lực và nhận về thành quả xứng đáng.
                 <br />
                 Thu nhập 10–25 triệu + hoa hồng, có đào tạo kiến thức làm việc.
               </p>
@@ -423,7 +423,7 @@ function App() {
                 Gần 20 năm kiến tạo hệ sinh thái -<br />Trao quyền làm chủ, mở lối thành công
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                OneSphere là nền tảng đầu tư phát triển theo mô hình roll-up, với tiền thân là Sametel, doanh nghiệp niêm yết trên HNX (mã SMT). Chúng tôi tin vào năng lực của mỗi nhân viên, trao quyền làm chủ, cùng chia sẻ tài nguyên để tăng trưởng dài hạn và bứt phá thu nhập.
+                OneSphere là nền tảng đầu tư phát triển theo mô hình roll-up, doanh nghiệp niêm yết trên HNX (mã SMT). Chúng tôi tin vào năng lực của mỗi nhân viên, trao quyền làm chủ, cùng chia sẻ tài nguyên để tăng trưởng dài hạn và bứt phá thu nhập.
               </p>
             </div>
 
@@ -808,7 +808,7 @@ function App() {
           </div>
         )}
 
-        {/* SECTION 4 — ĐIỀU GÌ ĐANG CHỜ BẠN TẠI SAMETEL? */}
+        {/* SECTION 4 — ĐIỀU GÌ ĐANG CHỜ BẠN TẠI ONESPHERE? */}
         <section className="py-20 bg-white border-b border-slate-100" id="benefits">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -1275,7 +1275,7 @@ function App() {
             <p className="text-xs text-slate-500 leading-relaxed">
               <strong className="text-slate-800 font-bold">CÔNG TY CỔ PHẦN ONESPHERE</strong>
               <br />
-              OneSphere – tiền thân là Sametel (HNX: SMT). Hệ sinh thái kinh doanh trong phân phối công nghiệp, năng lượng mặt trời và bán lẻ solar.
+              OneSphere (HNX: SMT). Hệ sinh thái kinh doanh trong phân phối công nghiệp, năng lượng mặt trời và bán lẻ solar.
             </p>
           </div>
 
