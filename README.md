@@ -46,7 +46,7 @@ Frontend vẫn hỗ trợ FormSubmit với deployment Apps Script cũ trong th�
    - `SPREADSHEET_ID`: ID trong URL Google Sheet nhận hồ sơ:
      `https://docs.google.com/spreadsheets/d/ID_CUA_SHEET/edit`.
      Bắt buộc với Apps Script độc lập; tài khoản chạy script cần quyền sửa Sheet.
-   - `HR_EMAIL`: email HR nhận hồ sơ, ví dụ `hr@sametel.com.vn`. Đây là
+   - `HR_EMAIL`: email HR nhận hồ sơ, ví dụ `hr@onesphere.co`. Đây là
      cấu hình phía server, độc lập với `VITE_HR_EMAIL` ở frontend.
    - `CV_FOLDER_NAME`: tên thư mục Drive, không bắt buộc; mặc định là
      `SAMETEL_UngTuyen_CV`.

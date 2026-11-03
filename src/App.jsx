@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import sametelJobs from './data/sametel_jobs.json';
 import { trackPageView, trackFormSubmission, updateApplicationEmailStatus } from './utils/tracker';
 
-const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@sametel.com.vn';
+const HR_EMAIL = import.meta.env.VITE_HR_EMAIL || 'hr@onesphere.co';
 const JOB_QUERY_PARAM = 'job';
 
 const getJobFromCurrentUrl = () => {
@@ -17,6 +17,26 @@ const updateJobUrl = (jobId, mode = 'pushState') => {
   else url.searchParams.delete(JOB_QUERY_PARAM);
   window.history[mode]({}, '', url);
 };
+
+const PILLARS = [
+  { icon: 'factory', title: 'Phân phối công nghiệp', text: 'Phát triển mạng lưới phân phối, cung cấp sản phẩm và giải pháp công nghiệp cho doanh nghiệp sản xuất.' },
+  { icon: 'solar_power', title: 'Giải pháp năng lượng mặt trời (EPC/C&I)', text: 'Triển khai giải pháp solar cho khách hàng thương mại và công nghiệp, từ thiết kế đến thực hiện dự án.' },
+  { icon: 'storefront', title: 'Chuỗi bán lẻ năng lượng mặt trời', text: 'Đưa thiết bị và giải pháp solar (Solar - Inverter - Bess) đến gần hơn với khách hàng qua mạng lưới bán lẻ.' },
+];
+
+const STATS = [
+  { value: 'HNX: SMT', text: 'Doanh nghiệp niêm yết, minh bạch tài chính' },
+  { value: 'Từ 2006', text: 'Gần 20 năm kinh nghiệm từ nền tảng Sametel' },
+  { value: '13.000 m²', text: 'Nhà máy tại KCN Long Thành, Đồng Nai' },
+  { value: 'Hàng trăm dự án Solar', text: 'Từ vài trăm kWp đến trên 2 MWp' },
+];
+
+const CULTURE = [
+  { title: 'Tinh thần doanh nhân', text: 'Chủ động nhìn thấy cơ hội, phát triển và nhận kết quả.' },
+  { title: 'Trao quyền tự chủ', text: 'Có không gian quyết định và phát huy thế mạnh riêng.' },
+  { title: 'Học từ thực tiễn', text: 'Cùng giải bài toán thị trường công nghiệp, dự án năng lượng và bán lẻ.' },
+  { title: 'Phát triển bền vững', text: 'Ưu tiên giá trị dài hạn, hợp tác có trách nhiệm.' },
+];
 
 function App() {
   const [selectedJobId, setSelectedJobId] = useState(sametelJobs[0]?.id || '');
@@ -215,9 +235,9 @@ function App() {
           emailPayload.append('Lời nhắn', formData.coverLetter || 'Không có');
           emailPayload.append('UTM Source', window.location.search || 'Direct');
           emailPayload.append('_url', window.location.hostname === 'localhost'
-            ? 'https://sametel.com.vn/'
+            ? 'https://hr.onesphere.co/'
             : window.location.href);
-          emailPayload.append('_subject', `[SAMETEL Tuyển dụng] ${formData.position} - ${formData.fullName}`);
+          emailPayload.append('_subject', `[OneSphere Tuyển dụng] ${formData.position} - ${formData.fullName}`);
           emailPayload.append('_template', 'table');
           emailPayload.append('_captcha', 'false');
 
@@ -273,7 +293,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white pb-20 md:pb-0">
       
       {/* Header */}
       <header className={`fixed top-0 w-full z-40 transition-all duration-300 ${
@@ -286,29 +306,28 @@ function App() {
           {/* Logo & Stock Code */}
           <div className="flex items-center gap-4">
             <a 
-              href="https://sametel.com.vn/" 
+              href="https://hr.onesphere.co/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 group"
-              title="Truy cập Website chính thức SAMETEL"
+              title="Truy cập Website chính thức OneSphere"
             >
               <img 
-                src="/logoandfavi/sametel_logo.png" 
-                alt="SAMETEL Logo" 
+                src="/logoandfavi/onesphere_logo.png" 
+                alt="OneSphere" 
                 className="h-10 sm:h-12 w-auto object-contain rounded transition-transform group-hover:scale-105" 
               />
             </a>
             <div className="hidden sm:flex items-center gap-2 pl-3 border-l border-slate-200 text-xs">
               <span className="font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                SMT • HNX
+                Tiền thân là Sametel • HNX: SMT
               </span>
-              <span className="text-slate-500 font-medium">Solar – BESS – Inverter</span>
             </div>
           </div>
 
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
-            <a href="#about" className="hover:text-blue-700 transition-colors">Về SAMETEL</a>
+            <a href="#about" className="hover:text-blue-700 transition-colors">Về OneSphere</a>
             <a href="#openings" className="hover:text-blue-700 transition-colors">Vị trí tuyển dụng</a>
             <a href="#benefits" className="hover:text-blue-700 transition-colors">Quyền lợi</a>
             <a href="#apply" className="hover:text-blue-700 transition-colors">Nộp hồ sơ</a>
@@ -334,7 +353,7 @@ function App() {
         {/* SECTION 1 — HERO */}
         <section 
           className="relative overflow-hidden py-16 sm:py-28 border-b border-slate-100 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/sametel_hero_bg.png')" }}
+          style={{ backgroundImage: "url('/images/onesphere_hero_bg.webp')" }}
         >
           {/* Lớp phủ mờ dần về phía giữa trung tâm để tôn chữ, 2 bên vẫn sắc nét */}
           <div 
@@ -351,20 +370,22 @@ function App() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 border border-blue-200/80 text-blue-800 font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-sm">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse"></span>
-                Tuyển dụng quy mô toàn quốc 2026
+                OneSphere tuyển dụng 2026 • Hà Nội – TP.HCM
               </div>
 
               {/* Main Headline */}
               <h1 className="font-display-lg text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                SAMETEL MỞ RỘNG ĐỘI NGŨ <br className="hidden sm:inline" />
+                ONESPHERE CHIÊU MỘ ĐỒNG ĐỘI – PHÁT TRIỂN ĐỘT PHÁ CÙNG <br className="hidden sm:inline" />
                 <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                  SOLAR – BESS – INVERTER
+                  HỆ SINH THÁI SOLAR
                 </span>
               </h1>
 
               {/* Description */}
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-                Cùng SAMETEL phát triển hệ thống kinh doanh, phân phối và kỹ thuật cho các giải pháp Solar – BESS – Inverter trên toàn quốc.
+                <strong className="font-extrabold text-blue-700">OneSphere</strong> (tiền thân là Sametel – HNX: SMT), nổi bật với văn hóa trao quyền để bạn chủ động phát huy năng lực và nhận về thành quả xứng đáng.
+                <br />
+                Thu nhập 10–25 triệu + hoa hồng, có đào tạo kiến thức làm việc.
               </p>
 
               {/* Hero CTAs */}
@@ -389,106 +410,74 @@ function App() {
           </div>
         </section>
 
-        {/* SECTION 2 — QUICK PROOF / VÌ SAO LÀ SAMETEL? */}
+        {/* SECTION 2 — QUICK PROOF / VỀ ONESPHERE */}
         <section className="py-20 bg-white border-b border-slate-100" id="about">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-                Năng lực &amp; Vị thế
+                Về OneSphere
               </span>
               <h2 className="font-display-lg text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
-                Gần 20 năm xây dựng năng lực trong Điện – Viễn thông – Solar
+                Gần 20 năm kiến tạo hệ sinh thái -<br />Trao quyền làm chủ, mở lối thành công
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                SAMETEL được thành lập từ năm 2006 và hiện hoạt động trong các lĩnh vực Solar, Điện lực, Viễn thông cùng nhiều giải pháp công nghiệp.
+                OneSphere là nền tảng đầu tư phát triển theo mô hình roll-up, với tiền thân là Sametel, doanh nghiệp niêm yết trên HNX (mã SMT). Chúng tôi tin vào năng lực của mỗi nhân viên, trao quyền làm chủ, cùng chia sẻ tài nguyên để tăng trưởng dài hạn và bứt phá thu nhập.
               </p>
             </div>
 
-            {/* 4 Proof Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              
-              {/* Card 1 */}
-              <div className="bg-slate-50 hover:bg-blue-50/50 p-8 rounded-2xl border border-slate-200/80 hover:border-blue-300 transition-all duration-300 text-center space-y-2 group shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl">calendar_today</span>
+            {/* 3 Pillar Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              {PILLARS.map((p, i) => (
+              <div key={p.title} className="bg-slate-50 hover:bg-blue-50/50 p-8 rounded-2xl border border-slate-200/80 hover:border-blue-300 transition-all duration-300 space-y-3 group shadow-sm">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-2xl">{p.icon}</span>
+                  </div>
+                  <span className="text-3xl font-extrabold text-slate-200 font-display-lg">0{i + 1}</span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-blue-700 font-display-lg">
-                  2006
-                </div>
-                <div className="text-sm font-semibold text-slate-600">
-                  Năm thành lập
-                </div>
-                <p className="text-xs text-slate-500">
-                  Gần 20 năm phát triển vững bền trên thị trường
-                </p>
+                <h3 className="font-display-lg text-lg font-bold text-slate-900">{p.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{p.text}</p>
               </div>
-
-              {/* Card 2 */}
-              <div className="bg-slate-50 hover:bg-blue-50/50 p-8 rounded-2xl border border-slate-200/80 hover:border-blue-300 transition-all duration-300 text-center space-y-2 group shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl">factory</span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-blue-700 font-display-lg">
-                  13.000 m²
-                </div>
-                <div className="text-sm font-semibold text-slate-600">
-                  Cơ sở sản xuất
-                </div>
-                <p className="text-xs text-slate-500">
-                  Nhà máy hiện đại tại KCN Long Thành, Đồng Nai
-                </p>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-slate-50 hover:bg-blue-50/50 p-8 rounded-2xl border border-slate-200/80 hover:border-blue-300 transition-all duration-300 text-center space-y-2 group shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl">show_chart</span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-blue-700 font-display-lg">
-                  SMT – HNX
-                </div>
-                <div className="text-sm font-semibold text-slate-600">
-                  Doanh nghiệp niêm yết
-                </div>
-                <p className="text-xs text-slate-500">
-                  Minh bạch tài chính và quản trị doanh nghiệp chuẩn mực
-                </p>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-slate-50 hover:bg-blue-50/50 p-8 rounded-2xl border border-slate-200/80 hover:border-blue-300 transition-all duration-300 text-center space-y-2 group shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl">solar_power</span>
-                </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-blue-700 font-display-lg">
-                  Solar thực chiến
-                </div>
-                <div className="text-sm font-semibold text-slate-600">
-                  Hàng trăm dự án
-                </div>
-                <p className="text-xs text-slate-500">
-                  Từ hàng trăm kWp đến trên 2 MWp trên toàn quốc
-                </p>
-              </div>
-
+              ))}
             </div>
 
-            {/* Vision Statement Box */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden shadow-xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl"></div>
-              <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
-                <span className="material-symbols-outlined text-4xl text-cyan-400">format_quote</span>
-                <blockquote className="text-base sm:text-xl font-medium leading-relaxed italic text-blue-100">
-                  "SAMETEL định hướng trở thành nhà cung cấp hàng đầu Việt Nam các giải pháp cho ngành Điện, Viễn thông và Hệ thống điện mặt trời trên nền tảng công nghệ, đội ngũ chuyên nghiệp và văn hóa doanh nghiệp bền vững."
-                </blockquote>
-                <div className="text-xs uppercase tracking-widest text-cyan-300 font-bold pt-2">
-                  Ban Lãnh Đạo CÔNG TY CỔ PHẦN SAMETEL
+            {/* Credibility strip */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {STATS.map(s => (
+                <div key={s.value} className="rounded-xl bg-slate-50 border border-slate-200/80 p-4 text-center">
+                  <div className="text-lg sm:text-xl font-extrabold text-blue-700 font-display-lg">{s.value}</div>
+                  <div className="text-xs text-slate-500 mt-1 leading-snug">{s.text}</div>
                 </div>
-              </div>
+              ))}
             </div>
 
+          </div>
+        </section>
+
+        {/* SECTION — VĂN HÓA */}
+        <section className="py-16 sm:py-20 bg-[#F8FAFC] border-b border-slate-100" id="culture">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="space-y-6">
+              <h2 className="font-display-lg text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                Văn hóa mỗi cá thể là một doanh nhân, tự chủ trong mọi hành động
+              </h2>
+              <ul className="space-y-4">
+                {CULTURE.map(c => (
+                  <li key={c.title} className="flex items-start gap-3 text-sm sm:text-base text-slate-600">
+                    <span className="material-symbols-outlined text-blue-700 shrink-0">check_circle</span>
+                    <span><strong className="text-slate-900">{c.title}</strong> – {c.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <img
+              src="/images/onesphere_team_culture.webp"
+              alt="Đội ngũ OneSphere cùng làm việc về giải pháp năng lượng mặt trời"
+              loading="lazy" width="1200" height="800"
+              className="rounded-3xl shadow-xl border border-slate-200 w-full h-auto"
+            />
           </div>
         </section>
 
@@ -505,7 +494,7 @@ function App() {
                 Bạn đang tìm kiếm cơ hội nào?
               </h2>
               <p className="text-slate-600 text-base sm:text-lg">
-                Nhấp <strong>"Xem chi tiết JD"</strong> để xem đầy đủ bản mô tả công việc hoặc ứng tuyển trực tiếp vào SAMETEL.
+                Nhấp <strong>"Xem chi tiết JD"</strong> để xem đầy đủ bản mô tả công việc hoặc ứng tuyển trực tiếp vào OneSphere.
               </p>
             </div>
 
@@ -588,7 +577,7 @@ function App() {
 
             {/* Note text under cards */}
             <div className="mt-8 text-center text-xs text-slate-500">
-              * Toàn bộ điều kiện, lương và quyền lợi bám sát theo tiêu chuẩn tuyển dụng chính thức của SAMETEL.
+              * Toàn bộ điều kiện, lương và quyền lợi bám sát theo tiêu chuẩn tuyển dụng chính thức của OneSphere.
             </div>
 
           </div>
@@ -644,19 +633,6 @@ function App() {
 
               {/* Modal Scrollable Body */}
               <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
-
-                {/* GIỚI THIỆU VỀ SAMETEL */}
-                <div className="text-center space-y-2 pb-6 border-b border-slate-100">
-                  <p className="text-xs font-bold uppercase tracking-wider text-blue-700">
-                    Giới thiệu về SAMETEL
-                  </p>
-                  <h3 className="font-display-lg text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">
-                    Gần 20 năm xây dựng năng lực trong Điện – Viễn thông – Solar
-                  </h3>
-                  <p className="max-w-2xl mx-auto text-slate-600 leading-relaxed">
-                    SAMETEL được thành lập từ năm 2006 và hiện hoạt động trong các lĩnh vực Solar, Điện lực, Viễn thông cùng nhiều giải pháp công nghiệp.
-                  </p>
-                </div>
 
                 {/* THÔNG ĐIỆP DÀNH CHO ỨNG VIÊN */}
                 {activeModalJob.callout && (
@@ -842,10 +818,10 @@ function App() {
                 Phúc Lợi &amp; Phát Triển
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
-                Điều gì đang chờ bạn tại SAMETEL?
+                Điều gì đang chờ bạn tại OneSphere?
               </h2>
               <p className="text-slate-600 text-base sm:text-lg">
-                Một hệ sinh thái công việc gắn liền với các giải pháp Solar – BESS – Inverter thực tế hàng đầu thị trường.
+                Một hệ sinh thái công việc gắn liền với Solar – BESS – Inverter và các mảng phân phối, EPC, bán lẻ.
               </p>
             </div>
 
@@ -900,7 +876,7 @@ function App() {
                   Đầy đủ chế độ Bảo hiểm
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Tham gia đầy đủ BHXH, BHYT, BHTN theo đúng quy định pháp luật và chính sách từng vị trí của công ty niêm yết.
+                  Tham gia đầy đủ BHXH, BHYT, BHTN theo đúng quy định pháp luật và chính sách từng vị trí của doanh nghiệp niêm yết.
                 </p>
               </div>
 
@@ -926,7 +902,7 @@ function App() {
                   Lộ trình thăng tiến rõ ràng
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Lộ trình phát triển minh bạch lên Team Lead, Giám đốc Kinh doanh (CCO) hoặc Giám đốc Kỹ thuật (Technical Director).
+                  Lộ trình phát triển minh bạch lên Team Lead, Giám đốc Kinh doanh (CCO) hoặc Giám đốc Kỹ thuật (Technical Director), và cơ hội tham gia vận hành, phát triển đơn vị thành viên trong hệ sinh thái.
                 </p>
               </div>
 
@@ -936,10 +912,10 @@ function App() {
         </section>
 
         {/* SECTION 5 — FORM ỨNG TUYỂN */}
-        <section className="py-20 sm:py-28 bg-[#F8FAFC]" id="apply" ref={formRef}>
+        <section className="py-20 sm:py-28 bg-slate-100" id="apply" ref={formRef}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden">
+            <div className="bg-white rounded-3xl border border-slate-300 shadow-[0_12px_40px_-8px_rgba(30,64,175,0.28)] ring-1 ring-blue-700/10 overflow-hidden">
               
               {/* Form Header */}
               <div className="bg-gradient-to-r from-blue-800 to-indigo-900 text-white p-8 sm:p-10 text-center relative overflow-hidden">
@@ -950,10 +926,10 @@ function App() {
                   </span>
                   <h2 className="font-display-lg text-2xl sm:text-3xl font-extrabold text-white">
                     TÌM THẤY VỊ TRÍ PHÙ HỢP? <br />
-                    GỬI THÔNG TIN CHO SAMETEL
+                    GỬI THÔNG TIN CHO ONESPHERE
                   </h2>
                   <p className="text-sm sm:text-base text-blue-100 max-w-xl mx-auto">
-                    Điền đầy đủ thông tin bên dưới để ứng tuyển trực tiếp đến Ban Tuyển dụng SAMETEL.
+                    Điền đầy đủ thông tin bên dưới để ứng tuyển trực tiếp đến Ban Tuyển dụng OneSphere.
                   </p>
                 </div>
               </div>
@@ -972,7 +948,7 @@ function App() {
                         Hồ sơ đã được tiếp nhận!
                       </h3>
                       <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto">
-                        Cảm ơn bạn đã ứng tuyển vào vị trí <strong>{formData.position}</strong> tại SAMETEL. Hồ sơ của bạn đã được lưu. Bộ phận tuyển dụng sẽ liên hệ với hồ sơ phù hợp.
+                        Cảm ơn bạn đã ứng tuyển vào vị trí <strong>{formData.position}</strong> tại OneSphere. Hồ sơ của bạn đã được lưu. Bộ phận tuyển dụng sẽ liên hệ với hồ sơ phù hợp.
                       </p>
                     </div>
                     
@@ -1200,7 +1176,7 @@ function App() {
                         value={formData.coverLetter}
                         onChange={handleInputChange}
                         rows="3"
-                        placeholder="Hãy chia sẻ ngắn gọn về kinh nghiệm hoặc lý do bạn muốn đồng hành cùng SAMETEL..."
+                        placeholder="Hãy chia sẻ ngắn gọn về kinh nghiệm hoặc lý do bạn muốn đồng hành cùng OneSphere..."
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all text-slate-800"
                       ></textarea>
                     </div>
@@ -1228,7 +1204,7 @@ function App() {
 
                     {/* Privacy Note */}
                     <p className="text-center text-xs text-slate-500 leading-relaxed pt-2">
-                      🔒 Nhấn &quot;Gửi hồ sơ ứng tuyển&quot; đồng nghĩa với việc bạn cho phép SAMETEL lưu trữ và xử lý thông tin này phục vụ cho công tác tuyển dụng. Chúng tôi cam kết không chia sẻ dữ liệu cho bên thứ ba và chỉ liên hệ với hồ sơ phù hợp.
+                      🔒 Nhấn &quot;Gửi hồ sơ ứng tuyển&quot; đồng nghĩa với việc bạn cho phép OneSphere lưu trữ và xử lý thông tin này phục vụ cho công tác tuyển dụng. Chúng tôi cam kết không chia sẻ dữ liệu cho bên thứ ba và chỉ liên hệ với hồ sơ phù hợp.
                     </p>
 
                   </form>
@@ -1249,7 +1225,7 @@ function App() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
             
             <h2 className="font-display-lg text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-              CƠ HỘI MỚI TRONG NGÀNH SOLAR – BESS ĐANG CHỜ BẠN
+              Cùng xây dựng chặng đường tiếp theo cùng OneSphere
             </h2>
             
             <p className="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed">
@@ -1258,7 +1234,7 @@ function App() {
 
             <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 inline-block max-w-xl">
               <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-cyan-300">
-                SAMETEL – Cam kết • Tuân thủ • Chuyên nghiệp • Trách nhiệm
+                ONESPHERE – TRAO QUYỀN • TỰ CHỦ • TĂNG TRƯỞNG DÀI HẠN
               </span>
             </div>
 
@@ -1284,24 +1260,22 @@ function App() {
           {/* Col 1: Company Logo & Info */}
           <div className="space-y-4 col-span-1 md:col-span-1">
             <a 
-              href="https://sametel.com.vn/" 
+              href="https://hr.onesphere.co/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block group"
-              title="Truy cập Trang chủ SAMETEL (sametel.com.vn)"
+              title="Truy cập Website chính thức OneSphere"
             >
               <img 
-                src="/logoandfavi/sametel_logo.png" 
-                alt="SAMETEL Logo" 
+                src="/logoandfavi/onesphere_logo.png" 
+                alt="OneSphere" 
                 className="h-12 w-auto object-contain rounded transition-transform group-hover:scale-105" 
               />
             </a>
             <p className="text-xs text-slate-500 leading-relaxed">
-              <strong className="text-slate-800 font-bold">CÔNG TY CỔ PHẦN SAMETEL</strong>
+              <strong className="text-slate-800 font-bold">CÔNG TY CỔ PHẦN ONESPHERE</strong>
               <br />
-              Mã chứng khoán: <span className="font-bold text-blue-700">SMT (Sàn HNX)</span>
-              <br />
-              Doanh nghiệp uy tín hàng đầu trong lĩnh vực Điện – Viễn thông – Năng lượng mặt trời Solar &amp; BESS.
+              OneSphere – tiền thân là Sametel (HNX: SMT). Hệ sinh thái kinh doanh trong phân phối công nghiệp, năng lượng mặt trời và bán lẻ solar.
             </p>
           </div>
 
@@ -1350,7 +1324,7 @@ function App() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-base text-blue-700">language</span>
-                <a href="https://sametel.com.vn" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700">www.sametel.com.vn</a>
+                <a href="https://hr.onesphere.co/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700">hr.onesphere.co</a>
               </li>
             </ul>
           </div>
@@ -1359,14 +1333,23 @@ function App() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-2">
           <div>
-            © 2026 SAMETEL. Power of future. Bảo lưu mọi quyền.
+            © 2026 OneSphere. Bảo lưu mọi quyền.
           </div>
           <div>
-            Website Tuyển dụng Chính thức SAMETEL
+            Website Tuyển dụng chính thức OneSphere
           </div>
         </div>
       </footer>
 
+      {/* Sticky apply button (mobile) */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-30 p-3 bg-white/95 backdrop-blur border-t border-slate-200">
+        <button
+          onClick={() => handleSelectJobAndScroll(sametelJobs[0]?.title, sametelJobs[0]?.id, sametelJobs[0]?.locations?.[0])}
+          className="w-full bg-blue-700 hover:bg-blue-800 text-white font-extrabold py-3.5 rounded-xl cursor-pointer"
+        >
+          ỨNG TUYỂN NGAY
+        </button>
+      </div>
     </div>
   );
 }
