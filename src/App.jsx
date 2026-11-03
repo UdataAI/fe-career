@@ -410,7 +410,7 @@ function App() {
             
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
                 Về OneSphere
               </span>
               <h2 className="font-display-lg text-2xl sm:text-4xl font-extrabold text-slate-900 leading-snug">
@@ -481,7 +481,7 @@ function App() {
             
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
                 {sametelJobs.length} Vị Trí Tuyển Dụng
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -808,7 +808,7 @@ function App() {
             
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
                 Phúc Lợi &amp; Phát Triển
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
