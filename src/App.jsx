@@ -513,6 +513,11 @@ function App() {
                         <h3 className="font-display-lg text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
                           {job.title}
                         </h3>
+                        {job.isNew && (
+                          <span className="text-[11px] font-extrabold uppercase tracking-wider bg-rose-500 text-white px-2 py-0.5 rounded-md">
+                            Mới
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
