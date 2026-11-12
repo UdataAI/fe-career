@@ -628,6 +628,22 @@ function App() {
               {/* Modal Scrollable Body */}
               <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
 
+                {/* VỀ ONESPHERE (chung cho mọi vị trí) */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <span className="material-symbols-outlined text-blue-700 text-2xl">corporate_fare</span>
+                    <h3 className="font-display-lg text-lg font-bold text-slate-900">
+                      VỀ ONESPHERE
+                    </h3>
+                  </div>
+                  <p className="text-slate-600 text-xs sm:text-sm pl-1 font-semibold">
+                    Tiền thân từ SAMETEL với gần 20 năm kiến tạo hệ sinh thái - trao quyền làm chủ, mở lối thành công.
+                  </p>
+                  <p className="text-slate-600 text-xs sm:text-sm pl-1">
+                    OneSphere là nền tảng đầu tư phát triển theo mô hình roll-up. Chúng tôi tin vào năng lực của mỗi nhân viên, trao quyền làm chủ, cùng chia sẻ tài nguyên để tăng trưởng dài hạn và bứt phá thu nhập.
+                  </p>
+                </div>
+
                 {/* THÔNG ĐIỆP DÀNH CHO ỨNG VIÊN */}
                 {activeModalJob.callout && (
                   <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50/90 via-indigo-50/60 to-blue-50/90 border border-blue-200/80 shadow-sm space-y-2.5">

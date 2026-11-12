@@ -106,5 +106,66 @@
       "Thưởng lễ, Tết và các chế độ phúc lợi của Công ty.",
       "Có lộ trình phát triển lên Trưởng phòng kỹ thuật, Giám đốc kỹ thuật."
     ]
+  },
+  {
+    "id": "telesales",
+    "code": "03",
+    "title": "Nhân Viên Telesales",
+    "shortTitle": "Nhân Viên Telesales",
+    "cardSalary": "15 – 25 triệu/tháng",
+    "salary": "Lương cứng 10–12 triệu + % doanh số | Tổng thu nhập 15–25 triệu/tháng",
+    "baseSalary": "10 – 12 triệu",
+    "totalIncome": "15 – 25 triệu/tháng",
+    "quantity": "10 vị trí: Hà Nội 5 | TP.HCM 5",
+    "locations": [
+      "Hà Nội",
+      "TP. Hồ Chí Minh"
+    ],
+    "locationText": "Hà Nội | TP. Hồ Chí Minh",
+    "workType": "Toàn thời gian",
+    "badge": "Thu nhập 15-25M • % doanh số",
+    "highlight": "Hà Nội: 5 | TP.HCM: 5 | Data khách hàng có sẵn",
+    "callout": {
+      "headline": "Công việc của bạn",
+      "content": "Công việc chủ yếu thực hiện tại văn phòng, tập trung vào những khách hàng đã để lại thông tin hoặc chủ động liên hệ với OneSphere."
+    },
+    "descriptionSections": [
+      {
+        "title": "📞 Tiếp nhận & tư vấn khách hàng",
+        "content": "Tiếp nhận data khách hàng tiềm năng và tư vấn sản phẩm, chính sách và thông tin cơ bản về giải pháp điện mặt trời, inverter, pin lưu trữ; ghi nhận nhu cầu, quy mô sử dụng, khu vực và thời gian dự kiến triển khai.\n- Sàng lọc khách hàng, đặt lịch khảo sát hoặc tư vấn chuyên sâu; chuyển giao thông tin đầy đủ cho nhân viên phụ trách.\n- Theo dõi khách hàng sau cuộc gọi, nhắc lịch, chăm sóc các cơ hội đang mở và phối hợp xử lý câu hỏi trong phạm vi được đào tạo."
+      },
+      {
+        "title": "💬 Báo giá & theo dõi khách hàng",
+        "content": "Tư vấn, gửi báo giá và hỗ trợ khách hàng qua điện thoại/Zalo trong quá trình lựa chọn sản phẩm và đặt hàng."
+      },
+      {
+        "title": "📦 Theo dõi đơn hàng",
+        "content": "Phối hợp cùng Marketing, Sales và Kỹ thuật để xử lý đơn hàng, phát triển cơ hội bán hàng và chăm sóc khách hàng thường xuyên."
+      },
+      {
+        "title": "💻 Cập nhật thông tin",
+        "content": "Cập nhật thông tin và tình trạng khách hàng trên CRM/Excel để thuận tiện theo dõi và chăm sóc."
+      }
+    ],
+    "requirements": {
+      "general": [
+        "Tốt nghiệp trung cấp trở lên; giao tiếp rõ ràng, tự tin, kiên trì và có khả năng lắng nghe, đặt câu hỏi.",
+        "Có kỹ năng sử dụng máy tính, điện thoại và các công cụ văn phòng cơ bản; sẵn sàng làm việc theo chỉ tiêu và quy trình.",
+        "Ưu tiên ứng viên có kinh nghiệm telesales, chăm sóc khách hàng hoặc bán hàng; chấp nhận ứng viên mới nếu có thái độ cầu tiến và được đào tạo."
+      ],
+      "advantagesTitle": "Bạn sẽ có ưu thế nếu:",
+      "advantages": [
+        "Từng làm trong lĩnh vực năng lượng, điện, thiết bị kỹ thuật, bất động sản hoặc bán hàng B2B.",
+        "Có khả năng đọc hiểu thông tin sản phẩm cơ bản và sử dụng CRM."
+      ]
+    },
+    "benefits": [
+      "💰 Lương cứng 10–12 triệu/tháng + % doanh số.",
+      "📈 Tổng thu nhập 15–25 triệu/tháng: Thu nhập tăng theo kết quả bán hàng.",
+      "📞 Data khách hàng có sẵn.",
+      "🏢 Làm việc tại văn phòng: Tập trung tư vấn khách hàng qua điện thoại/Zalo và phối hợp xử lý đơn hàng.",
+      "🚀 Cơ hội phát triển lên Trưởng nhóm Sales: Có lộ trình phát triển khi đạt kết quả tốt và thể hiện được năng lực quản lý.",
+      "🛡️ Chế độ đầy đủ: BHXH • Thưởng Lễ/Tết • Teambuilding theo chính sách Công ty."
+    ]
   }
 ]
