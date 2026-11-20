@@ -11,7 +11,9 @@ const getJobFromCurrentUrl = () => {
   return sametelJobs.find(job => job.id === jobId) || null;
 };
 
-const updateJobUrl = (jobId, mode = 'pushState') => {
+const publicJobs = sametelJobs.filter(job => !job.hidden);
+
+const updateJobUrl =(jobId, mode = 'pushState') => {
   const url = new URL(window.location.href);
   if (jobId) url.searchParams.set(JOB_QUERY_PARAM, jobId);
   else url.searchParams.delete(JOB_QUERY_PARAM);
@@ -40,6 +42,10 @@ const CULTURE = [
 function App() {
   const [selectedJobId, setSelectedJobId] = useState(sametelJobs[0]?.id || '');
   const [activeModalJob, setActiveModalJob] = useState(getJobFromCurrentUrl);
+  // Job ẩn (hidden) chỉ hiện trong form khi ứng viên vào bằng link riêng ?job=<id>
+  const [linkedJob] = useState(getJobFromCurrentUrl);
+  const formJobs = linkedJob?.hidden ? [...publicJobs, linkedJob] : publicJobs;
+  const formLocations = [...new Set(formJobs.flatMap(job => job.locations))];
   const formRef = useRef(null);
 
   const handleCloseJdModal = useCallback(() => {
@@ -482,7 +488,7 @@ function App() {
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
               <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-100/80 px-3 py-1 rounded-full border border-blue-200">
-                {sametelJobs.length} Vị Trí Tuyển Dụng
+                {publicJobs.length} Vị Trí Tuyển Dụng
               </span>
               <h2 className="font-display-lg text-3xl sm:text-4xl font-extrabold text-slate-900">
                 Bạn đang tìm kiếm cơ hội nào?
@@ -494,8 +500,8 @@ function App() {
 
             {/* Horizontal Job Rows Layout */}
             <div className="space-y-4 max-w-6xl mx-auto">
-              {sametelJobs.map((job) => (
-                <div 
+              {publicJobs.map((job) => (
+                <div
                   key={job.id}
                   className={`bg-white hover:bg-blue-50/30 rounded-2xl p-5 sm:p-6 border transition-all duration-300 shadow-sm hover:shadow-md hover:border-blue-400 flex flex-col lg:flex-row lg:items-center justify-between gap-5 group ${
                     selectedJobId === job.id ? 'border-blue-600 ring-2 ring-blue-600/15' : 'border-slate-200/90'
@@ -1091,8 +1097,9 @@ function App() {
                           onChange={handleInputChange}
                           className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
                         >
-                          <option value="Hà Nội">Hà Nội</option>
-                          <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                          {formLocations.map(loc => (
+                            <option key={loc} value={loc}>{loc}</option>
+                          ))}
                         </select>
                       </div>
 
@@ -1109,7 +1116,7 @@ function App() {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition-all font-medium text-slate-800"
                       >
-                        {sametelJobs.map(job => (
+                        {formJobs.map(job => (
                           <option key={job.id} value={job.title}>
                             {job.code}. {job.title}
                           </option>
